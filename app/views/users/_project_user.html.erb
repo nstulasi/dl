@@ -1,0 +1,31 @@
+<h1>Sign up!</h1>  
+<%= form_for @user, :url => {:controller => "users", :action => "create"}  do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="fields">
+ <div class="field">
+  	<%=f.label :name%>
+  	<!--Change it depending on whether adding a new user of assigning an existing user-->
+  	<%=f.text_field :name%>
+  	<!--<%=collection_select(:user,:id, User.all, :id, :name, {} )%>-->
+ </div>
+ <div class="field">
+  <%=f.fields_for :delegations do |builder|%>
+  	<%=render 'delegation_fields', :f=>builder%>
+  	<%= link_to_add_fields "Add delegation",f,:delegations%>
+  <%end%>
+ </div>
+ </div>
+  <div class="actions">
+	<%= f.submit "Create"%>
+</div>
+<% end %>

@@ -1,0 +1,5 @@
+<p class="fields">
+   Send To User:
+  <%= collection_select(:user,:id, current_project.users, :id, :name, {} )%>  
+  <%= link_to_remove_fields "remove", f %>
+ </p>  

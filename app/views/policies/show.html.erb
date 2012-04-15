@@ -1,0 +1,20 @@
+<div class="grid_4 layout">
+	<%= render 'policies_sidemenu'%>
+</div>
+<div class ="grid_12 layout" id="right_display">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @policy.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @policy.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_policy_path(@policy) %> |
+<%= link_to 'Back', policies_path %>
+</div>

@@ -1,0 +1,44 @@
+<h1>New project</h1>  
+<%= form_for(@project) do |f| %>
+  <% if @project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!--<div class="field">
+  <%=f.fields_for :delegations do |builder|%>
+  	<%=builder.label :role%>
+  	<%=builder.text_field :role%><br/>
+  	<%=builder.label :responsibility%>
+  	<%=builder.text_field :responsibility%><br/>
+  <%end%>
+ </div>
+ <div class="field">
+  	<%=f.fields_for :user do |u|%>
+  	<%=u.label :name%>
+  	<%=u.text_field :name%>
+  	<%end%>
+ </div>-->
+  <div class="field">
+   <%=f.fields_for :users do |u|%>
+  	<%=render 'user_fields', :f=>u%>
+  	<%end%>
+ </div>
+
+ <div class="field">
+  <%=f.fields_for :delegations do |builder|%>
+  	<%=render 'delegation_fields', :f=>builder%>
+  	<%= link_to_add_fields "Add delegation",f,:delegations%>
+  <%end%>
+ </div>
+ </div>
+  <div class="actions">
+	<%= f.submit "Update"%>
+</div>
+<% end %>

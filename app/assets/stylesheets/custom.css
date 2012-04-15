@@ -1,0 +1,282 @@
+.container {
+	width: 710px; 
+}
+
+body{
+	background-image:url('backdrop.jpg');
+	background-repeat: repeat-x;
+}
+
+header{
+	padding-top: 20px;
+}
+
+header img {
+	padding: 1em;
+	background: #fff;
+}
+
+footer{
+	text-align: center;
+	margin-top: 10px;
+	width: 710px;
+	margin-left: auto;
+	margin-left: auto;
+}
+footer nav{
+	float: right ;
+}
+section {
+	margin-top: 1em;
+	font-size: 120%;
+	padding: 20px;
+	background: #fff;
+}
+
+section h1{
+	font-size: 200%;
+}
+
+/*Links*/
+a {
+	color: #09c;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #069;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #069;
+}
+
+/*Navigation */
+
+nav{
+	float: right;
+}
+
+nav{
+	background-color: white;
+	padding: 0 0.7em;
+	white-space: nowrap;
+}
+nav ul {
+	margin: 0;
+	padding: 0;
+}
+		
+nav ul li{
+	list-style-type: none;
+	display: inline-block;
+	padding: 0.2em 0;
+}
+nav ul li a {
+	padding: 0 5px;
+	font-weight: bold;
+	color: #8A1F11;
+}
+
+nav ul li a:visited {
+	color: #990000;
+}
+
+nav ul li a:hover{
+	text-decoration: underline;
+	
+}
+
+.signup_button{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	text-align: center;
+	width: 190px;
+	color: #DFF4FF;
+	background: #264409;
+	font-size: 150%;
+	font-weight: bold;
+	padding: 20px;
+}
+
+.round, .layout{
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+/* Table */
+
+table.profile{
+	width:100%;
+	margin-bottom:0;
+}
+
+td.main{
+	width:70%;
+	padding:1em;
+}
+
+td.sidebar{
+	width:30%;
+	padding:1em;
+	vertical-align:top;
+	background:#ffc;
+}
+
+.profile img.gravatar{
+	border: 1px solid #999;
+	margin-bottom: -15px;
+}
+
+/*Form related*/
+div.field, div.actions{
+	margin-bottom:10px;
+}
+
+/** Users **/
+	ul.users {
+		margin.top: 1em;
+	}
+	
+	.users li{
+		list-style:none;
+	}
+
+
+/** Main navigation bar**/
+#main_nav{
+	float:right;
+	margin-top:35px;}
+#main_nav ul{
+	display:block;
+	margin: 0 0 0 0;
+	padding:0}
+#main_nav li{
+	display:inline;
+	margin:0;
+	padding:0;
+	text-indent: -9999px}
+#main_nav li.last
+a{
+	margin:0;
+	border:0
+ }
+	
+#main_nav li a{
+	display:block;
+	float:left;
+	background-image:url('nav_copy.jpg');
+	background-repeat:no-repeat;
+	height:50px;
+	}
+	
+#main_nav li#overview
+a{width:109px;background-position:0 0}
+#main_nav li#phases
+a{width:102px;background-position: -109px 0}
+#main_nav li#people
+a{width:109px;background-position: -211px 0}
+#main_nav li#meetings
+a{width:118px;background-position: -320px 0}
+#main_nav li#tasks
+a{width:106px;background-position: -438px 0}
+#main_nav li#policies
+a{width:114px;background-position: -545px 0}
+#main_nav li#help
+a{width:114px;background-position: -659px 0}
+
+#main_nav li#overview a:hover, #nav li#overview
+a.active{background-position:0 -60px}
+#main_nav li#phases a:hover, #nav li#phases
+a.active{background-position: -109px -60px}
+#main_nav li#people a:hover, #nav li#people
+a.active{background-position: -211px -60px}
+#main_nav li#meetings a:hover, #nav li#meetings
+a.active{background-position: -320px -60px}
+#main_nav li#tasks a:hover, #nav li#tasks
+a.active{background-position: -438px -60px}
+#main_nav li#policies a:hover, #nav li#policies
+a.active{background-position: -545px -60px}
+#main_nav li#help a:hover, #nav li#help
+a.active{background-position: -659px -60px;
+}
+
+/** Other layout related**/
+.layout{
+	background:#ffffff;
+	outline:thin;
+	outline-color:#000000;
+	outline-style:solid;
+}
+
+.separation{
+	background:#C6D880;
+	height:10px;
+}
+
+#right_display{
+	float:right;
+}
+
+.box_1{
+	height:150px;
+	margin-bottom:10px;
+}
+#nav_bar{
+	vertical-align:top;
+	width:85%;
+}
+#nav_bar ul{
+	float:right;
+}
+/**Text**/
+.headings{
+	text-align:center;
+	margin-top: 10px;	
+}
+
+/** Tables**/
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url('arrow_up.png');
+}
+
+.pretty th .desc {
+  background-image: url('arrow_down.png');
+}
+
+/*Toggle Area*/
+ #menu .toggle {float:right;width:9px; padding:5px; cursor:pointer; border-top:1px solid white; border-left:1px solid #E0E0E0; color:#999;}
+ #menu ul.navmenu li:first-child .toggle{border-width:0 0 0 1px;}
+
+ /*Menu Setup*/
+ #menu ul{padding:0; margin:0; width:150px;}
+ #menu ul ul{border:1px solid #CCC;}
+ #menu ul.navmenu li {margin:0; list-style:none;}
+ /*Links*/
+ #menu ul.navmenu a, #menu ul.navmenu a:visited {text-decoration:none; padding:5px; display:block; color:#008FDD;}
+ #menu ul.navmenu ul.submenu a:hover{background:#FFF4D2; color:#333;}
+ /*Heading Outer div*/
+ #menu ul.navmenu .menutop{border:1px solid #CCC; border-width:0 1px; overflow:hidden; width:150px; background:#F9F9F9; }
+ /*Header Links*/
+ #menu ul.navmenu .menutop a{width:120px;float:left;margin:0 0 1px 0; border-top:1px solid white;}
+ /*Header Link Hover*/
+ #menu ul.navmenu .menutop a:hover{color:#333;}
+ /*Removes white border for the first header*/
+ #menu ul.navmenu li:first-child .menutop a {border-width:0px;}
+
+ /*Single Menu Width Fix*/
+ #menu ul.navmenu .menusingle a{width:140px;}
+
+ /*Border Radius and Special Border Width*/
+ #menu ul.navmenu li:first-child .menutop{border-width:1px 1px 0 1px; -moz-border-radius:5px 5px 0 0;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;}
+ #menu ul.navmenu li:last-child .menutop{border-width:0px 1px 1px 1px; -moz-border-radius:0 0 5px 5px; -webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;}
+ #menu ul.navmenu li:last-child ul.submenu{-moz-border-radius:0 0 5px 5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;}
+ #menu ul.navmenu li:last-child .menutop-open{-moz-border-radius:0;-webkit-border-radius:0px; border-width:0 1px;}

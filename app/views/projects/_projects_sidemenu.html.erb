@@ -1,0 +1,9 @@
+<h3>Projects menu</h3>
+<!--make openproject a function which checks for nil-->
+<%if(!Project.find(cookies.signed[:open_project]).users.first.nil?)%>
+<%= Project.find(cookies.signed[:open_project]).users.first.name%><br/>
+<%= Project.find(cookies.signed[:open_project]).users.last.name%>
+
+<%end%>
+<%=link_to "Assign user to project",new_user_path(:project_user=>"true")%>
+

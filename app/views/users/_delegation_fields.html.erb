@@ -1,0 +1,9 @@
+<p class="fields">
+	<%=f.label :role%>
+  	<%=f.text_field :role%>
+    <%=f.label :responsibility%>
+  	<%=f.text_field :responsibility%>
+  	<%=f.label :project_id%>
+  	<%=f.text_field :project_id, :value=>current_project.id%><br/>
+    <%= link_to_remove_fields "Remove delegation", f %>
+ </p>

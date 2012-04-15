@@ -1,0 +1,30 @@
+<div class="grid_4 layout">
+	<%= render 'projects_sidemenu'%>
+</div>
+<div class ="grid_12 layout" id="right_display">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @project.time %>
+</p>
+
+<p>
+  <b>Money:</b>
+  <%= @project.money %>
+</p>
+
+<p>
+  <b>Funding agency:</b>
+  <%= @project.funding_agency %>
+</p>
+
+
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+</div>

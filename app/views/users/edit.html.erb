@@ -1,0 +1,8 @@
+<div class="grid_4 layout">
+	<%= render 'users_sidemenu'%>
+</div>
+<div class ="grid_12 layout" id="right_display">
+	<%=render 'form' unless params[:project_user].nil?%>
+	<%=render 'project_user' if !params[:project_user].nil?%>
+	
+</div>

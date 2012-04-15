@@ -1,0 +1,42 @@
+<div class="grid_4 layout">
+	<%= render 'projects_sidemenu'%>
+</div>
+<div class ="grid_12 layout box_1" id="right_display">
+<h1>Listing projects <%=@open_project%></h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Time</th>
+    <th>Money</th>
+    <th>Funding agency</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.name %></td>
+    <td><%= project.time %></td>
+    <td><%= project.money %></td>
+    <td><%= project.funding_agency %></td>
+    <td><%= link_to 'Show', project %></td>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project', new_project_path %>
+</div>
+
+<div class ="grid_12 layout box_1" id="right_display">
+	Bla
+</div>
+
+<div class ="grid_12 layout box_1" id="right_display">
+	Ble
+</div>

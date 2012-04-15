@@ -6,7 +6,8 @@ class EventsController < ApplicationController
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
     #Displaying only current project's events
-    @event_strips = current_project.events.event_strips_for_month(@shown_month)
+    @event_strips = current_project.events.event_strips_for_month(@shown_month) if !current_project.nil?
+    @event_strips = Event.event_strips_for_month(@shown_month) if current_project.nil?
     
   end
 

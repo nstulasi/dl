@@ -3,14 +3,11 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    if !current_project.nil? && !current_tasks.nil?
-    @tasks = current_tasks 
-    else
-      @tasks = Task.all
-      @tasks = @tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])unless @tasks.nil?    
-    end
-    
-   
+    if !current_tasks.empty?
+    @tasks = current_tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])
+    else 
+    @tasks = Task.all
+    end 
     respond_to do |format|
      format.html # index.html.erb
     format.json { render json: @tasks }

@@ -23,12 +23,8 @@ module TasksHelper
   end
   
   def current_tasks
-    if !current_project.nil?
     current_project.delegations.each do |d|
     return d.tasks unless d.tasks.empty?
-    end
-    else
-      return nil
     end
   end
   

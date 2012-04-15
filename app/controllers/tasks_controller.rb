@@ -3,7 +3,8 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = current_tasks
+    @tasks = current_tasks if !current_tasks.nil?
+    @tasks = Task.all if current_tasks.nil?
     @tasks = @tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])unless @tasks.nil?
    
     respond_to do |format|
@@ -53,10 +54,12 @@ end
   def create
     @task = Task.new(params[:task])
     respond_to do |format|
-      if @task.save
-        @del = Delegation.find_by_user_id(params[:user][:id])
+      if @task.save 
+        if !params[:user].nil?
+        @del = Delegation.find_by_user_id(params[:user][:id]) 
         @task.assignments.each do|a|
         a.update_attribute(:delegation_id,@del.id) unless @del.nil?
+        end
         end
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }

@@ -8,9 +8,11 @@
  		<%= render @users %>	
 </ul>
 <h2>Project users in this project</h2>
+<%if !@proj_users.nil?%>
 <ul>
  <%@proj_users.each do |r|%>
  <li><%=r[:name]%></li>	
  <%end%>
 </ul>
+<%end%>
 </div>

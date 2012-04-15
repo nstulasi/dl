@@ -20,8 +20,10 @@ class UsersController < ApplicationController
     @users = User.paginate(:page => params[:page])
     #Returning all users assigned to the currently open project, using the Delegations model as the join
     #The results may contain duplicates as a user may have multiple entries in delegations depending on his roles
-    #and responsibilities and so we uniquefy it. 
+    #and responsibilities and so we uniquefy it.
+    if(!current_project.nil?) 
     @proj_users = current_project.users.uniq
+    end
     
 
   end

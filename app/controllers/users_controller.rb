@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   
   def create
     #Put a conditional ? : statement 
-    User.find_by_id(params[:user][:id]).nil? ? @user = User.new(params[:user]) :  @user=User.find_by_id(params[:user][:id])
+    if User.find_by_id(params[:user][:id]).nil? 
+       @user = User.new(params[:user]) 
+    else
+        @user=User.find_by_id(params[:user][:id])
+    end 
     #If User.save and user is not a newly created project user 
     if @user.save && @user.project_user.nil?
       sign_in @user 

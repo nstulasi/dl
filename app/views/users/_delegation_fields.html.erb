@@ -3,6 +3,7 @@
   	<%=f.text_field :role%>
     <%=f.label :responsibility%>
   	<%=f.text_field :responsibility%>
+  	<!--Have to change this to include it in the controleer create action itself.-->
   	<%=f.label :project_id%>
   	<%=f.text_field :project_id, :value=>current_project.id%><br/>
     <%= link_to_remove_fields "Remove delegation", f %>

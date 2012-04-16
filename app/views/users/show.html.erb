@@ -1,12 +1,13 @@
 <div class="grid_4 layout">
 	<%= render 'users_sidemenu'%>
 </div>
-<div class ="grid_12 layout" id="right_display">
 
+<div class ="grid_12 layout" id="right_display">
  <div class="field">
   	Name:
       <%=@user.name%> 
  </div>
+ 
  <div class="field">
   <%@user.delegations.each do |d|%>
   	Role:<%=d.role%> 

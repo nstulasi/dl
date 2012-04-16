@@ -1,18 +1,19 @@
 <div class="grid_4 layout">
 	<%= render 'users_sidemenu'%>
 </div>
+
 <div class ="grid_12 layout" id="right_display">
-<h1>All users</h1>
-<%=will_paginate%>
-<ul class="users">
- 		<%= render @users %>	
-</ul>
-<h2>Project users in this project</h2>
-<%if !@proj_users.nil?%>
-<ul>
- <%@proj_users.each do |r|%>
- <li><%=r[:name]%></li>	
- <%end%>
-</ul>
-<%end%>
+	<h1>All users</h1>
+		<%=will_paginate%>
+		<ul class="users">
+ 			<%= render @users %>	
+		</ul>
+	<h2>Project users in this project</h2>
+		<%if !@proj_users.nil?%>
+		<ul>
+		 <%@proj_users.each do |r|%>
+ 			<li><%=r[:name]%></li>	
+		 <%end%>
+		</ul>
+		<%end%>
 </div>

@@ -6,9 +6,11 @@ class EventsController < ApplicationController
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
     @shown_month = Date.civil(@year, @month)
     #Displaying only current project's events
-    @event_strips = current_project.events.event_strips_for_month(@shown_month) if !current_project.nil?
-    @event_strips = Event.event_strips_for_month(@shown_month) if current_project.nil?
-    
+    if current_project.nil?
+      @event_strips = Event.event_strips_for_month(@shown_month)
+    else
+      @event_strips = current_project.events.event_strips_for_month(@shown_month) if !current_project.nil?
+    end  
   end
 
   # GET /events/1
@@ -25,6 +27,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @project = current_project
+    #Event is always under a project
      1.times{@project.events.build}  
     respond_to do |format|
       format.html # new.html.erb

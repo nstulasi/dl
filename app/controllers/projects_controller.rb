@@ -3,9 +3,8 @@ class ProjectsController < ApplicationController
   # GET /projects.json
   def index
     @projects = Project.all
-    if current_project
-      @open_project = current_project.name
-    end
+    #Variable open_proejct just stores the name of the currently open project
+    @open_project = current_project.name if current_project 
      respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @projects }
@@ -43,7 +42,6 @@ class ProjectsController < ApplicationController
   # POST /projects.json
   def create
     @project = Project.new(params[:project])
-    #@user.project_user = params[:user][:delegations_attributes].nil?
     respond_to do |format|
       if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
@@ -60,7 +58,6 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.json
   def update
     @project = Project.find(params[:id])
-
     respond_to do |format|
       if @project.update_attributes(params[:project])
         format.html { redirect_to @project, notice: 'Project was successfully updated.' }

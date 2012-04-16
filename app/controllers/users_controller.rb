@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   
   def new
     @title = "Sign up"
-    @user = User.new 
-    1.times{@user.delegations.build} if !params[:project_user].nil?
-    #2.times{@user.delegations.build.build_project}  if !params[:project_user].nil?
+    @user = User.new
+    #Creating a project user if unregistered user needs to be created. 
+    1.times{@user.delegations.build} unless params[:project_user].nil?
   end
   
   def destroy
@@ -20,12 +20,8 @@ class UsersController < ApplicationController
     @users = User.paginate(:page => params[:page])
     #Returning all users assigned to the currently open project, using the Delegations model as the join
     #The results may contain duplicates as a user may have multiple entries in delegations depending on his roles
-    #and responsibilities and so we uniquefy it.
-    if(!current_project.nil?) 
-    @proj_users = current_project.users.uniq
-    end
-    
-
+    #and responsibilities and so we return uniwue delegations.
+    @proj_users = current_project.users.uniq unless current_project.nil?
   end
   
   def show
@@ -34,27 +30,20 @@ class UsersController < ApplicationController
   end
   
   def create
-    if User.find_by_id(params[:user][:id]).nil?
-      @user = User.new(params[:user]) 
-    else
-      @user=User.find_by_id(params[:user][:id])
-    end
-    #@current_user= User.find_by_id(params[:user][:id])
-    #current_project.delegations<<@current_user.delegations.create(params[:user][:delegations_attributes][0])
-    #current_project.users<<@user=User.create(params[:user])
-    #@user.project_user = params[:user][:delegations_attributes].nil?
-    if @user.save #&& @user.project_user.nil?
-      @user.update_attributes(params[:user]) if !User.find_by_id(params[:user][:id]).nil?
-      #sign in only if registered.Got to add validation!!
-      #sign_in @user 
+    #Put a conditional ? : statement 
+    User.find_by_id(params[:user][:id]).nil? ? @user = User.new(params[:user]) :  @user=User.find_by_id(params[:user][:id])
+    #If User.save and user is not a newly created project user 
+    if @user.save && @user.project_user.nil?
+      sign_in @user 
       flash[:success] = "Welcome to the Sample App"
       redirect_to @user
-    #elsif !@user.project_user.nil?
-      #@delegation = Delegation.create(params[:user][:delegations_attributes])
-     # redirect_to projects_path
-    else
-      @title="Sign up"
-      render 'new'
+      # else if user is a project_user
+     elsif !@user.project_user.nil?
+          @user.update_attributes(params[:user]) if !User.find_by_id(params[:user][:id]).nil?
+          redirect_to projects_path
+      else
+        @title="Sign up"
+        render 'new'
     end
   end
   

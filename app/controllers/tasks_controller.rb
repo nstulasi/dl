@@ -38,6 +38,7 @@ end
   # GET /tasks/new.json
   def new
     @task = Task.new
+    #Building 3 task assignments i.e. 3 users t which the taks is given.
     3.times{@task.assignments.build}
     respond_to do |format|
       format.html # new.html.erb
@@ -56,11 +57,13 @@ end
     @task = Task.new(params[:task])
     respond_to do |format|
       if @task.save 
+        #Saving a task under a user.
         if !params[:user].nil?
-        @del = Delegation.find_by_user_id(params[:user][:id]) 
-        @task.assignments.each do|a|
-        a.update_attribute(:delegation_id,@del.id) unless @del.nil?
-        end
+          @del = Delegation.find_by_user_id(params[:user][:id])
+          #Updating the delgation id cause that isnot automatically assigned to teh assignment. 
+          @task.assignments.each do |a|
+          a.update_attribute(:delegation_id,@del.id) unless @del.nil?
+          end
         end
         format.html { redirect_to @task, notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }

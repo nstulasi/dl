@@ -17,7 +17,7 @@ gem 'meta_search'
 gem 'awesome_nested_set'
 gem 'gon'
 gem 'client_side_validations'
-gem 'mercury-rails'
+gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '6d9c99fe20958ed87e4f1a05e9de19825af702ef'
 gem 'best_in_place'
 gem 'nokogiri'
 

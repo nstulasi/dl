@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/jejacks0n/mercury.git
+  revision: 6d9c99fe20958ed87e4f1a05e9de19825af702ef
+  ref: 6d9c99fe20958ed87e4f1a05e9de19825af702ef
+  specs:
+    mercury-rails (0.3.1)
+      coffee-script
+      paperclip (>= 2.5.2)
+      rails (>= 3.1.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -69,10 +79,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mercury-rails (0.3.1)
-      coffee-script
-      paperclip
-      rails (>= 3.1.0)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -81,7 +87,7 @@ GEM
     mime-types (1.18)
     multi_json (1.1.0)
     nokogiri (1.5.2-x86-mingw32)
-    paperclip (3.0.2)
+    paperclip (3.0.3)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -163,7 +169,7 @@ DEPENDENCIES
   gon
   gravatar_image_tag (= 0.1.0)
   jquery-rails
-  mercury-rails
+  mercury-rails!
   meta_search
   nokogiri
   pg (~> 0.13.2)

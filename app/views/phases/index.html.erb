@@ -1,0 +1,15 @@
+<%content_for :side do%>
+	<%= render 'phases_sidemenu'%>
+<%end%>
+<%content_for :main do%> 
+<h2 class="headings">Timeline of phases</h2>
+	<%if current_project.nil?%>
+		<%=empty_display("projects")%>
+	<%elsif @phases.empty?%>
+		<%=empty_display("phases")%>
+	<%else%>
+		<%=render "timeline_exhibit"%>
+	<%end%>
+	<%=link_to "Click me to add new phase",new_phase_path%>
+	<div> 
+<%end%> 

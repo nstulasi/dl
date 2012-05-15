@@ -1,0 +1,26 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<table class="display" id="dynamic_project_table">
+	<thead>
+	<tr class="custom_background">
+		<th>Name  <!--<%=image_tag("folder.png",:alt=>"")%>--></th>
+		<th>Time  <!--<%=image_tag("time.png",:alt=>"")%>--></th>
+		<th>Money  <!--<%=image_tag("money.png",:alt=>"")%>--></th>
+		<th>Funding agency  <!--<%=image_tag("house.png",:alt=>"")%>--></th>
+		<th></th>
+	</tr>
+	</thead>
+	<% @projects.each do |project| %>
+	<tr>
+		<td><%= link_to project.name , project%></td>
+		<td><%= project.time %></td>
+		<td><%= project.money %></td>
+		<td><%= project.funding_agency %></td>
+		<td>
+		<%=link_to image_tag("page_edit.png", :alt=>"Edit"),edit_project_path(project)%>&nbsp;&nbsp;
+		<%=link_to image_tag("cross.png", :alt=>"Delete"),project, confirm: 'Deleting this project will delete all its related information. Are you sure?', method: :delete%>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<br /><br/>

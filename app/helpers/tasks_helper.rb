@@ -22,9 +22,15 @@ module TasksHelper
     end
   end
   
-  def current_tasks
+  def current_user_tasks
     current_project.delegations.each do |d|
-    return d.tasks unless d.tasks.empty?
+    return d.tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page]) unless d.tasks.empty?
+    end 
+  end
+  
+  def current_project_tasks
+    current_project.tasks do |d|
+       return d.tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page]) unless d.tasks.empty?    
     end
   end
   
@@ -44,5 +50,7 @@ module TasksHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
+    
   
 end

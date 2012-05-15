@@ -3,4 +3,5 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include TasksHelper
   include ApplicationHelper
+  include PhasesHelper
 end

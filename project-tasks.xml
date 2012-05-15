@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<task>
+		<name>   Install and study SeerSuite</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-07-01</end_date>
+	</task>
+	<task>
+		<name>   Study the architecture and identify components that require modification</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-31</start_date>
+		<end_date>2012-08-01</end_date>
+	</task>
+	<task>
+		<name>   Extend SeerSuite with deep analysis of digital objects/collections (e.g., tables, references)</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2012-08-01</start_date>
+		<end_date>2014-12-31</end_date>
+	</task>
+	<task>
+		<name>   Develop methods to extract government information</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2012-08-01</start_date>
+		<end_date>2014-12-31</end_date>
+	</task>
+	<task>
+		<name>   Study CLIR literature and case studies</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2012-09-14</start_date>
+		<end_date>2013-01-03</end_date>
+	</task>
+	<task>
+		<name>   Redesign SeerSuite for Arabic support</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2013-01-03</start_date>
+		<end_date>2013-04-01</end_date>
+	</task>
+	<task>
+		<name>   Redesign Seersuite for CLIR support</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2013-04-01</start_date>
+		<end_date>2013-08-15</end_date>
+	</task>
+	<task>
+		<name>   Develop first prototype of SeerSuite with CLIR and Arabic support</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2013-08-12</start_date>
+		<end_date>2014-03-15</end_date>
+	</task>
+	<task>
+		<name>   Develop a fully functional extension of SeerSuite for Qatar</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2014-03-15</start_date>
+		<end_date>2014-12-31</end_date>
+	</task>
+	<task>
+		<name>   Validate the new design by testing on crawled collections</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>PS</site>
+		<project_id>1</project_id>
+		<start_date>2014-05-20</start_date>
+		<end_date>2014-12-31</end_date>
+	</task>
+	<task>
+		<name>   Crawl government information</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2013-04-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Crawl computing-related information</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2013-07-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Crawl chemistry-related information</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2013-09-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Crawl other scholarly information</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2014-01-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Develop infrastructure to cover Qatari culture and heritage</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2014-01-14</start_date>
+		<end_date>2014-12-31</end_date>
+	</task>
+	<task>
+		<name>   Apply infrastructure to cover Qatari culture and heritage</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2014-04-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Order laptops</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-05-16</end_date>
+	</task>
+	<task>
+		<name>   Plan, order, install, and operate server</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2012-07-01</start_date>
+		<end_date>2013-05-15</end_date>
+	</task>
+	<task>
+		<name>   Upgrade server and extend its operation</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2013-07-01</start_date>
+		<end_date>2014-05-15</end_date>
+	</task>
+	<task>
+		<name>   Upgrade server further and extend its operation</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2014-07-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Order, install, and operate multimedia and IDE equipment and tools</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2012-08-01</start_date>
+		<end_date>2013-05-15</end_date>
+	</task>
+	<task>
+		<name>   Extend multimedia facility</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2013-08-01</start_date>
+		<end_date>2014-05-15</end_date>
+	</task>
+	<task>
+		<name>   Further extend multimedia facility</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2014-08-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Establish and operate consulting center</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>QU</site>
+		<project_id>1</project_id>
+		<start_date>2013-04-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   First meeting for planning: Discuss timelines and milestones</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>ALL</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-05-16</end_date>
+	</task>
+	<task>
+		<name>   Establish content scope and representation standards</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-18</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>   Establish naming policy</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-06-02</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>   Establish character encoding formats</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-06-06</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>   Establish collection development policy</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-06-13</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>   Metadata standard policy</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-07-03</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>Prepare a requirements gathering plan</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-06-30</end_date>
+	</task>
+	<task>
+		<name>Conduct the reqts gathering</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-07-01</start_date>
+		<end_date>2012-07-31</end_date>
+	</task>
+	<task>
+		<name>Refine and finalize requirements</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-08-01</start_date>
+		<end_date>2012-09-04</end_date>
+	</task>
+	<task>
+		<name>Prepare tentative UI layout for the Qatar digital library</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-01-05</start_date>
+		<end_date>2013-02-01</end_date>
+	</task>
+	<task>
+		<name>List the UX and Usability features of the UI</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-02-02</start_date>
+		<end_date>2013-02-19</end_date>
+	</task>
+	<task>
+		<name>Implement basic layout and UI framework</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-02-20</start_date>
+		<end_date>2013-05-09</end_date>
+	</task>
+	<task>
+		<name>Refine the UX and usability of the site</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-05-10</start_date>
+		<end_date>2013-07-09</end_date>
+	</task>
+	<task>
+		<name>   Study the curriculum modules and see which ones should be tailored for Arabic/Qatari information</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-17</start_date>
+		<end_date>2012-05-30</end_date>
+	</task>
+	<task>
+		<name>   Develop special set of modules for seminar 1</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2012-06-06</start_date>
+		<end_date>2012-12-31</end_date>
+	</task>
+	<task>
+		<name>   Conduct quality assessment and report on feedback</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2013-01-01</start_date>
+		<end_date>2013-02-15</end_date>
+	</task>
+	<task>
+		<name>   Continue enhancing modules</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>VT</site>
+		<project_id>1</project_id>
+		<start_date>2013-03-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Curriculum module usage</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>All</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>Outline the methods to be used for gathering feedback</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2015-01-23</start_date>
+		<end_date>2015-02-15</end_date>
+	</task>
+	<task>
+		<name>Plan systems, tools, methodologies to be used</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2015-02-15</start_date>
+		<end_date>2015-03-15</end_date>
+	</task>
+	<task>
+		<name>Conduct feedback gathering</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2015-03-15</start_date>
+		<end_date>2015-04-15</end_date>
+	</task>
+	<task>
+		<name>Process feedback</name>
+		<status>1</status>
+		<priority>1</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2015-04-15</start_date>
+		<end_date>2015-05-14</end_date>
+	</task>
+	<task>
+		<name>   Study behavior of scholars and other users</name>
+		<status>2</status>
+		<priority>2</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Establish and operate consulting center</name>
+		<status>3</status>
+		<priority>3</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-04-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+	<task>
+		<name>   Guide collection development by Qataris</name>
+		<status>4</status>
+		<priority>4</priority>
+		<site>TAMU</site>
+		<project_id>1</project_id>
+		<start_date>2013-04-01</start_date>
+		<end_date>2015-05-15</end_date>
+	</task>
+</root>

@@ -1,20 +1,18 @@
 class TasksController < ApplicationController
   helper_method :sort_column, :sort_direction
+  before_filter :require_login
+
   # GET /tasks
   # GET /tasks.json
   def index
-    if !current_tasks.empty?
-    @tasks = current_tasks.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])
-    else 
-    @tasks = Task.all
-    end 
+    @tasks = current_project_tasks unless current_project.nil?
     respond_to do |format|
      format.html # index.html.erb
     format.json { render json: @tasks }
     end   
   end
 
-def view_calendar
+  def view_calendar
     @month = (params[:month] || (Time.zone || Time).now.month).to_i
     @year = (params[:year] || (Time.zone || Time).now.year).to_i
 
@@ -22,7 +20,7 @@ def view_calendar
 
     @event_strips = Task.event_strips_for_month(@shown_month)
  
-end
+  end
   # GET /tasks/1
   # GET /tasks/1.json
   def show
@@ -57,6 +55,7 @@ end
     @task = Task.new(params[:task])
     respond_to do |format|
       if @task.save 
+        @task.update_attribute(:project_id,current_project.id)
         #Saving a task under a user.
         if !params[:user].nil?
           @del = Delegation.find_by_user_id(params[:user][:id])
@@ -110,5 +109,9 @@ end
   def sort_direction
    %w[asc desc].include?(params[:direction])? params[:direction] : "asc"
  end
+ 
+ def require_login
+    deny_access unless signed_in?    
+  end 
 
 end

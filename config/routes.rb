@@ -1,11 +1,16 @@
 SampleApp::Application.routes.draw do
-  
+
+
+
+  resources :phases
+
   resources :projects
 
   resources :policies
 
   resources :events
-
+  match "phases/savesort" => 'phases#savesort'
+  match "shippings_logs/recent"=> 'shipping_logs#recent'
   match '/articles(/:year(/:month))' => 'articles#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   match '/events(/:year(/:month))' => 'events#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -16,12 +21,13 @@ SampleApp::Application.routes.draw do
 
   get "sessions/new"
 
-  resources :users
+  resources :users 
+    match '/users/:id/' => 'users#update', :format =>:json, :via => :put
   resources :sessions, :only => [:new,:create,:destroy]
   
   match "/tasks/index.js", :controller => 'tasks', :action => 'index', :format => :js
   get "users/new"
-
+  match "/phases/make", :to=>'phases#make', :via => :post
   #get "pages/home" #automatically maps the URL pages/home to the action home in the Pages controller
 
   #get "pages/contact"

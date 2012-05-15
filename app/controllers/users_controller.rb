@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :html, :json
   before_filter :authenticate, :only => [:index, :edit, :update, :destroy]
   before_filter :admin_user , :only => :destroy
   
@@ -32,9 +33,11 @@ class UsersController < ApplicationController
   def create
     #Put a conditional ? : statement 
     if User.find_by_id(params[:user][:id]).nil? 
-       @user = User.new(params[:user]) 
+       @user = User.new(params[:user])
+       @user.project_user=true 
     else
         @user=User.find_by_id(params[:user][:id])
+        @user.project_user=false
     end 
     #If User.save and user is not a newly created project user 
     if @user.save && @user.project_user.nil?
@@ -42,8 +45,12 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the Sample App"
       redirect_to @user
       # else if user is a project_user
-     elsif !@user.project_user.nil?
+     elsif @user.save && !@user.project_user.nil?
           @user.update_attributes(params[:user]) if !User.find_by_id(params[:user][:id]).nil?
+          #Updating delegations table with the current_proejct id
+          @user.delegations.each do |d|
+            d.update_attribute(:project_id,current_project.id)
+          end
           redirect_to projects_path
       else
         @title="Sign up"
@@ -56,19 +63,22 @@ class UsersController < ApplicationController
    @title = "Edit user"
  end
  
- def update
-   @user = User.find(params[:id])
-   if @user.update_attributes(params[:user])
-     flash[:success]="Profile updated"
-     redirect_to @user
-   else
-     @title = 'Edit user'
-     render 'edit'
-   end
- end
+
+  def update
+    @user = User.find(params[:id])
+     @user.update_attributes(params[:user])
+     respond_with @user
+
+  end
  
  def admin_user
    redirect_to(root_path) unless current_user.admin?
+ end
+ 
+ def mercury_update
+ user = User.find(params[:id])
+  # Update page
+  render text: ""
  end
  
  private

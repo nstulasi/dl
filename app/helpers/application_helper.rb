@@ -1,7 +1,7 @@
 module ApplicationHelper
   #return title on a per-page basis
   def title
-    base_title = "RoR"
+    base_title = "Digital Library  Management Tool"
     if @title.nil?
       base_title
     else
@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
   def logo
-    image_tag("green_2.jpg", :alt=>"Sample app", :class =>'round')
+    link_to image_tag("green_2.jpg", :alt=>"Digital library Management Tool", :class =>'round'),projects_path
   end
   
  def sortable(column, title = nil)
@@ -19,7 +19,55 @@ module ApplicationHelper
     link_to title, params.merge(:sort => column, :direction => direction, :page=>nil), {:class => css_class}
   end
   
-  def current_project
-    Project.find_by_id(cookies.signed[:open_project])||nil
+  def add_phase_link(name)
+      link_to name, "#", "partial" => h(render(:partial => 'phase', :object => Phase.new)), :class => 'phases'
   end
+  
+  def current_project
+    Project.find_by_id(cookies.signed[:open_project])||Project.first
+  end
+  
+   def phases
+    Defaultphase.all
+  end
+  
+  def empty_display(entity)
+      ret="<p id='empty_entity'>You have not yet created a "+ entity.to_s.singularize+ "#{link_to ". Create it here", :controller=>"#{entity}",:action=>"new"}</p>"
+      ret.html_safe
+  end
+  
+  def priority_name(index)
+      case index
+      
+      when 0
+         ret = "<font color='green'>Lowest</font>"
+      when 1
+         ret = "<font color='green'>Low</font>"
+      when 2
+         ret ="<font color='yellow'>Medium</font>"
+      when 3
+         ret = "<font color='red'>High</font>"
+      when 4
+         ret = "<font color='red'>Urgent!</font>"
+      else
+         ret = "<font color='red'>Undefined</font>"
+      end
+  ret.html_safe
+   end
+def status_name(index)
+      case index     
+      when 0
+         ret = "Not started"
+      when 1
+         ret = "In Progress"
+      when 2
+         ret = "Nearing Completion"
+      when 3
+          ret = "Completed"
+     
+      else
+         ret = "Not Started"
+      end
+  ret.html_safe
+   end
 end

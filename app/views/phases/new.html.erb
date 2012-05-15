@@ -1,0 +1,14 @@
+<%content_for :side do%>
+	<%= render 'phases_sidemenu'%>
+<%end%>
+<%content_for :main do%> 
+<h2 class="headings">Creating/Editing phase list</h2>
+	<%if current_project.nil?%>
+		<%=empty_display("projects")%>
+	<%elsif current_project.phases.nil?||current_project.phases.empty?%>
+		<%=empty_display("phases")%>
+	<%else%>
+		<%=render 'phase_form'%>
+		<%#=render 'phase_form'%>
+	<%end%>
+<%end%>  

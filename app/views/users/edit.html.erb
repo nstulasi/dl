@@ -1,10 +1,12 @@
-<div class="grid_4 layout">
+<%content_for :side do%>
 	<%= render 'users_sidemenu'%>
-</div>
-<div class ="grid_12 layout" id="right_display">
+<%end%>
+
+<%content_for :main do%>
 	<%if params[:project_user].nil?%>
 	<%=render 'form'%>
 	<%else%>
 	<%=render 'project_user'%>
 	<%end%>
 </div>
+<%end%>

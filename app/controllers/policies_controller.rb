@@ -1,4 +1,5 @@
 class PoliciesController < ApplicationController
+  before_filter :require_login
   # GET /policies
   # GET /policies.json
   def index
@@ -44,6 +45,7 @@ class PoliciesController < ApplicationController
 
     respond_to do |format|
       if @policy.save
+        @policy.update_attribute(:project_id,current_project.id)
         format.html { redirect_to @policy, notice: 'Policy was successfully created.' }
         format.json { render json: @policy, status: :created, location: @policy }
       else
@@ -80,4 +82,9 @@ class PoliciesController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+   def require_login
+    deny_access unless signed_in?    
+  end 
 end

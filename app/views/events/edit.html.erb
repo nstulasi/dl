@@ -1,7 +1,7 @@
-<div class="grid_4 layout">
+<%content_for :side do%>
 	<%= render 'events_sidemenu'%>
-</div>
-<div class ="grid_12 layout" id="right_display">
+<%end%>
+<%content_for :main do%>
 <h1>Editing event</h1>
 
 <%= render 'form' %>
@@ -9,3 +9,4 @@
 <%= link_to 'Show', @event %> |
 <%= link_to 'Back', events_path %>
 </div>
+<%end%>

@@ -1,0 +1,25 @@
+<style type="text/css" media="screen">
+	#sortable {
+		width: 300px;
+	}
+	ul {
+		margin-bottom: 1px;
+	}
+	.highlight {
+		background-color: #d6d88e;
+	}
+</style>
+<% end -%> 
+<h1>Category Sorting Example</h1>
+<p>
+	Drag and drop the categories into a nested set then hit save
+</p>
+<h3><a href='#' id='serialize'>Save Sorted Elements</a></h3>
+<ul id='sortable'>
+	<% for p in Phase.roots %>
+	<li id='phase_<%= p.id %>'>
+		<span><%= p.name %></span>
+		<%= render 'children', :item => p unless p.leaf? %>
+	</li>
+	<% end -%>
+</ul>

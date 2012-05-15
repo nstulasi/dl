@@ -3,12 +3,12 @@
 }
 
 body{
-	background-image:url('backdrop.jpg');
+	background-color:#f1f1f1;
 	background-repeat: repeat-x;
 }
 
 header{
-	padding-top: 20px;
+padding-top: 8px;/**Changed from 20px**/
 }
 
 header img {
@@ -88,23 +88,50 @@ nav ul li a:hover{
 	
 }
 
-.signup_button{
+#signup_button{
 	margin-left: auto;
+	cursor:pointer;
 	margin-right: auto;
 	display: block;
+	border:2px;
 	text-align: center;
-	width: 190px;
-	color: #DFF4FF;
-	background: #264409;
-	font-size: 150%;
+	width: 120px;
+	color: white;
+	background: #E95C33;
+	font-family:'Droid Sans', sans-serif;
+	font-size: 1.2em;
+	font-size: 100%;
 	font-weight: bold;
-	padding: 20px;
+	padding: 5px;
+}
+.custom_buttons{
+	background-color:#387DB5;
 }
 
-.round, .layout{
+ .layout{
+	border-color:#665555;		
+}
+.round{
 	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
-	border-radius: 10px;
+	-webkit-border-radius:10px;
+	border-radius:10px;
+}
+#dynamic_project_table_wrapper,#dynamic_table_wrapper,#dynamic_users_table{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+#my-timeline{
+	margin-right: 5px;
+	margin-left: 5px;
+}
+#ui-datepicker-div { display:none }
+
+#empty_entity{
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+	margin-top:20px;
 }
 /* Table */
 
@@ -167,10 +194,12 @@ a{
 #main_nav li a{
 	display:block;
 	float:left;
-	background-image:url('nav_copy.jpg');
+	background-image:url('naavi.jpg');
 	background-repeat:no-repeat;
 	height:50px;
 	}
+
+/**TO-DO:Make tabs highglight**/
 	
 #main_nav li#overview
 a{width:109px;background-position:0 0}
@@ -206,23 +235,24 @@ a.active{background-position: -659px -60px;
 /** Other layout related**/
 .layout{
 	background:#ffffff;
-	outline:thin;
-	outline-color:#000000;
-	outline-style:solid;
+	/**
+	outline:solid;
+	outline-color:#AA6666;
+	outline-width:thin;**/
 }
 
 .separation{
-	background:#C6D880;
-	height:10px;
+	background:transparent;
+	height:8px;
 }
 
 #right_display{
 	float:right;
 }
 
-.box_1{
-	height:150px;
-	margin-bottom:10px;
+.box_1, .grid_12 .box_1{
+	min-height:170px !important;
+	margin-bottom:8px;
 }
 #nav_bar{
 	vertical-align:top;
@@ -253,30 +283,349 @@ a.active{background-position: -659px -60px;
 }
 
 /*Toggle Area*/
- #menu .toggle {float:right;width:9px; padding:5px; cursor:pointer; border-top:1px solid white; border-left:1px solid #E0E0E0; color:#999;}
+ #menu .toggle {float:right;width:9px; padding:5px; cursor:pointer; border-top:1px solid white; border-left:1px solid #E0E0E0; color:black;font-weight:normal;font-size:14px;}
  #menu ul.navmenu li:first-child .toggle{border-width:0 0 0 1px;}
 
  /*Menu Setup*/
- #menu ul{padding:0; margin:0; width:150px;}
+ #menu{width:99%;margin-left:4px}
+ #menu ul.navmenu{width:99%}
+ #menu ul{padding:0; margin:0; width:99%;}
  #menu ul ul{border:1px solid #CCC;}
  #menu ul.navmenu li {margin:0; list-style:none;}
  /*Links*/
- #menu ul.navmenu a, #menu ul.navmenu a:visited {text-decoration:none; padding:5px; display:block; color:#008FDD;}
+ #menu ul.navmenu a, #menu ul.navmenu a:visited {text-decoration:none;margin-left:30px; padding:5px; display:block; color:black;}
  #menu ul.navmenu ul.submenu a:hover{background:#FFF4D2; color:#333;}
  /*Heading Outer div*/
- #menu ul.navmenu .menutop{border:1px solid #CCC; border-width:0 1px; overflow:hidden; width:150px; background:#F9F9F9; }
+ #menu ul.navmenu .menutop{border:1px solid #CCC; border-width:0 1px; overflow:hidden; width:99%; background:#F9F9F9; }
  /*Header Links*/
- #menu ul.navmenu .menutop a{width:120px;float:left;margin:0 0 1px 0; border-top:1px solid white;}
+ #menu ul.navmenu .menutop a{width:auto;float:left;margin:0 0 1px 0; border-top:1px solid white;}
  /*Header Link Hover*/
  #menu ul.navmenu .menutop a:hover{color:#333;}
  /*Removes white border for the first header*/
  #menu ul.navmenu li:first-child .menutop a {border-width:0px;}
 
  /*Single Menu Width Fix*/
- #menu ul.navmenu .menusingle a{width:140px;}
+ #menu ul.navmenu .menusingle a{width:auto;}
 
  /*Border Radius and Special Border Width*/
  #menu ul.navmenu li:first-child .menutop{border-width:1px 1px 0 1px; -moz-border-radius:5px 5px 0 0;-webkit-border-top-left-radius:5px;-webkit-border-top-right-radius:5px;}
  #menu ul.navmenu li:last-child .menutop{border-width:0px 1px 1px 1px; -moz-border-radius:0 0 5px 5px; -webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;}
  #menu ul.navmenu li:last-child ul.submenu{-moz-border-radius:0 0 5px 5px;-webkit-border-bottom-left-radius:5px;-webkit-border-bottom-right-radius:5px;}
  #menu ul.navmenu li:last-child .menutop-open{-moz-border-radius:0;-webkit-border-radius:0px; border-width:0 1px;}
+ 
+/**Stylized**/
+	#stylized{
+border:solid 2px #b7ddf2;
+background:#ebf4fb;
+}
+#stylized h1 {
+font-size:14px;
+font-weight:bold;
+margin-bottom:8px;
+}
+#stylized p{
+font-size:11px;
+color:#666666;
+margin-bottom:20px;
+border-bottom:solid 1px #b7ddf2;
+padding-bottom:10px;
+}
+#stylized label{
+display:block;
+font-weight:bold;
+text-align:right;
+width:140px;
+float:left;
+}
+#stylized .small{
+color:#666666;
+display:block;
+font-size:11px;
+font-weight:normal;
+text-align:right;
+width:140px;
+}
+#stylized input{
+float:left;
+font-size:12px;
+padding:4px 2px;
+border:solid 1px #aacfe4;
+width:200px;
+margin:2px 0 20px 10px;
+}
+#stylized button{
+clear:both;
+margin-left:150px;
+width:125px;
+height:31px;
+background:#666666 url(img/button.png) no-repeat;
+text-align:center;
+line-height:31px;
+color:#FFFFFF;
+font-size:11px;
+font-weight:bold;
+}
+p, h1, form, button{border:0; margin:0; padding:0;}
+.spacer{clear:both; height:1px;}
+/* ----------- My Form ----------- */
+.myform{
+margin:0 auto;
+width:500px;
+padding:14px;
+}
+
+.field_with_errors {
+  display: inline;
+}
+
+.field_with_errors .message {
+  color: #D00;
+  padding-left: 5px;
+  font-size: 12px;
+}
+/**Add link for sidemenu**/
+.add_link{
+	text-align:center;
+	font-size:14px;
+	font-weight:bold;
+}
+
+
+ul#sitemap
+{
+	margin: 1em 0;
+	list-style-type: none;
+/**background: url(dot.png) repeat-y 3px 0;**/
+	padding: 0;
+}
+
+ul#sitemap li
+{
+	margin-bottom: .5em;
+	font-size:14px;
+}
+
+ul#sitemap li a
+{
+	background: url(bullet_red.png) no-repeat ;
+	padding-left: 15px;
+}
+
+ul#sitemap li a.open, ul#sitemap li li a.open, ul#sitemap li li li a.open, ul#sitemap li li li li a.open
+{
+	background-image: url(bullet_red.png);
+}
+
+/* second level */
+ul#sitemap ul
+{
+	margin: .5em 0 0 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+ul#sitemap li li
+{
+/**background: url(dot.png) repeat-y 30px .5em;**/
+}
+
+ul#sitemap li li a
+{
+	padding: 0 0 0 30px;
+	background: url(bullet_green.png) no-repeat 20px ;
+}
+
+/* third level */
+ul#sitemap ul ul
+{
+/**background: url(dot.png) repeat-y 30px 0;**/
+}
+/**Google css**/
+.signin-box{
+  margin: 12px 0 0;
+  padding: 20px 25px 15px;
+  background: beige;
+  border: 1px solid #e5e5e5;
+  }
+  .custom_box{
+  margin: 12px 0 0;
+  padding: 20px 25px 15px;
+  border: 1px solid #e5e5e5;
+  }
+
+  .google-header-bar {
+  height: 71px;
+  background: #f1f1f1;
+  border-bottom: 1px solid #e5e5e5;
+  overflow: hidden;
+  }
+  .google-footer-bar {
+  width: 100%;
+  border-top: 1px solid #ebebeb;
+  overflow: hidden;
+  }
+  .footer {
+  padding-top: 9px;
+  font-size: .85em;
+  white-space: nowrap;
+  line-height: 0;
+  }
+  .footer ul {
+  color: darksalmon;
+  float: left;
+  max-width: 80%;
+  }
+  .footer ul li {
+  display:table-cell;
+  padding: 0 1.5em 0 0;
+  }
+  .footer a {
+  color: #333;
+  }
+  .footer form {
+  text-align: right;
+  }
+  .footer form .lang-chooser {
+  max-width: 20%;
+  }
+  .content {
+  padding: 0 44px;
+  }
+  
+ .header .logo {
+  margin: 17px 0 0;
+  float: left;
+  }
+  .redtext {
+ 	 color:#E9967A;
+  }
+.features {
+  overflow: hidden;
+  margin: 2em 0 0;
+  }
+  .features li {
+  display:inline;
+  margin: 3px 0 2em;
+  }
+  .features img {
+  float: left;
+  margin: -3px 0 0;
+  }
+  .features p {
+  margin: 0 0 0 68px;
+  }
+  .features .title {
+  font-size: 16px;
+  margin-bottom: .3em;
+  }
+ /**Start of navlist for navigation menu**/
+  .navlist {
+  overflow: hidden;
+  height:71px;
+  float:right;
+  }
+  .navlist li {
+  display:table-cell;
+  vertical-align:middle;
+  height:71px;
+  }
+  .navlist img {
+  float: left;
+  margin: -3px 0 0;
+  }
+  .navlist p {
+  margin: 0 0 0 68px;
+  }
+  .navlist .title {
+  font-size: 16px;
+  margin-bottom: .3em;
+  }
+  .navlist li a{
+  vertical-align:middle;
+  font-size:1.2em;
+  color:#E9967A;
+  margin-right:20px;
+  margin-left:20px;
+  }
+  
+ .navlist li:hover{
+  background-color:#D9D9D9;
+  }
+  
+.navlist li:active{
+  background-color:#777777;
+  }
+  
+.custom_background{
+	background-color:color;
+	color:black;
+}
+
+/* div container containing the form  */
+.searchContainer {
+    margin:20px;
+}
+ 
+/* Style the search input field. */
+#acpro_inp5,#acpro_inp8 {
+    width:150px; 
+    height:20px; 
+    line-height:20px;
+    text-indent:10px; 
+    color:#333; 
+    background: #fff; 
+    background: url(ico-search.png) no-repeat #93bcff right;
+    border:solid 1px #d9d9d9; 
+    border-top:solid 1px #c0c0c0; 
+}
+ 
+/* Style the "X" text button next to the search input field */
+#delete {
+    float:left; 
+    width:16px;
+    height:29px; 
+    line-height:27px; 
+    margin-right:15px; 
+    padding:0 0px 0 0px;
+    font-family: "Lucida Sans", "Lucida Sans Unicode",sans-serif;
+    font-size:22px; 
+    background: #fff;  
+    border:solid 1px #d9d9d9; 
+    border-top:solid 1px #c0c0c0; 
+    border-left:none;
+}
+/* Set default state of "X" and hide it */
+#delete #x {
+    color:#A1B9ED; 
+    cursor:pointer;
+    display:none;
+}
+/* Set the hover state of "X" */
+#delete #x:hover {
+    color:#36c;
+}
+/* Syle the search button. Settings of line-height, font-size, text-indent used to hide submit value in IE */
+#submit {
+    cursor:pointer; 
+    width:70px; 
+    height: 31px; 
+    line-height:0; 
+    font-size:0; 
+    text-indent:-999px;
+    color: transparent;  
+    background: url(ico-search.png) no-repeat #4d90fe center; 
+    border: 1px solid #3079ED; 
+    -moz-border-radius: 2px; 
+    -webkit-border-radius: 2px; 
+}
+/* Style the search button hover state */
+#submit:hover {
+    background: url(ico-search.png) no-repeat center #357AE8; 
+    border: 1px solid #2F5BB7;
+}
+/* Clear floats */
+.fclear {clear:both}
+
+.custom_text{
+	color:lightslategrey;
+}

@@ -1,24 +1,129 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%=title%></title>
-	<%= render 'layouts/stylesheets'%>
-  <%= csrf_meta_tags %>
-  <!--<%= javascript_include_tag :defaults %>-->
-  
-<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "jquery.rails.js", "event_calendar.js","http://datatables.net/download/build/jquery.dataTables.nightly.js" %>
-</head>
-<body class = "container_16">
-    <%= render 'layouts/header'%>
-    	
-	<% flash.each do |key,value|%>
-	
-	<div class="flash <%=key%>"><%=value %></div>
+	<head>
+		<title><%= title%></title>
+		<%= render 'layouts/stylesheets'%>
+		<%= csrf_meta_tags %> <!--<%= javascript_include_tag :defaults %>-->
+		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js","http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "jquery.rails.js", "event_calendar.js","http://datatables.net/download/build/jquery.dataTables.nightly.js",'jquery-ui.js','nestedsortables.js','serializelist.js','timeglider.min.js' %>
+		<%= javascript_include_tag 'rails.validations' %>
+		<%= javascript_include_tag "http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js?autoCreate=false",'jquery.jstree.js', "best_in_place.js","jquery.purr.js","http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"%>
+		<script>
+		<%@phases=Phase.all%>
+		var data = {
+  "items": [
+  <%@phases.each do |p|%>
+    {"label": "<%=p.name%>", "year": "<%=p.start.nil? ? p.start : p.start.strftime("%Y")%>","start":"<%=p.start.nil? ? p.start : p.start.strftime("%F %T")%>","end":"<%=p.end.nil? ? p.end : p.end.strftime("%F %T")%>", "type":"Phases"},
 	<%end%>
-	
-<%= yield%>
-<!--<%= render 'layouts/footer'%>-->
-<!--<%= debug(params) if Rails.env.development?%>-->
+   ]
+}
+		<%@phases=Phase.all%>
+    	   var phases = {
+       	    'wiki-url':  	"http://simile.mit.edu/shelf/", 
+  			'wiki-section': "Simile JFK Timeline", 
+  			'dateTimeFormat': 'iso8601',
+        	'events': 		[
+        	<% @phases.each do |p| %>
+        	<%if !p.start.nil? && !p.end.nil?%>
+        	 {	
+		       'start':"<%=p.start.iso8601%>",
+		       'end':"<%=p.end.iso8601%>",
+		       'title':"<%=p.name%>",
+		       'durationEvent':true,
+		       'description':"Oswald moves to New Orleans, and finds employment at the"
+			 },
+			 <%end%>
+			<%end%>]     
+      					};
+      		<%@events=current_project.events.all%>
+      		<%@events_months=@events.group_by{|t| t.start_at.beginning_of_month}%>
+      		<%@events_months=@events.group_by{|t| t.start_at.beginning_of_month}%>
+		var data_events = [
+			<%@events_months.each do |m,e|%>
+		    {
+		    "data": "<%=m.strftime("%B %Y")%>",
+		    "state": "closed",
+		    
+		    "children": [
+		    <%e.each do |event|%>
+		    {
+		        "data": "<%=event.name%>",
+		        "state": "open",
+		    },<%end%>]
+		    },
+		    <%end%>
+			];
+			
+	<%@phases=current_project.phases.all%>
+		var data_phases = [
+			<%@phases.each do |p|%>
+		    {
+		    "data": "<%=p.name%>",
+		    "state": "closed",
+		    
+		    "children": [
+		    <%p.children.each do |c|%>
+		    {
+		        "data": "<%=c.name%>",
+		        "state": "open",
+		    },<%end%>]
+		    },
+		    <%end%>
+			];
+		<%@policies=current_project.policies.all%>
+		var data_policies = [
+			<%@policies.each do |p|%>
+		    {
+		    "data": "<%=p.name%>",
+		    "state": "closed",
+		    },
+		    <%end%>
+			];
 
-</body>
+    	</script>
+    	  <link rel="icon" type="image/ico" href="assets/add.png">
+	</head>
+	<body class = "container_16" onload="onLoad();" onresize="onResize();">
+
+		<div class="google-header-bar">
+			<div class="header content clearfix">
+			<%if current_user%>
+				<%=render 'layouts/nav_header'%>
+			<%end%>
+			</div>
+		</div>
+		<% flash.each do |key,value|%>
+		<div class="flash <%= key%>">
+			<%= value %>
+		</div>
+		<%end%>
+		
+		<%if content_for?(:side)%>
+		<div class="grid_4 layout ">	
+			<%= yield(:side)%>
+			<br style="clear:both" />
+		</div>
+		<%end%>
+		
+		<%if content_for?(:main)%>
+		<div class ="grid_12 layout" id="right_display">
+			<%= yield(:main)%>
+		</div>
+		<%end%>
+		
+		<%if content_for?(:overview_alerts)%>
+		<%= yield(:overview_alerts)%>
+		<%end%>
+		
+		<%if content_for?(:overview_tasks)%>
+		<%= yield(:overview_tasks)%>
+		<%end%>
+		
+		<%if content_for?(:overview_timeline)%>
+		<%= yield(:overview_timeline)%>
+		<%end%>
+		
+		<%= yield%> 
+		<%= render 'layouts/footer'%>
+		<!--<%= debug(params) if Rails.env.development?%>-->
+	</body>
 </html>

@@ -1,0 +1,47 @@
+<%= form_for(@phase) do |f| %>
+<% if @phase.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@phase.errors.count, "error") %> prohibited this phase from being saved:</h2>
+	<ul>
+		<% @phase.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<div class="field">
+	<%= f.label :name %>
+	<br />
+	<%= f.text_field :name %>
+</div>
+
+<div class="field">
+	<%= f.label :content %>
+	<br />
+	<%= f.text_field :content %>
+</div>
+
+  <div class="field">
+    <%= f.label :start %><br />
+    <%= f.text_field :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br />
+    <%= f.text_field :end %>
+  </div>
+<%= collection_select(:phase,:parent_id, Phase.all, :id, :name, {} ) if !current_project.nil? && !current_project.users.nil?%>
+<!--Attempt almost worked but only the last taks was actually being saved. hint : look at params hash"--> 
+<!--<div id="new_phases" class="fields">
+	<%=render 'phase', :f=>f%>
+</div>
+<div id="other_new_phases" class="fields">
+	<%=render 'phase', :f=>f%>
+</div>
+<%=link_to "Add phase", "#", :object => Phase.new,:class=>"add_phase"%>-->
+
+<div class="actions">
+	<%= f.submit "Save and add another phase" %>
+</div>
+<% end %>

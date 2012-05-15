@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<user>
+		<name>Dr.Edward A.Fox</name>
+		<email>fox@vt.edu</email>
+		<webpage>http://fox.cs.vt.edu/</webpage>
+		<number>1-540-231-5113</number>
+	</user>
+	<user>
+		<name>Dr.John Impagliazzo</name>
+		<email>john@qu.edu.qa</email>
+		<webpage>http://faculty.qu.edu.qa/John/</webpage>
+		<number>+974 493 5822</number>
+	</user>
+	<user>
+		<name>Dr.Mohamed Samaka</name>
+		<email>samaka.m@qu.edu.qa</email>
+		<webpage>http://faculty.qu.edu.qa/samakam</webpage>
+		<number>(+974) 4403 4247</number>
+	</user>
+	<user>
+		<name>Dr.Richard Furuta</name>
+		<email> furuta@cs.tamu.edu</email>
+		<webpage>http://www.csdl.tamu.edu/~furuta/</webpage>
+		<number>(979) 845-3839</number>
+	</user>
+	<user>
+		<name>Dr.Lee Giles</name>
+		<email>giles@ist.psu.edu</email>
+		<webpage>http://clgiles.ist.psu.edu/</webpage>
+		<number> (814) 865-7884</number>
+	</user>
+	<user>
+		<name>Susan Lukesh</name>
+	</user>
+	<user>
+		<name>Carole Thompson</name>
+	</user>
+	<user>
+		<name>Tarek Kanan</name>
+		<email>tarekk@vt.edu</email>
+	</user>
+	<user>
+		<name>Sai Tulasi Neppali</name>
+		<email>ntulsi17@vt.edu</email>
+	</user>
+	<user>
+		<name>Amal</name>
+	</user>
+	<user>
+		<name>Myrna</name>
+	</user>
+	<user>
+		<name>Hamed</name>
+	</user>
+</root>

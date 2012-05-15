@@ -1,1 +1,5 @@
-<h3>Events archive</h3>
+<br/><h3><%= link_to "Archives",events_path%> </h3>
+
+<div id="treeViewDiv_events" class="custom_tree"></div>
+<br/>
+<p class="add_link"> <%=link_to "Add an event/meeting",new_event_path%>&nbsp;&nbsp; <%=link_to image_tag("add.png", :alt=>"Add events"),new_event_path%></p>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<phase>
+		<name>  Architecture design &amp; enhancement</name>
+		<content>Prepare architecture</content>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2015-05-15</end_date>
+		<site>PS</site>
+	</phase>
+	<phase>
+		<name>  Arabic &amp; CLIR design and research</name>
+		<project_id>1</project_id>
+		<start_date>2012-09-14</start_date>
+		<end_date>2013-08-15</end_date>
+		<site>VT</site>
+	</phase>
+	<phase>
+		<name>  Arabic &amp; CLIR implementation SeerSuite</name>
+		<project_id>1</project_id>
+		<start_date>2013-08-12</start_date>
+		<end_date>2014-12-31</end_date>
+		<site>VT</site>
+	</phase>
+	<phase>
+		<name>  Collection development (crawling)</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2014-03-18</end_date>
+		<site>PS</site>
+	</phase>
+	<phase>
+		<name>  Collection development (supplemental)</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2014-03-18</end_date>
+		<site>PS</site>
+	</phase>
+	<phase>
+		<name>  Equipment and facilities</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2014-03-18</end_date>
+		<site>QU</site>
+	</phase>
+	<phase>
+		<name>   Planning and scheduling</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-07-10</end_date>
+		<site>All</site>
+	</phase>
+	<phase>
+		<name>Study scholarly activity, gather reqts</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-09-04</end_date>
+		<site>TAMU</site>
+	</phase>
+	<phase>
+		<name>UI design</name>
+		<project_id>1</project_id>
+		<start_date>2013-01-05</start_date>
+		<end_date>2013-02-19</end_date>
+		<site>TAMU</site>
+	</phase>
+	<phase>
+		<name>UI Implementation</name>
+		<project_id>1</project_id>
+		<start_date>2013-02-20</start_date>
+		<end_date>2013-07-09</end_date>
+		<site>TAMU</site>
+	</phase>
+	<phase>
+		<name>  Curriculum module enhancement and deployment</name>
+		<project_id>1</project_id>
+		<start_date>2012-05-16</start_date>
+		<end_date>2012-09-04</end_date>
+		<site>VT</site>
+	</phase>
+	<phase>
+		<name>User studies(Feedback gathering)</name>
+		<project_id>1</project_id>
+		<start_date>2015-01-23</start_date>
+		<end_date>2015-05-14</end_date>
+		<site>TAMU</site>
+	</phase>
+	<phase>
+		<name>  Supporting emerging DL community</name>
+		<project_id>1</project_id>
+		<start_date>2012-09-01</start_date>
+		<end_date>2015-05-15</end_date>
+		<site>QU</site>
+	</phase>
+	<phase>
+		<name>   Disseminating project results (publications, presentations)</name>
+		<project_id>1</project_id>
+		<start_date>2013-01-01</start_date>
+		<end_date>2015-05-15</end_date>
+		<site>All</site>
+	</phase>
+</root>

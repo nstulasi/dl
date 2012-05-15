@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
+    helper_method :sort_column, :sort_direction
+    before_filter :require_login
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    @projects = Project.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])
     #Variable open_proejct just stores the name of the currently open project
     @open_project = current_project.name if current_project 
      respond_to do |format|
@@ -44,6 +46,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     respond_to do |format|
       if @project.save
+        @project.users<<current_user
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }
         cookies.permanent[:open_project] = @project.id
@@ -81,4 +84,15 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+  private
+   def sort_column
+    Phase.column_names.include?(params[:sort])? params[:sort] : "name"
+   end
+   def sort_direction
+    %w[asc desc].include?(params[:direction])? params[:direction] : "asc"
+   end
+   private
+   def require_login
+    deny_access unless signed_in?    
+   end
 end

@@ -1,9 +1,14 @@
-<div class="grid_4 layout">
+<%content_for :side do%>
 	<%= render 'events_sidemenu'%>
-</div>
-<div class ="grid_12 layout" id="right_display">
-
-<h1>Calendar</h1>
-
+<%end%>
+<%content_for :main do%>
+<br/>
+<h2>Calendar</h2>
+	<%if current_project.nil?%>
+		<%=empty_display("projects")%>
+	<%elsif current_project_events.nil?%>
+		<%=empty_display("events")%>
+	<%end%>
 <%= raw(event_calendar) %>
 </div>
+<%end%>

@@ -1,0 +1,8 @@
+<ul>
+	<% item.children.each do |child| %>
+	<li id='phase_<%= child.id %>'>
+		<span><%= child.name %></span>
+		<%= render 'children', :item => child unless child.leaf? %>
+	</li>
+	<% end %>
+</ul>

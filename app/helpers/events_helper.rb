@@ -21,4 +21,10 @@ module EventsHelper
       %(<a href="/events/#{event.id}" title="#{h(event.name)}">#{h(event.name)}</a>)
     end
   end
+  
+  def current_project_events
+   current_project.events.each do |d|
+     return d
+    end
+  end
 end

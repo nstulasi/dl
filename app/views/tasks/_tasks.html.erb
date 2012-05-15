@@ -1,30 +1,31 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
-<table class="display" id="example">
+<br/><h2 class="custom_text">Task List</h2>
+<table class="display" id="dynamic_table">
 	<thead>
-  <tr>
-    <th>Name</th>
-    <th>Status</th>
-    <th>Priority</th>
-    <th>Start Date</th>
-    <th>End date</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-</thead>
-<tbody>
-<% @tasks.each do |task| %>
-  <tr>
-    <td><%= task.name %></td>
-    <td><%= task.status %></td>
-    <td><%= task.priority %></td>
-    <td><%= task.start_at %></td>
-    <td><%= task.end_at %></td>
-    <td><%= link_to 'Show', task %></td>
-    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-    <td><%= link_to 'Destroy', task, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</tbody>
+		<tr class="custom_background">
+			<th>Task  <!--<%=image_tag("flag_green.png",:alt=>"Task")%>--></th>
+			<th>Status  <!--<%=image_tag("arrow_right.png",:alt=>"Status")%>--> </th>
+			<th>Priority <!-- <%=image_tag("exclamation.png",:alt=>"Priority")%>--></th>
+			<th>Start Date  <!--<%=image_tag("date_next.png",:alt=>"Start date")%>--></th>
+			<th>End date  <!--<%=image_tag("date_previous.png",:alt=>"End date")%>--></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% current_project_tasks.each do |task| %>
+		<tr>
+			<td><%= link_to task.name,task %></td>
+			<td><%= status_name(task.status.to_i)%></td>
+			<td><%= priority_name(task.priority.to_i)%></td>
+			<td><%= task.start_at.strftime("%B %d, %Y") %></td>
+			<td><%= task.end_at.strftime("%B %d, %Y") %></td>
+			<td> 
+				<%= link_to image_tag("page_edit.png", :alt=>"Edit"),edit_task_path(task)%>&nbsp;&nbsp;
+				<%= link_to image_tag("cross.png", :alt=>"Delete"),task, confirm: 'Delete this task?', method: :delete%> 
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
 </table>
+<br/>

@@ -151,8 +151,7 @@ table.display {
 
 table.display thead th {
 	padding: 3px 18px 3px 10px;
-	border-bottom: 1px solid black;
-	background-color:#bf8181;
+	border: 1px solid black;
 	font-weight: bold;
 	cursor: pointer;
 	* cursor: hand;
@@ -169,7 +168,7 @@ table.display tr.heading2 td {
 }
 
 table.display td {
-	padding: 3px 10px;
+	text-align:center;
 }
 
 table.display td.center {
@@ -246,13 +245,16 @@ table.display tr.even.gradeU {
 
 
 tr.odd {
-	background-color: #E2E4FF;
+	background-color: white;
 }
 
 tr.even {
 	background-color: white;
 }
-
+/**Added Later**/
+tr.odd td, tr.even td{
+		border: 1px solid black;
+}
 
 
 
@@ -365,7 +367,8 @@ table.display tr.odd.row_selected td {
  */
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
-	background-color: #D3D6FF;
+	background-image: url("bar.png");
+	background-repeat: repeat-y; 
 }
 
 tr.odd td.sorting_2 {
@@ -377,7 +380,8 @@ tr.odd td.sorting_3 {
 }
 
 tr.even td.sorting_1 {
-	background-color: #EAEBFF;
+	background-image: url("bar.png");
+	background-repeat: repeat-y; 
 }
 
 tr.even td.sorting_2 {

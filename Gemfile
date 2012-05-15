@@ -11,10 +11,15 @@ gem 'rails', '3.1.3'
 gem 'gravatar_image_tag', '0.1.0'
 gem 'faker', '0.3.1'
 gem 'will_paginate','3.0.pre2'
-gem 'formtastic'
+gem 'formtastic','2.0.0'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'meta_search'
-gem 'simple_datatables'
+gem 'awesome_nested_set'
+gem 'gon'
+gem 'client_side_validations'
+gem 'mercury-rails'
+gem 'best_in_place'
+gem 'nokogiri'
 
 group :production do
 gem 'pg', "~> 0.13.2"
@@ -34,7 +39,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'acts_as_tree', '~>0.2.0'
+gem 'rabl'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

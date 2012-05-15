@@ -1,0 +1,34 @@
+  <table>
+   <tr>
+   		<td style="vertical-align: top">
+   			<div ex:role="facet" ex:expression=".type" ex:facetLabel="Type"></div>
+   		</td>
+		<td style="vertical-align: top">
+			<div ex:role="facet" ex:expression=".year" ex:facetLabel="Start year"></div>
+		</td>
+	    <td style="vertical-align: top">
+	       <div ex:role="facet" ex:facetClass="TextSearch" ex:facetLabel="Search"></div>
+	    </td>
+
+   </tr>
+    <tr>
+    	<td colspan="3" style="vertical-align: top">
+		    <div ex:role="viewPanel">
+		    <!--Timeline -->
+			     <div ex:role="view"
+			     ex:viewClass="Timeline"
+			     ex:topBandUnit="year"
+			     ex:start=".start"
+			     ex:end=".end"
+			     ex:colorKey=".year">
+			 	</div>
+		    <!--Plain list-->
+		    	<div ex:role="lens"> <span ex:content=".year"></span>: <span ex:content=".label"></span> </div>
+		    <!--Grouped list-->
+		    	<div ex:role="view" ex:label="List" ex:orders=".year" ></div>
+		    <!--Table-->
+		    	<div ex:role="view" ex:viewClass="Tabular" ex:columns=".label,.year" ex:columnLabels="Name,Year"></div>
+		    </div>
+		</td>
+     </tr>
+  </table>

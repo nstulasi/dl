@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120410135415) do
+ActiveRecord::Schema.define(:version => 20120501035345) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -26,6 +26,14 @@ ActiveRecord::Schema.define(:version => 20120410135415) do
     t.integer  "task_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "defaultphases", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.string   "content"
   end
 
   create_table "delegations", :force => true do |t|
@@ -46,11 +54,35 @@ ActiveRecord::Schema.define(:version => 20120410135415) do
     t.integer  "project_id"
   end
 
+  create_table "mercury_images", :force => true do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "phases", :force => true do |t|
+    t.string   "name"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "project_id"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.datetime "start"
+    t.datetime "end"
+    t.string   "site"
+  end
+
   create_table "policies", :force => true do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "projects", :force => true do |t|
@@ -71,6 +103,8 @@ ActiveRecord::Schema.define(:version => 20120410135415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "start_at"
+    t.integer  "project_id"
+    t.string   "site"
   end
 
   create_table "users", :force => true do |t|

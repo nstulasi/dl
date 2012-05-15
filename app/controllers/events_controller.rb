@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  before_filter :require_login
   # GET /events
   # GET /events.json
   def index
@@ -26,9 +27,7 @@ class EventsController < ApplicationController
   # GET /events/new
   # GET /events/new.json
   def new
-    @project = current_project
-    #Event is always under a project
-     1.times{@project.events.build}  
+    @event=Event.new  
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @project.events }
@@ -43,10 +42,10 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @project = current_project
-    @event = @project.events.create(params[:event])
+    @event = Event.create(params[:event])
     respond_to do |format|
       if @event.save
+        current_project.events<<@event
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render json: @event, status: :created, location: @event }
       else
@@ -83,4 +82,8 @@ class EventsController < ApplicationController
       format.json { head :ok }
     end
   end
+  private
+   def require_login
+    deny_access unless signed_in?    
+  end 
 end

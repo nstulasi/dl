@@ -1,42 +1,44 @@
-<div class="grid_4 layout">
-	<%= render 'projects_sidemenu'%>
+<%content_for :side do%>
+<%= render 'projects_sidemenu'%>
+<%end%>
+
+<%content_for :overview_alerts do%>
+<!--TO-DO Add custom_box class to all the divs -->
+<div class ="grid_12 layout box_1 " id="right_display">
+	<br/>
+	<h2 class="custom_text">Projects<!-- <%= @open_project%>&nbsp;<%=current_user.name%>--></h2>
+
+	<%= form_tag projects_path, :method => 'get', :id => "projects_search" do %>
+	<%= hidden_field_tag :direction, params[:direction]%>
+	<%= hidden_field_tag :sort, params[:sort]%>
+	<% end %>
+
+	<%= render 'projects'%>
+
+	<%= link_to 'New Project', new_project_path %>
 </div>
-<div class ="grid_12 layout box_1" id="right_display">
-<h1>Listing projects <%=@open_project%></h1>
+<%end%>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Time</th>
-    <th>Money</th>
-    <th>Funding agency</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= project.name %></td>
-    <td><%= project.time %></td>
-    <td><%= project.money %></td>
-    <td><%= project.funding_agency %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>
+<%content_for :overview_tasks do%>
+<div class ="grid_12 layout box_1 " id="right_display">
+	<%if current_project.nil?%>
+		<%=empty_display("projects")%>
+	<%elsif current_project_tasks.empty?%>
+		<%=empty_display("tasks")%>
+	<%else%>
+		<%=render 'tasks/tasks'%>
+	<%end%>
 </div>
+<%end%>
 
-<div class ="grid_12 layout box_1" id="right_display">
-	Bla
+<%content_for :overview_timeline do%>
+<div class ="grid_12 layout box_1 " id="right_display">
+		<%if current_project.nil?%>
+		<%=empty_display("projects")%>
+	<%elsif current_project.phases.empty?%>
+		<%=empty_display("phases")%>
+	<%else%>
+		<%=render "phases/timeline"%>
+	<%end%>
 </div>
-
-<div class ="grid_12 layout box_1" id="right_display">
-	Ble
-</div>
+<%end%> 

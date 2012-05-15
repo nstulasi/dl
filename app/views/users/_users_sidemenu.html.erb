@@ -1,10 +1,13 @@
-<%@uniq_roles = Delegation.find(:all,:group=>:role)%>
+<br/>
+<h3><%=link_to "People", users_path%> <%=link_to image_tag("group.png", :alt=>"People"),users_path%></h3>
+<%@uniq_roles = Delegation.find(:all,:group=>:role,:conditions=>["delegations.role IS NOT NULL AND project_id=?",current_project.id])%>
+<%if !@uniq_roles.nil?%>
 <div id="menu">       
  <ul class="navmenu">	
  <%@uniq_roles.each do |r|%>
    <li><div class="menutop"><a href="#"><%=r.role%></a><div class="toggle">+</div></div>
      <ul class="submenu">
-     	<%@del = Delegation.find(:all,:conditions=>["role=?",r.role])%>
+     	<%@del = Delegation.find(:all,:conditions=>["role=? AND project_id=?",r.role,current_project.id])%>
      	<%@del.each do |d|%>
      	<%@u=User.find(:all,:conditions=>["id=?",d.user_id])%>
      	<%@u.each do |u|%>
@@ -16,4 +19,8 @@
    <%end%>
  </ul>
  </div>
-
+ <%else%>
+ <p id="empty_entity">No roles assigned to users in the project <%=link_to current_project.name,current_project%></p><br/>
+<%end%>
+<br/>
+<p class="add_link"><%= link_to "Add user to project",new_user_path(:project_user=>"true")%>&nbsp;&nbsp;<%=link_to image_tag("add.png", :alt=>"Add user"),new_user_path(:project_user=>"true")%></p>

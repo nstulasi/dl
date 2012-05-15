@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dphase>
+		<name>Planning</name>
+		<content>The team should make an outline of the work-division over the duration of the project </content>
+	</dphase>
+	<dphase>
+		<name>Initial user studies</name>
+		<content>Identifying requirements from the digital libraries' audience </content>
+	</dphase>
+	<dphase>
+		<name>Policy-making</name>
+		<content>Rules and standards to be followed for the project</content>
+	</dphase>
+	<dphase>
+		<name>Collection development</name>
+		<content>Process of gathering contents of the digital library</content>
+	</dphase>
+	<dphase>
+		<name>Architecture design and implementation</name>
+		<content>Constructing a framework to support the streamlined development and implementation</content>
+	</dphase>
+	<dphase>
+		<name>User interface design and implementation</name>
+		<content>Design and code the interface between the library and the user</content>
+	</dphase>
+	<dphase>
+		<name>Metadata</name>
+		<content>Gather and maintain metadata information about the collection</content>
+	</dphase>
+	<dphase>
+		<name>Information organization</name>
+		<content>Classification and indexing schemes </content>
+	</dphase>
+	<dphase>
+		<name>Service implementation</name>
+		<content>Include access-based services for increased benefit </content>
+	</dphase>
+	<dphase>
+		<name>Preservation</name>
+		<content>Follow-up process of maintaining collection up-to-date</content>
+	</dphase>
+	<dphase>
+		<name>Establish timelines</name>
+		<parent_id>1</parent_id>
+	</dphase>
+	<dphase>
+		<name>Divide tasks </name>
+		<parent_id>1</parent_id>
+	</dphase>
+	<dphase>
+		<name>Questionnairs</name>
+		<parent_id>2</parent_id>
+	</dphase>
+	<dphase>
+		<name>Surveys</name>
+		<parent_id>2</parent_id>
+	</dphase>
+	<dphase>
+		<name>Interviews</name>
+		<parent_id>2</parent_id>
+	</dphase>
+	<dphase>
+		<name>Workshops</name>
+		<parent_id>2</parent_id>
+	</dphase>
+	<dphase>
+		<name>Collection Development</name>
+		<parent_id>3</parent_id>
+	</dphase>
+	<dphase>
+		<name>Metadata standards</name>
+		<parent_id>3</parent_id>
+	</dphase>
+	<dphase>
+		<name>Character encoding formats</name>
+		<parent_id>3</parent_id>
+	</dphase>
+	<dphase>
+		<name>Identifiers</name>
+		<parent_id>3</parent_id>
+	</dphase>
+	<dphase>
+		<name>Crawling</name>
+		<parent_id>4</parent_id>
+	</dphase>
+	<dphase>
+		<name>Digitization</name>
+		<parent_id>4</parent_id>
+	</dphase>
+	<dphase>
+		<name>Special collections</name>
+		<parent_id>4</parent_id>
+	</dphase>
+	<dphase>
+		<name>Born-digital</name>
+		<parent_id>4</parent_id>
+	</dphase>
+	<dphase>
+		<name>Off-the-shelf components</name>
+		<parent_id>5</parent_id>
+	</dphase>
+	<dphase>
+		<name>End-to-end development</name>
+		<parent_id>5</parent_id>
+	</dphase>
+	<dphase>
+		<name>Activities design</name>
+		<parent_id>6</parent_id>
+	</dphase>
+	<dphase>
+		<name>Prototype development</name>
+		<parent_id>6</parent_id>
+	</dphase>
+	<dphase>
+		<name>Working version</name>
+		<parent_id>6</parent_id>
+	</dphase>
+	<dphase>
+		<name>Extract metadata</name>
+		<parent_id>7</parent_id>
+	</dphase>
+	<dphase>
+		<name>Explicitly specify metadata</name>
+		<parent_id>7</parent_id>
+	</dphase>
+	<dphase>
+		<name>Classification</name>
+		<parent_id>8</parent_id>
+	</dphase>
+	<dphase>
+		<name>Indexing</name>
+		<parent_id>8</parent_id>
+	</dphase>
+	<dphase>
+		<name>Browsing</name>
+		<parent_id>9</parent_id>
+	</dphase>
+	<dphase>
+		<name>Searching</name>
+		<parent_id>9</parent_id>
+	</dphase>
+	<dphase>
+		<name>RESTful manipulation</name>
+		<parent_id>9</parent_id>
+	</dphase>
+</root>

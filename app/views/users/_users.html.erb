@@ -1,0 +1,32 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+<%=link_to "Edit user information","/editor"+request.path%>
+<table class="display" id="dynamic_table">
+	<thead>
+		<tr>
+			<th>Name <%=image_tag("flag_green.png",:alt=>"User")%></th>
+			<th>email  <%=image_tag("arrow_right.png",:alt=>"email")%> </th>
+			<th>Webpage  <%=image_tag("exclamation.png",:alt=>"webpage")%></th>
+			<th>Contact info  <%=image_tag("date_next.png",:alt=>"contact number")%></th>
+			<th>  <%=image_tag("date_previous.png",:alt=>"End date")%></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<% current_project.users.uniq.each do |user| %>
+		<tr>
+			
+			<td><%= link_to user.name,user %></td>
+			<td><%= user.email%></td>
+			<td><%= user.webpage%></td>
+			<td><%= user.number %></td>
+			<td></td>
+			<td> 
+				<%= link_to image_tag("page_edit.png", :alt=>"Edit"),edit_user_path(user)%>&nbsp;&nbsp;
+				<%= link_to image_tag("cross.png", :alt=>"Delete"),user, confirm: 'Delete this user?', method: :delete%> 
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<br/>

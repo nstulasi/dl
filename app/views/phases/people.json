@@ -1,0 +1,10 @@
+ {
+  "items": [
+    {"label": "Peter", "gender": "Masculine", "year": "2000", "type":"Student"},
+    {"label": "John", "gender": "Masculine", "year": "2001", "type": "Student"},
+    {"label": "Mary", "gender": "Feminine", "year": "2000", "type": "Student"},
+    {"label": "Fran", "gender": "Feminine", "year": "2003", "type": "Professor"},
+    {"label": "Andrea", "gender": "Feminine", "year": "2002", "type": "Professor"},
+    {"label": "Robert", "gender": "Masculine", "year": "2001", "type": "Professor"},
+   ]
+ }

@@ -2,9 +2,32 @@
 <%= render 'policies_sidemenu'%>
 <%end%>
 <%content_for :main do%>
+<div class="demo">
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Tab 1 </a></li>
+		<li><a href="#tabs-2">Tab 2</a></li>
+		<li><a href="#tabs-3">Tab 3</a></li>
+	</ul>
+	<div id="tabs-1">
+		<p></p>
+	</div>
+	<div id="tabs-2">
+		<p></p>
+	</div>
+	<div id="tabs-3">
+		<p></p>
+		<p></p>
+	</div>
+</div>
+
+</div><!-- End demo -->
+
+
+
 	<%if current_project.nil?%>
 		<%=empty_display("projects")%>
-	<%elsif current_project_policies.empty?%>
+	<%elsif current_project_policies.nil?%>
 		<%=empty_display("policies")%>
 	<%else%>
 	<h1>Listing policies</h1>
@@ -29,5 +52,12 @@
 	<br />
 	<%= link_to 'New Policy', new_policy_path %>
 	</div>
+	<%@policy=Policy.first%>
+  <%= form_for @policy, :remote => true do |f| %>
+  <%= f.check_box 'checked', :class => 'submittable',:id=>"check_box" %> 
+  <%= f.label :checked,:id=>"add_div" %>
+  <div id="appender">Bla</div>
+  <%= @policy.name %>
+  <% end %>
 <%end%>
 <%end%> 

@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   has_many :users, :through=>:delegations
   has_many :tasks
   has_many :policies
+  has_one :stream
   
   accepts_nested_attributes_for :delegations, :allow_destroy=>true #All i had to do was add allow destroy to allow a delegation to be destroyed from project edit button!
   accepts_nested_attributes_for :tasks

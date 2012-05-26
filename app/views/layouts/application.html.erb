@@ -7,8 +7,103 @@
 		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js","http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "jquery.rails.js", "event_calendar.js","http://datatables.net/download/build/jquery.dataTables.nightly.js",'jquery-ui.js','nestedsortables.js','serializelist.js','timeglider.min.js' %>
 		<%= javascript_include_tag 'rails.validations' %>
 		<%= javascript_include_tag "http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js?autoCreate=false",'jquery.jstree.js', "best_in_place.js","jquery.purr.js","http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"%>
+    	<%= javascript_include_tag "select2.js"%>
 		<script>
-		<%@phases=Phase.all%>
+			$(document).ready(function() {
+				$("#character_encoding").select2({
+					placeholder: "Select the character encoding",
+    				allowClear: true
+				});
+			});
+			
+      		
+			$(document).ready(function() {
+				$("#text_encoding").select2({
+					placeholder: "Select the text encoding",
+    				allowClear: true
+				});
+			});
+			$(document).ready(function() {
+				$("#audio_encoding").select2({
+					placeholder: "Select the audio encoding",
+    				allowClear: true
+				});
+			});
+			$(document).ready(function() {
+				$("#video_encoding").select2({
+					placeholder: "Select the video encoding",
+    				allowClear: true
+				});
+			});
+			$(document).ready(function() {
+				$("#image_encoding").select2({
+					placeholder: "Select the image encoding",
+    				allowClear: true
+				});
+			});
+			$(function() {
+				$("#tabs").tabs();
+			});
+			$('.character_submittable').live('change', function() {
+				if(document.getElementById('Character').checked == true) {
+					$('#character_appender').addClass('disp_div');
+					$('#character_appender').removeClass('disp_none');
+				} else {
+					$('#character_appender').addClass('disp_none');
+					$('#character_appender').removeClass('disp_div');
+				}
+			});
+			$('.text_submittable').live('change', function() {
+				if(document.getElementById('Text').checked == true) {
+					$('#text_appender').addClass('disp_div');
+					$('#text_appender').removeClass('disp_none');
+				} else {
+					$('#text_appender').addClass('disp_none');
+					$('#text_appender').removeClass('disp_div');
+				}
+			});
+			//To be chaged to above format of addClass and removeClass
+			$('.audio_submittable').live('change', function() {
+				if(document.getElementById('Audio').checked == true) {
+					document.getElementById("audio_appender").className = 
+   					document.getElementById("audio_appender").className.replace
+      					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
+      				document.getElementById("audio_appender").className += "disp_div";
+				} else {
+					document.getElementById("audio_appender").className = 
+   					document.getElementById("audio_appender").className.replace
+      					( /(?:^|\s)disp_div(?!\S)/ , ' ' )
+      				document.getElementById("audio_appender").className += "disp_none";
+				}
+			});
+			$('.video_submittable').live('change', function() {
+				if(document.getElementById('Video').checked == true) {
+					document.getElementById("video_appender").className = 
+   					document.getElementById("video_appender").className.replace
+      					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
+      				document.getElementById("video_appender").className += "disp_div";
+				} else {
+					document.getElementById("video_appender").className = 
+   					document.getElementById("video_appender").className.replace
+      					( /(?:^|\s)disp_div(?!\S)/ , ' ' )
+      				document.getElementById("video_appender").className += "disp_none";
+				}
+			});
+			$('.image_submittable').live('change', function() {
+				if(document.getElementById('Image').checked == true) {
+					document.getElementById("image_appender").className = 
+   					document.getElementById("image_appender").className.replace
+      					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
+      				document.getElementById("image_appender").className += "disp_div";
+				} else {
+					document.getElementById("image_appender").className = 
+   					document.getElementById("image_appender").className.replace
+      					( /(?:^|\s)disp_div(?!\S)/ , ' ' )
+      				document.getElementById("image_appender").className += "disp_none";
+				}
+			});
+
+<%@phases=Phase.all%>
 		var data = {
   "items": [
   <%@phases.each do |p|%>

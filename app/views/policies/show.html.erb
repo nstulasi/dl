@@ -2,18 +2,21 @@
 <%= render 'policies_sidemenu'%>
 <%end%>
 <%content_for :main do%>
-<p id="notice">
-	<%= notice %>
-</p>
-<p>
-	<b>Name:</b>
-	<%= @policy.name %>
-</p>
-<p>
-	<b>Description:</b>
-	<%= @policy.description %>
-</p>
-<%= link_to 'Edit', edit_policy_path(@policy) %> |
-<%= link_to 'Back', policies_path %>
+<div class="outer_div">
+	<div class="inner_div">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<p>
+			<b><%= image_tag("star.png",:alt=>"Policy")%>&nbsp;Name:</b>
+			<%= best_in_place @policy,:name %>
+		</p>
+		<p>
+			<b><%= image_tag("note.png",:alt=>"Description")%>&nbsp;Description:</b>
+			<%= best_in_place @policy,:description %>
+		</p>
+		<!--<%= link_to 'Edit', edit_policy_path(@policy),:class=>"custom_button round righty" %> |-->
+		<%= link_to 'Back', policies_path,:class=>"custom_button round righty"%>
+	</div>
 </div>
 <%end%> 

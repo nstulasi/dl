@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <phase>
+    <name>Architecture design and enhancement</name>
+    <content>Prepare architecture</content>
+    <project_id>1</project_id>
+    <parent_id>1</parent_id>
+    <start_date>2012-05-16</start_date>
+    <end_date>2012-05-18</end_date>
+    <site> PS </site>
+  </phase>
+  <phase>
+    <name>Architecture design and enhancement</name>
+    <content>Prepare architecture</content>
+    <project_id>1</project_id>
+    <parent_id>1</parent_id>
+    <start_date>2012-05-16</start_date>
+    <end_date>2012-05-18</end_date>
+    <site> PS </site>
+  </phase>
+</root>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501035345) do
+ActiveRecord::Schema.define(:version => 20120525192500) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -77,13 +77,8 @@ ActiveRecord::Schema.define(:version => 20120501035345) do
     t.string   "site"
   end
 
-  create_table "policies", :force => true do |t|
-    t.string   "name"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "project_id"
-  end
+# Could not dump table "policies" because of following StandardError
+#   Unknown type '' for column 'checked'
 
   create_table "projects", :force => true do |t|
     t.string   "name"
@@ -92,6 +87,23 @@ ActiveRecord::Schema.define(:version => 20120501035345) do
     t.string   "funding_agency"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "resources", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  create_table "streams", :force => true do |t|
+    t.text     "xmlcontent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "proejct_id"
   end
 
   create_table "tasks", :force => true do |t|

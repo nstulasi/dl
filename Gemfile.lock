@@ -47,6 +47,9 @@ GEM
       jquery-rails
       rails (~> 3.1)
     builder (3.0.0)
+    chosen-rails (0.9.8)
+      railties (~> 3.0)
+      thor (~> 0.14)
     client_side_validations (3.1.4)
     cocaine (0.2.1)
     coffee-rails (3.1.1)
@@ -160,6 +163,7 @@ DEPENDENCIES
   acts_as_tree (~> 0.2.0)
   awesome_nested_set
   best_in_place
+  chosen-rails
   client_side_validations
   coffee-rails (~> 3.1.1)
   event-calendar
@@ -172,6 +176,7 @@ DEPENDENCIES
   mercury-rails!
   meta_search
   nokogiri
+  paperclip (~> 3.0)
   pg (~> 0.13.2)
   rabl
   rails (= 3.1.3)

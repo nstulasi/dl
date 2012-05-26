@@ -48,9 +48,6 @@ a:hover{
 	text-decoration: underline;
 }
 
-a:visited {
-	color: #069;
-}
 
 /*Navigation */
 
@@ -104,8 +101,22 @@ nav ul li a:hover{
 	font-weight: bold;
 	padding: 5px;
 }
-.custom_buttons{
+.custom_button{
 	background-color:#387DB5;
+	margin-left: auto;
+	display:inline-block;
+	cursor:pointer;
+	margin-right: auto;
+	border:2px;
+	text-align: center;
+	padding-left:10px;
+	padding-right:10px;
+	color: white;
+	background: #E95C33;
+	font-family:'Droid Sans', sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 5px;
 }
 
  .layout{
@@ -465,14 +476,14 @@ ul#sitemap ul ul
   overflow: hidden;
   }
   .footer {
-  padding-top: 9px;
-  font-size: .85em;
+  padding-top: 15px;
+  font-size: 12px;
   white-space: nowrap;
   line-height: 0;
   }
   .footer ul {
   color: darksalmon;
-  float: left;
+  float: right;
   max-width: 80%;
   }
   .footer ul li {
@@ -480,7 +491,7 @@ ul#sitemap ul ul
   padding: 0 1.5em 0 0;
   }
   .footer a {
-  color: #333;
+  color: darksalmon;
   }
   .footer form {
   text-align: right;
@@ -548,6 +559,7 @@ ul#sitemap ul ul
   margin-left:20px;
   }
   
+ 
  .navlist li:hover{
   background-color:#D9D9D9;
   }
@@ -629,3 +641,79 @@ ul#sitemap ul ul
 .custom_text{
 	color:lightslategrey;
 }
+
+.outer_div {
+  width: 100%;
+}
+
+.inner_div {
+  width: 50%;
+  margin: 0px auto;
+  margin-top:20px;
+  padding: 20px 25px 15px;
+  background: beige;
+  border: 1px solid #e5e5e5;
+}
+.bigger_inner_div {
+  width: 80%;
+  margin: 0px auto;
+  margin-top:20px;
+  padding: 20px 25px 15px;
+  background: beige;
+  border: 1px solid #e5e5e5;
+}
+.inner_div p{
+	font-size:16px;
+}
+.bigger_inner_div p{
+	font-size:16px;
+}
+.righty{
+	margin-left:93%;
+}
+
+.checkbox, .radio {
+    width: 19px;
+    height: 19px;
+    margin-left: 60px;
+    background: url("http://i48.tinypic.com/raz13m.jpg");
+    display: block;
+    clear: left;
+    float: left;
+ }
+ .checked {
+     background-position: 0px -50px;   
+}
+
+.clicked {
+     background-position: 0px -25px;
+}
+
+.clicked.checked {
+     background-position: 0px -75px;
+}
+
+
+.green {
+    background-color: green;
+ }
+
+ .red {
+    background-color: red;
+ }
+
+.purple {
+    background-color: purple;
+ }
+ 
+.disp_div{
+	margin-left:40px;
+	display:block;
+ }
+
+.disp_none{
+	display:none;
+ }
+ #character_encoding,#text_encoding,#video_encoding,#audio_encoding,#image_encoding{
+ 	width:300px;
+ }

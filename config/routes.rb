@@ -2,6 +2,10 @@ SampleApp::Application.routes.draw do
 
 
 
+  resources :streams
+
+  resources :resources
+
   resources :phases
 
   resources :projects
@@ -9,6 +13,7 @@ SampleApp::Application.routes.draw do
   resources :policies
 
   resources :events
+  match '/generate_xml'=>'streams#generate_xml'
   match "phases/savesort" => 'phases#savesort'
   match "shippings_logs/recent"=> 'shipping_logs#recent'
   match '/articles(/:year(/:month))' => 'articles#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -17,8 +22,9 @@ SampleApp::Application.routes.draw do
 
   match '/tasks/calendar(/:year(/:month))' => 'tasks#view_calendar', :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   
+  match '/tasks/rake_tasks', :to => 'tasks#rake_tasks'
+  
   resources :tasks
-
   get "sessions/new"
 
   resources :users 

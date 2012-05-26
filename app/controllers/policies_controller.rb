@@ -2,12 +2,15 @@ class PoliciesController < ApplicationController
   before_filter :require_login
   # GET /policies
   # GET /policies.json
+
+  
   def index
     @policies = Policy.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @policies }
+      format.xml
     end
   end
 

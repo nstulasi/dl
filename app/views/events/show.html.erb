@@ -1,26 +1,26 @@
 <%content_for :side do%>
-	<%= render 'events_sidemenu'%>
+<%= render 'events_sidemenu'%>
 <%end%>
 <%content_for :main do%>
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
-<p>
-  <b>Start at:</b>
-  <%= @event.start_at %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @event.end_at %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-
-<%= link_to 'Back', events_path %>
+<div class="outer_div">
+	<div class="inner_div">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<p>
+			<b><%= image_tag("star.png",:alt=>"Event")%>&nbsp;Name:</b>
+			<%= best_in_place @event,:name %>
+		</p>
+		<p>
+			<b><%= image_tag("date_next.png",:alt=>"Start date")%>&nbsp;Start at:</b>
+			<%= best_in_place @event,:start_at %>
+		</p>
+		<p>
+			<b><%= image_tag("date_previous.png",:alt=>"End date")%>&nbsp;End date:</b>
+			<%= best_in_place @event,:end_at %>
+		</p>
+		<!--<%= link_to 'Edit', edit_event_path(@event) %> |-->
+		<%= link_to 'Back', events_path,:class=>"custom_button round righty" %>
+	</div>
 </div>
-<%end%>
+<%end%> 

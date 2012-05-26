@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <user>
+    <name>Dr.Edward A.Fox</name>
+    <email>fox@vt.edu</email>
+    <webpage>http://fox.cs.vt.edu/</webpage>
+    <number>1-540-231-5113</number>
+  </user>
+  <user>
+    <name>Dr.John Impagliazzo</name>
+    <email>john@qu.edu.qa</email>
+    <webpage>http://faculty.qu.edu.qa/John/</webpage>
+    <number>+974 493 5822</number>
+  </user>
+</root>

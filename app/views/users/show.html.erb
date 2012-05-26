@@ -2,20 +2,24 @@
 <%= render 'users_sidemenu'%>
 <%end%>
 <%content_for :main do%>
-<p>
-  <b>Name:</b>
-  <%= best_in_place @user, :name %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= best_in_place @user, :email %>
-</p>
-
-<div class="field">
-	<%@user.delegations.each do |d|%>
-	Role:<%= d.role%>
-	Responsibility:<%= d.responsibility%>
-	<%end%>
-</div>
+<div class="outer_div">
+	<div class="inner_div">
+		<p>
+			<b><%= image_tag("user.png",:alt=>"User")%>&nbsp;Name:</b>
+			<%= best_in_place @user, :name %>
+		</p>
+		<p>
+			<b><%= image_tag("email.png",:alt=>"User")%>&nbsp;Email:</b>
+			<%= best_in_place @user, :email %>
+		</p>
+		<p>
+			<%@user.delegations.each do |d|%>
+			<p><b><%= image_tag("user_suit.png",:alt=>"Role")%>&nbsp;Role:<%= d.role%></b></p>
+			<p><b><%= image_tag("vcard.png",:alt=>"Responsibility")%>&nbsp;Responsibility:<%= d.responsibility%></b></p>
+			<%end%>
+		</p>
+		<!--<%= link_to 'Edit', edit_user_path(@user),:class=>"custom_button round righty" %> |-->
+		<%= link_to 'Back', users_path,:class=>"custom_button round righty" %>
+	</div>
 </div>
 <%end%> 

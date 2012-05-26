@@ -11,6 +11,37 @@
 //= require_tree .
 
 
+$(function() {
+		$( "#tabs" ).tabs();
+	});
+
+
+//$('.submittable').live('change', function() {
+  //$(this).parents('form:first').submit();
+  //if(document.getElementById('check_box').checked == true){
+  //$('#appender').show();}
+  //else{
+  	//$('#appender').hide();
+  //}
+//});
+
+$('.submittable').live('change', function() {
+  if(document.getElementById('Text').checked == true){
+  $('#appender').show();}
+  else{
+  	$('#appender').hide();
+  }
+});
+
+
+
+
+// we could highlight the checkbox to show it's been clicked:
+$('#thing').css("color","yellow");
+
+// or add the updated thing to a list:
+$('#things').prepend('<%=escape_javascript render(@thing) %>');
+
 $(document).ready(function() {
   window.database = Exhibit.Database.create();
   window.database.loadData(data);

@@ -101,6 +101,10 @@ class TasksController < ApplicationController
     end
   end
   
+  def rake_tasks
+    system "start rake fetch_tasks"
+    redirect_to tasks_url
+  end
   
  private
  def sort_column

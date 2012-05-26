@@ -2,34 +2,34 @@
 <%= render 'tasks_sidemenu'%>
 <%end%>
 <%content_for :main do%>
+<div class="outer_div">
+	<div class="inner_div">
 <p id="notice">
 	<%= notice %>
 </p>
 <p>
-	<b>Owner:</b>
-	<%= @task.owner_id %>
+	<b> <%=image_tag("star.png",:alt=>"Task")%>&nbsp; Name:</b>
+	<%= best_in_place @task,:name %>
 </p>
 <p>
-	<b>Name:</b>
-	<%= @task.name %>
+	<b><%=image_tag("note.png",:alt=>"Status")%>&nbsp;Status:</b>
+	<%= best_in_place @task,:status %>
 </p>
 <p>
-	<b>Status:</b>
-	<%= @task.status %>
+	<b><%=image_tag("exclamation.png",:alt=>"Priority")%>&nbsp;Priority:</b>
+	<%= best_in_place @task,:priority %>
 </p>
 <p>
-	<b>Priority:</b>
-	<%= @task.priority %>
+	<b><%=image_tag("date_next.png",:alt=>"Start date")%>&nbsp;Start Date:</b>
+	<%= best_in_place @task,:start_at %>
 </p>
 <p>
-	<b>Start Date:</b>
-	<%= @task.start_at %>
+	<b><%=image_tag("date_previous.png",:alt=>"End date")%>&nbsp;End Date:</b>
+	<%= best_in_place @task,:end_at %>
 </p>
-<p>
-	<b>End Date:</b>
-	<%= @task.end_at %>
-</p>
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+
+<!--<%= link_to 'Edit', edit_task_path(@task),:class=>"custom_button round" %>-->
+<%= link_to 'Back', tasks_path,:class=>"custom_button round righty" %>
+</div>
 </div>
 <%end%> 

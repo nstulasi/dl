@@ -1,13 +1,22 @@
-<p id="notice">
-	<%= notice %>
-</p>
-<p>
-	<b>Name:</b>
-	<%= @phase.name %>
-</p>
-<p>
-	<b>Content:</b>
-	<%= @phase.content %>
-</p>
-<%= link_to 'Edit', edit_phase_path(@phase) %> |
-<%= link_to 'Back', phases_path %> 
+<%content_for :side do%>
+<%= render 'phases_sidemenu'%>
+<%end%>
+<%content_for :main do%>
+<div class="outer_div">
+	<div class="inner_div">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<p>
+			<b><%= image_tag("star.png",:alt=>"Phase")%>&nbsp;Name:</b>
+			<%= best_in_place @phase,:name %>
+		</p>
+		<p>
+			<b><%= image_tag("note_edit.png",:alt=>"Content")%>&nbsp;Content:</b>
+			<%= @phase.content %>
+		</p>
+		<!--<%= link_to 'Edit', edit_phase_path(@phase),:class=>"custom_button round righty" %> |-->
+		<%= link_to 'Back', phases_path,:class=>"custom_button round righty" %>
+	</div>
+</div>
+<%end%> 

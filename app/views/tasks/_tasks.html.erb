@@ -1,6 +1,14 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 <br/><h2 class="custom_text">Task List</h2>
+<%@resource=Resource.new%>
+<%= form_for @resource, :html=>{:multipart=>true} do |f|%>
+	<%=f.file_field :file%>
+	<%=f.submit "Submit"%>
+<%end%>
+
+<%= button_to "Rake tasks", :controller => :tasks, 
+                           :action => 'rake_tasks'%>
 <table class="display" id="dynamic_table">
 	<thead>
 		<tr class="custom_background">

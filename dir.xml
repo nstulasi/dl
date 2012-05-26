@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<streams>
+  <content>
+    <type>
+      <name>Text</name>
+      <encoding>PDF</encoding>
+    </type>
+    <type>
+      <name>Video</name>
+      <encoding>PDF</encoding>
+    </type>
+  </content>
+</streams>

@@ -3,6 +3,10 @@ module TasksHelper
     link_to(I18n.localize(month_date, :format => "%B"), {:month => month_date.month, :year => month_date.year})
   end
   
+  def rake_tasks
+    system "start rake fetch_tasks"
+  end
+  
   # custom options for this calendar
   def event_calendar_opts
     { 

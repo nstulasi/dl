@@ -1,0 +1,110 @@
+<%content_for :side do%>
+<%= render 'streams_sidemenu'%>
+<%end%>
+
+<%content_for :main do%>
+<div class="outer_div">
+	<div class="bigger_inner_div">
+		<div class="demo">
+			<div id="tabs">
+				<ul>
+					<li>
+						<a href="#tabs-1">Streams </a>
+					</li>
+					<li>
+						<a href="#tabs-2">Structures</a>
+					</li>
+					<li>
+						<a href="#tabs-3">Spaces</a>
+					</li>
+					<li>
+						<a href="#tabs-4">Scenarios</a>
+					</li>
+					<li>
+						<a href="#tabs-5">Societies</a>
+					</li>
+				</ul>
+				<div id="tabs-1">
+				    <%= form_tag('/generate_xml', :method=>'post', :multipart => true) do%>
+						<p>
+							<b>Content</b>
+							<br />
+							<p>
+					        <%=check_box_tag 'Character','Character',false, :class => 'character_submittable' %> Character
+							<div id="character_appender" class="disp_none">
+							<%= select_tag("character_encoding", options_for_select([
+								['Plain text', 'Plain text'],
+				                ['PDF', 'PDF'],
+				                ['Latex','Latex']
+				                ],:selected=>@encodings),:multiple=>true) %>
+				        	</div>
+				
+				        	</p>
+				        	<p>
+							<%=check_box_tag 'Text','Text',false, :class => 'text_submittable' %> Text
+							<div id="text_appender" class="disp_none">
+							<%= select_tag("text_encoding", options_for_select([
+								['Plain text', 'Plain text'],
+				                ['PDF', 'PDF'],
+				                ['Latex','Latex']
+				                ]),:multiple=>true) %>
+				        	</div>
+				        	</p>
+				        	<p>
+				        	<%=check_box_tag 'Audio','Audio',false, :class => 'audio_submittable' %> Audio
+							<div id="audio_appender" class="disp_none">
+							<%= select_tag("audio_encoding", options_for_select([
+								['Plain text', 'Plain text'],
+				                ['PDF', 'PDF'],
+				                ['Latex','Latex']
+				                ]),:multiple=>true) %>
+				        	</div>
+				        	</p>
+				        	<p>
+				        	<%=check_box_tag 'Video','Video',false, :class => 'video_submittable' %> Video
+							<div id="video_appender" class="disp_none">
+							<%= select_tag("video_encoding", options_for_select([
+								['Plain text', 'Plain text'],
+				                ['PDF', 'PDF'],
+				                ['Latex','Latex']
+				                ]),:multiple=>true) %>
+				        	</div>
+				        	</p>
+				        	<p>
+				        	<%=check_box_tag 'Image','Image',false, :class => 'image_submittable' %> Image
+							<div id="image_appender" class="disp_none">
+							<%= select_tag("image_encoding", options_for_select([
+								['Plain text', 'Plain text'],
+				                ['PDF', 'PDF'],
+				                ['Latex','Latex']
+				                ]),:multiple=>true) %>
+				        	</div>
+				        	</p>
+				        	<p>
+				        	<%=check_box_tag 'Program','Program',false, :class => 'program_submittable' %> Program
+				        	</p>
+				        	<p>
+							   <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+							</p>
+						</p>
+					<%end%>
+				</div>
+				<div id="tabs-2">
+				</div>
+				<div id="tabs-3">
+				</div>
+				<div id="tabs-4">
+				</div>
+				<div id="tabs-5">
+				</div>
+			</div>
+
+		
+	</div>
+	<%=debug "Bler"%>
+	<%=debug @enc%><br/>
+	<%=debug @encodings0%>
+	<%=debug current_project.stream.xmlcontent.gsub(/\n/,"").gsub(" ","")%>
+</div>
+<%end%>
+

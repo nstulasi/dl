@@ -2,26 +2,29 @@
 <%= render 'projects_sidemenu'%>
 <%end%>
 <%content_for :main do%>
-<p id="notice">
-	<%= notice %>
-</p>
-<p>
-	<b>Name:</b>
-	<%= @project.name %>
-</p>
-<p>
-	<b>Time:</b>
-	<%= @project.time %>
-</p>
-<p>
-	<b>Money:</b>
-	<%= @project.money %>
-</p>
-<p>
-	<b>Funding agency:</b>
-	<%= @project.funding_agency %>
-</p>
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<div class="outer_div">
+	<div class="inner_div">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<p>
+			<b><%= image_tag("folder.png",:alt=>"Project")%>&nbsp;Name:</b>
+			<%= best_in_place @project,:name %>
+		</p>
+		<p>
+			<b><%= image_tag("time.png",:alt=>"Project")%>&nbsp;Time:</b>
+			<%= best_in_place @project,:time %>
+		</p>
+		<p>
+			<b><%= image_tag("money.png",:alt=>"Project")%>&nbsp;Money:</b>
+			<%= best_in_place @project,:money %>
+		</p>
+		<p>
+			<b><%= image_tag("house.png",:alt=>"Project")%>&nbsp;Funding agency:</b>
+			<%= best_in_place @project,:funding_agency %>
+		</p>
+		<!--<%= link_to 'Edit', edit_project_path(@project),:class=>"custom_button round righty" %> |-->
+		<%= link_to 'Back', projects_path,:class=>"custom_button round righty" %>
+	</div>
 </div>
 <%end%> 

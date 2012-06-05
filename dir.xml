@@ -2,12 +2,22 @@
 <streams>
   <content>
     <type>
-      <name>Text</name>
-      <encoding>PDF</encoding>
+      <name checked="false">Character</name>
     </type>
     <type>
-      <name>Video</name>
-      <encoding>PDF</encoding>
+      <name checked="false">Text</name>
+    </type>
+    <type>
+      <name checked="false">Audio</name>
+    </type>
+    <type>
+      <name checked="false">Video</name>
+    </type>
+    <type>
+      <name checked="false">Image</name>
+    </type>
+    <type>
+      <name checked="false">Program</name>
     </type>
   </content>
 </streams>

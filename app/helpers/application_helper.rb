@@ -70,4 +70,50 @@ def status_name(index)
       end
   ret.html_safe
    end
+   
+ def encodings
+   if !current_project.metum.stream_xml.nil?
+   @doc = Nokogiri::XML(current_project.metum.stream_xml)
+    @encodings=[]
+    @checked=[]
+    @doc.xpath("//type").each_with_index do |type,index|
+      @checked[index]=type.xpath("name").attr('checked')
+      @enc=[]
+      type.xpath("encoding").each do |e|
+         @enc<<e.text
+      end
+      @encodings[index]={type.xpath("name").text=>@enc}     
+    end
+    ret=@encodings 
+    else
+      ret=nil
+    end
+   end 
+    
+  def checked
+    @doc = Nokogiri::XML(current_project.metum.stream_xml)
+    @encodings=[]
+    @checked=[]
+    
+    @doc.xpath("//type").each_with_index do |type,index|
+      @checked[index]=type.xpath("name").attr('checked').value
+      @enc=[]
+      type.xpath("encoding").each do |e|
+         @enc<<e.text
+     end
+      @encodings[index]={type.xpath("name").text=>@enc}
+    end
+    ret=@checked
+  end
+  
+  def sequences
+    seq=[]
+    
+  encodings.each_with_index do |e,i|
+  if checked[i].to_bool
+    seq<<[encodings[i].keys.first,encodings[i].keys.first]
+  end
+ end
+ ret=seq
+ end
 end

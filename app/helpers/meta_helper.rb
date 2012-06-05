@@ -1,4 +1,4 @@
-module StreamsHelper 
+module MetaHelper
   def xmler(xml,type,type_encoding)
     type.each_with_index do |t,index|
       if !params[t].nil?

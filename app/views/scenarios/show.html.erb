@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Xmlcontent:</b>
+  <%= @scenario.xmlcontent %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @scenario.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_scenario_path(@scenario) %> |
+<%= link_to 'Back', scenarios_path %>

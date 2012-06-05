@@ -25,23 +25,6 @@ class StreamsController < ApplicationController
   # GET /streams/new.json
   def new
     @stream = Stream.new
-    @doc = Nokogiri::XML(current_project.stream.xmlcontent.gsub(/\n/,"").gsub(" ",""))
-    @encodings0=[]
-    
-    @doc.xpath("//type").each_with_index do |type,index|
-      @enc=[]
-      @enc=type.xpath("encoding").to_a()
-      puts "******************"
-      puts @enc
-      sleep(3)
-      @encodings0[index]={type.xpath("name").text=>@enc}
-      puts "********888"
-      puts @encodings0[0]
-    end
-    @encodings=[]
-    @doc.xpath("//encoding").each_with_index do |encoding,index|
-      @encodings[index]=encoding.text
-    end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @stream }
@@ -53,8 +36,8 @@ class StreamsController < ApplicationController
     @stream = Stream.find(params[:id])
   end
   
-def generate_xml
-    type=["Character","Text","Audio","Video","Image","Program"]
+def generate_stream
+    type=["character","text","audio","video","image","program"]
     type_encoding=["character_encoding","text_encoding","audio_encoding","video_encoding","image_encoding","program_encoding"]
     builder = Nokogiri::XML::Builder.new do |xml|
     xml.streams{
@@ -64,13 +47,30 @@ def generate_xml
     }
   end
  @stream= current_project.stream
- puts builder.to_xml
- file = File.new('dir.xml','w')
  @stream.xmlcontent=builder.to_xml
  @stream.save!
- file.puts builder.to_xml
- file.close
-  end
+ end
+ 
+ def generate_structure
+      builder = Nokogiri::XML::Builder.new do |xml|
+      xml.structures{
+       xml.collection{
+        xml.name{xml.text params[:name]}
+        xml.categorization{
+         xml.type{xml.text params[:type]}
+         }
+         xml.sequences{
+           params[:sequences].each do |s|
+           xml.sequence{xml.text s}
+           end
+         }
+       }
+      }
+    end
+   @structure= current_project.structure
+   @structure.xmlcontent=builder.to_xml
+   @structure.save!
+   end
   
   # POST /streams
   # POST /streams.json

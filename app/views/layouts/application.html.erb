@@ -9,6 +9,20 @@
 		<%= javascript_include_tag "http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js?autoCreate=false",'jquery.jstree.js', "best_in_place.js","jquery.purr.js","http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"%>
     	<%= javascript_include_tag "select2.js"%>
 		<script>
+		     $(document).ready(function() {
+				$("#type").select2({
+					placeholder: "Select something",
+    				allowClear: true
+				});
+			});
+			
+			$(document).ready(function() {
+				$("#sequences").select2({
+					placeholder: "Select the type of sequences",
+    				allowClear: true
+				});
+			});
+			
 			$(document).ready(function() {
 				$("#character_encoding").select2({
 					placeholder: "Select the character encoding",
@@ -45,7 +59,7 @@
 				$("#tabs").tabs();
 			});
 			$('.character_submittable').live('change', function() {
-				if(document.getElementById('Character').checked == true) {
+				if(document.getElementById('character').checked == true) {
 					$('#character_appender').addClass('disp_div');
 					$('#character_appender').removeClass('disp_none');
 				} else {
@@ -54,7 +68,7 @@
 				}
 			});
 			$('.text_submittable').live('change', function() {
-				if(document.getElementById('Text').checked == true) {
+				if(document.getElementById('text').checked == true) {
 					$('#text_appender').addClass('disp_div');
 					$('#text_appender').removeClass('disp_none');
 				} else {
@@ -64,7 +78,7 @@
 			});
 			//To be chaged to above format of addClass and removeClass
 			$('.audio_submittable').live('change', function() {
-				if(document.getElementById('Audio').checked == true) {
+				if(document.getElementById('audio').checked == true) {
 					document.getElementById("audio_appender").className = 
    					document.getElementById("audio_appender").className.replace
       					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
@@ -77,7 +91,7 @@
 				}
 			});
 			$('.video_submittable').live('change', function() {
-				if(document.getElementById('Video').checked == true) {
+				if(document.getElementById('video').checked == true) {
 					document.getElementById("video_appender").className = 
    					document.getElementById("video_appender").className.replace
       					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
@@ -90,7 +104,7 @@
 				}
 			});
 			$('.image_submittable').live('change', function() {
-				if(document.getElementById('Image').checked == true) {
+				if(document.getElementById('image').checked == true) {
 					document.getElementById("image_appender").className = 
    					document.getElementById("image_appender").className.replace
       					( /(?:^|\s)disp_none(?!\S)/ , ' ' )

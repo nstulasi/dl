@@ -714,6 +714,6 @@ ul#sitemap ul ul
 .disp_none{
 	display:none;
  }
- #character_encoding,#text_encoding,#video_encoding,#audio_encoding,#image_encoding{
+ #character_encoding,#text_encoding,#video_encoding,#audio_encoding,#image_encoding,#type,#sequences{
  	width:300px;
  }

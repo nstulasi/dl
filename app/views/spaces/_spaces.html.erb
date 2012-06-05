@@ -1,0 +1,26 @@
+<div id="spaces">
+<%= form_tag('/space_generate_xml', :method=>'post', :multipart => true) do%>
+	<p>
+		<b>Name</b>
+		<%= text_field_tag "name" %>
+		<br />
+	<p>
+	<p>
+		
+		
+	<p>	
+	<br/>
+	<p>
+		<b>Sequences</b>
+		<%if !encodings.nil?%>
+		<%=render 'meta/sequences'%>
+		<%else%>
+		<p>Enter some sequences first</p>
+		<%end%>
+	</p>
+	</div>
+	<p>
+		  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+	</p>
+<%end%>
+

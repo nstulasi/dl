@@ -1,0 +1,28 @@
+<div id="structures">
+<%= form_tag('/generate_structure', :method=>'post', :multipart => true) do%>
+	<p>
+		<b>Name</b>
+		<%= text_field_tag "name" %>
+		<br />
+	<p>
+	<p>
+		<b>Type</b>
+		<%= select_tag("type", options_for_select([
+                ['Geographical', 'Subject'],
+                ['Subject', 'Subject'],
+                ['Language','Language'],
+                ['General','General']
+                ],'General')) %>
+		
+	<p>	
+	<br/>
+	<p>
+		<b>Sequences</b>
+		<%=render 'sequences'%>
+	</p>
+	</div>
+	<p>
+		  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+	</p>
+<%end%>
+

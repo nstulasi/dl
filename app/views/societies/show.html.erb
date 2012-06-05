@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Xmlcontent:</b>
+  <%= @society.xmlcontent %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%= @society.project_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_society_path(@society) %> |
+<%= link_to 'Back', societies_path %>

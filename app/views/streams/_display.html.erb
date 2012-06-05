@@ -1,0 +1,24 @@
+<%type=["character","text","audio","video","image","program"]%>
+<%type.each_with_index do |type,i|%> 
+<p>
+	
+      <%= check_box_tag type,type,checked[i].to_bool,:class => type+'_submittable' %> <%=type.slice(0,1).capitalize+type.slice(1..-1)%>
+       <% if checked[i].to_bool%>
+		<div id='<%=type%>_appender' class="disp_div">
+		<%= select_tag(type+"_encoding", options_for_select([
+                ['Plain text', 'Plaintext'],
+                ['PDF', 'PDF'],
+                ['Latex','Latex']
+                ],:selected=>encodings[i].fetch(type)),:multiple=>true) %>
+      	</div>
+       	<%else%>
+       	<div id='<%=type%>_appender' class="disp_none">
+		<%= select_tag(type+"_encoding", options_for_select([
+                    ['Plain text', 'Plaintext'],
+                    ['PDF', 'PDF'],
+                    ['Latex','Latex']
+                    ],:selected=>encodings[i].fetch(type)),:multiple=>true) %>
+          </div>
+		<%end%>
+</p>
+<%end%>

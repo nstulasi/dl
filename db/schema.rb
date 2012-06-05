@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120525192500) do
+ActiveRecord::Schema.define(:version => 20120605195200) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(:version => 20120525192500) do
     t.datetime "updated_at"
   end
 
+  create_table "meta", :force => true do |t|
+    t.string   "stream_xml"
+    t.string   "structure_xml"
+    t.string   "space_xml"
+    t.string   "scenario_xml"
+    t.string   "society_xml"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "project_id"
+  end
+
   create_table "phases", :force => true do |t|
     t.string   "name"
     t.string   "content"
@@ -99,11 +110,39 @@ ActiveRecord::Schema.define(:version => 20120525192500) do
     t.datetime "file_updated_at"
   end
 
+  create_table "scenarios", :force => true do |t|
+    t.string   "xmlcontent"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "societies", :force => true do |t|
+    t.string   "xmlcontent"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spaces", :force => true do |t|
+    t.string   "xmlcontent"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "streams", :force => true do |t|
     t.text     "xmlcontent"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "proejct_id"
+    t.integer  "project_id"
+  end
+
+  create_table "structures", :force => true do |t|
+    t.string   "xmlcontent"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tasks", :force => true do |t|

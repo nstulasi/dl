@@ -1,0 +1,10 @@
+<%= form_tag('/generate_xml', :method=>'post', :multipart => true) do%>
+						<p>
+							<b>Content</b>
+							<br />
+							<%=render 'display'%>
+					    </p>
+					    <p>
+							   <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+							</p>
+					<%end%>

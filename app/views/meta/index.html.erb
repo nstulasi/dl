@@ -1,0 +1,31 @@
+<h1>Listing meta</h1>
+
+<table>
+  <tr>
+    <th>Stream xml</th>
+    <th>Structure xml</th>
+    <th>Space xml</th>
+    <th>Scenario xml</th>
+    <th>Society xml</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @meta.each do |metum| %>
+  <tr>
+    <td><%= metum.stream_xml %></td>
+    <td><%= metum.structure_xml %></td>
+    <td><%= metum.space_xml %></td>
+    <td><%= metum.scenario_xml %></td>
+    <td><%= metum.society_xml %></td>
+    <td><%= link_to 'Show', metum %></td>
+    <td><%= link_to 'Edit', edit_metum_path(metum) %></td>
+    <td><%= link_to 'Destroy', metum, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Metum', new_metum_path %>

@@ -4,5 +4,5 @@ class ApplicationController < ActionController::Base
   include TasksHelper
   include ApplicationHelper
   include PhasesHelper
-  include StreamsHelper
+  include MetaHelper
 end

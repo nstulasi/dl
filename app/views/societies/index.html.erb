@@ -1,0 +1,25 @@
+<h1>Listing societies</h1>
+
+<table>
+  <tr>
+    <th>Xmlcontent</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @societies.each do |society| %>
+  <tr>
+    <td><%= society.xmlcontent %></td>
+    <td><%= society.project_id %></td>
+    <td><%= link_to 'Show', society %></td>
+    <td><%= link_to 'Edit', edit_society_path(society) %></td>
+    <td><%= link_to 'Destroy', society, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Society', new_society_path %>

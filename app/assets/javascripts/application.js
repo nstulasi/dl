@@ -9,7 +9,28 @@
 //= require jquery.purr
 //= require best_in_place
 //= require_tree .
-
+var import_xml=gon.scenario;
+        
+$('.item').live('mouseover',function(){
+    $(this).draggable({
+    	revert:true
+    });
+});
+      
+ $('.ud_diagram_canvas').live('mouseover',function(){
+          $(this).droppable({
+                tolerance: 'touch',
+                over: function() {
+                       $(this).removeClass('out').addClass('over');
+                },
+                out: function() {
+                        $(this).removeClass('over').addClass('out');
+                },
+                drop: function() {
+                        $(this).removeClass('over').addClass('out');
+                }
+        });
+      });
 
 $(function() {
 		$( "#tabs" ).tabs();

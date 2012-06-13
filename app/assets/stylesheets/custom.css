@@ -717,3 +717,45 @@ ul#sitemap ul ul
  #character_encoding,#text_encoding,#video_encoding,#audio_encoding,#image_encoding,#type,#sequences{
  	width:300px;
  }
+
+#canvas_container{  
+width: 500px; 
+        height:500px; 
+ border: 1px solid #aaa;  
+           } 
+
+#ud_tools_ul1{
+	padding-left: 0px;
+}
+ul#ud_tools_ul1 li {
+list-style: none;
+font-size: 14px;
+}
+ul#ud_tools_ul1 li a {
+padding: 6px;
+cursor:pointer;
+}
+
+#tabs-4 {
+background-color:lightgoldenrodyellow;
+}
+
+#trash, #items, .item {
+
+}
+ 
+#trash {
+        color: #354e62;
+}
+ 
+#items {
+       margin-top: 10px;
+       width: 100%;
+}
+ 
+ 
+.over {
+}
+ 
+.out {
+}

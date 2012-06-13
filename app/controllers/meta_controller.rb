@@ -3,7 +3,7 @@ class MetaController < ApplicationController
   # GET /meta.json
   def index
     @meta = Metum.all
-
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @meta }
@@ -25,11 +25,14 @@ class MetaController < ApplicationController
   # GET /meta/new.json
   def new
     @metum = Metum.new
-
+    gon.scenario=current_project.metum.scenario_xml
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @metum }
     end
+  end
+  
+  def current_scenarios
   end
   
   def generate_stream
@@ -67,6 +70,31 @@ class MetaController < ApplicationController
    @structure.structure_xml=builder.to_xml
    @structure.save!
    end
+
+ def generate_scenario
+   @scenario = current_project.metum
+   @scenario.scenario_xml=params[:xml]
+   @scenario.save!
+   end   
+   
+   def generate_space
+      builder = Nokogiri::XML::Builder.new do |xml|
+      xml.spaces{
+       xml.collection{
+        xml.name{xml.text params[:name]}
+         xml.sequences{
+           params[:sequences].each do |s|
+           xml.sequence{xml.text s}
+           end
+         }
+       }
+      }
+    end
+   @space= current_project.space
+   @space.xmlcontent=builder.to_xml
+   @space.save!
+   end
+
 
   # GET /meta/1/edit
   def edit

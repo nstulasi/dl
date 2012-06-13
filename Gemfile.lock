@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/gazay/gon.git
+  revision: 147b3b57a60050932e90f8df275dd9f297859e4b
+  specs:
+    gon (3.0.4)
+      actionpack (>= 2.3.0)
+      json
+
+GIT
   remote: https://github.com/jejacks0n/mercury.git
   revision: 6d9c99fe20958ed87e4f1a05e9de19825af702ef
   ref: 6d9c99fe20958ed87e4f1a05e9de19825af702ef
@@ -68,9 +76,6 @@ GEM
     faker (0.3.1)
     formtastic (2.0.0)
       rails (~> 3.0)
-    gon (3.0.0)
-      actionpack (>= 2.3.0)
-      json
     gravatar_image_tag (0.1.0)
     hike (1.2.1)
     i18n (0.6.0)
@@ -170,7 +175,7 @@ DEPENDENCIES
   execjs
   faker (= 0.3.1)
   formtastic (= 2.0.0)
-  gon
+  gon!
   gravatar_image_tag (= 0.1.0)
   jquery-rails
   mercury-rails!

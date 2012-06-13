@@ -31,17 +31,27 @@
 					<%=render 'structures'%>
 				</div>
 				<div id="tabs-3">
-					<%=render 'spaces/spaces'%>
+					<%=render 'spaces'%>
 				</div>
-				<div id="tabs-4">
+				<div id="tabs-4" style="height:450px;">
+					   <div id="umldiagram">
+        			</div>
 				</div>
 				<div id="tabs-5">
+					<form accept-charset="UTF-8" action="/generate_stream" enctype="multipart/form-data" method="post">
+						<p>
+							   <input class="custom_button round righty" name="commit" type="submit" value="Submit">
+							</p>
+					</form>
 				</div>
-			</div>
 
 		
 	</div>
-	<%=debug "Bler"%>
+	
 </div>
 <%end%>
 
+<!--<div id="canvas_container"></div>--> 
+
+ 
+       

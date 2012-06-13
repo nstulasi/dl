@@ -1,0 +1,257 @@
+/**
+ ** MODULE NAME: 
+ **	  core.css
+ **
+ ** DESCRIPTION:
+ **   Styles necessary to position the layers of canvas html5 elements
+ **
+ ** DEVELOPED BY:
+ **   Martin Vega-Leal Ordonez (MVL)
+ **
+ ** SUPERVISED BY:
+ **		JosÃ© RaÃºl Romero, PhD (Associate Professor, University of CÃ³rdoba, Spain)
+ **
+ ** HISTORY:
+ ** 	000 - Feb 2011 - MVL - First version release
+ **
+ ** CONTACT INFO:
+ ** 	JosÃ© RaÃºl Romero, http://www.jrromero.net
+ **
+ ** NOTES:
+ **
+ ** LICENSE & DISCLAIMER:
+ **    Copyright (C) 2011 The authors
+ **
+ **    This program is free software: you can redistribute it and/or modify
+ **    it under the terms of the GNU General Public License as published by
+ **    the Free Software Foundation, either version 3 of the License, or
+ **    (at your option) any later version.
+ **
+ **    This program is distributed in the hope that it will be useful,
+ **    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ **    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ **    GNU General Public License for more details.
+ **
+ **    You should have received a copy of the GNU General Public License
+ **    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ **
+**/
+
+
+
+/*****************************************
+ [UDCore] Div container for Canvas
+*****************************************/
+div.ud_diagram_div {
+  position: relative;
+  float: left;
+  background: #ffffff;
+  border: 1px solid black;
+}
+
+
+
+/*****************************************
+ [UDCore] Canvas elements style
+*****************************************/
+canvas.ud_diagram_canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+
+
+/*****************************************
+  [UDCore] Pop-up Windows Styles
+*****************************************/
+.ud_popup {
+  min-width: 300px;
+  margin: .4em 0;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  padding: 10px;
+  background: #b1cad5;
+  border: 1px solid black;
+  font-size: 0.8em;  
+}
+
+.ud_popupColor {
+  min-width: 150px;
+  height: 120px;
+  margin: .4em 0;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  padding: 10px;
+  background: #b1cad5;
+  border: 1px solid black;
+  font-size: 0.8em;  
+  clear: "both";
+}
+
+#divBlock1 {
+  float: left;
+  display: inline;
+  min-width: 150px;
+  height: 100px;
+}
+
+#divBlock2 {
+  float: left;
+  display: inline;
+  min-width: 100px;
+  height: 100px;
+}
+
+
+.ud_contextualMenu {
+  min-width: 100px;
+  margin: .4em 0;
+  top: 0px;
+  left: 0px;
+  position: fixed;
+  background: #b1cad5;
+  border: 1px solid black;
+  font-size: 0.8em;  
+}
+
+
+.ud_contextualMenuItem:hover{
+  background: #ccccff;
+}
+
+.ud_popup label {
+  width: 30%;
+  float: left;
+}
+
+
+
+body {
+  background-color: #d9dadb;
+}
+
+
+/********************
+ main layout
+*********************/
+
+div#ud_tools_div {
+  width: 200px;
+  float: left;
+}
+
+
+div#ud_container_div {
+  float: left;
+}
+
+
+div#ud_selector_div {
+  min-height: 25px;
+  max-width: 900px;
+}
+
+
+/*****************************
+ Tools menu
+******************************/
+
+ul#ud_tools_ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul#ud_tools_ul li a {
+  margin-left: 10px;
+}
+ul#ud_tools_ul li {
+  padding: 3px;
+  list-style: none;
+  font-size: 0.75em;
+}
+
+ul#ud_tools_ul li:hover {
+  cursor: pointer;
+  background: white;
+}
+
+
+div#ud_tools_div h1 {
+  font-size: 0.9em;
+}
+
+
+
+/*****************************
+ Selector Diagram menu
+******************************/
+div#ud_selector_div {
+  border-left: 1px solid black;
+}
+
+
+ul#ud_selector_ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+
+ul#ud_selector_ul li {
+  float: left;
+  min-width: 100px;
+  border: 1px solid black;
+  border-bottom: none;
+  border-left: none;
+  background: #ccd5d9;
+  
+  font-size: 0.7em;
+}
+
+
+ul#ud_selector_ul li a {
+  display: block;
+  margin: 5px;
+  text-decoration: none;
+  color: black;
+}
+
+
+/*
+ul#ud_selector_ul li:hover {
+  background: #fff4ac;
+}*/
+
+
+ul#ud_selector_ul li.active {
+  background: #fff4ac;
+}
+
+
+/*********************
+ delete button
+**********************/
+div#ud_delete_div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  
+  width: 15px;
+  height: 15px;
+  
+  border: 1px solid black;
+  border-right: none;
+  border-top: none;
+  
+  background: url('../img/app/delete_button.png') no-repeat;
+}
+
+div#ud_delete_div:hover {
+  background-color: #fff4ac;
+}
+

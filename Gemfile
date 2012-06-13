@@ -15,7 +15,7 @@ gem 'formtastic','2.0.0'
 gem 'event-calendar', :require => 'event_calendar'
 gem 'meta_search'
 gem 'awesome_nested_set'
-gem 'gon'
+gem 'gon',git: 'https://github.com/gazay/gon.git'
 gem "paperclip", "~> 3.0"
 gem 'client_side_validations'
 gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git', ref: '6d9c99fe20958ed87e4f1a05e9de19825af702ef'

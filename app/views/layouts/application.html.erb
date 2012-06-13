@@ -2,13 +2,29 @@
 <html>
 	<head>
 		<title><%= title%></title>
+		 <%= include_gon%>
 		<%= render 'layouts/stylesheets'%>
 		<%= csrf_meta_tags %> <!--<%= javascript_include_tag :defaults %>-->
 		<%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js","http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "jquery.rails.js", "event_calendar.js","http://datatables.net/download/build/jquery.dataTables.nightly.js",'jquery-ui.js','nestedsortables.js','serializelist.js','timeglider.min.js' %>
 		<%= javascript_include_tag 'rails.validations' %>
 		<%= javascript_include_tag "http://static.simile.mit.edu/exhibit/api-2.0/exhibit-api.js?autoCreate=false",'jquery.jstree.js', "best_in_place.js","jquery.purr.js","http://trunk.simile-widgets.org/exhibit/api/extensions/time/time-extension.js"%>
     	<%= javascript_include_tag "select2.js"%>
+    	<%= javascript_include_tag "raphael-min.js"%>
+    	<%= javascript_include_tag "joint.all.min.js"%>
+    	<%= javascript_include_tag "UDApplication.js"%>
+    	<%= javascript_include_tag "UDCore.js"%>
+    	<%= javascript_include_tag "UDModules.js"%>
 		<script>
+		
+		window.gon={};
+	
+		$(document).ready(function() {
+
+        var app = new Application( { id: 'umldiagram', width: 500, height: 400 } );  
+      });
+      
+		
+		// Sets the fill attribute of the circle to red (#f00)
 		     $(document).ready(function() {
 				$("#type").select2({
 					placeholder: "Select something",
@@ -17,47 +33,20 @@
 			});
 			
 			$(document).ready(function() {
-				$("#sequences").select2({
+			var arr = ["#sequences","#character_encoding","#audio_encoding","#video_encoding","#image_encoding","#text_encoding"];
+			for (var i = 0; i < arr.length; i += 1){
+				$(arr[i]).select2({
 					placeholder: "Select the type of sequences",
     				allowClear: true
 				});
+			}
 			});
 			
-			$(document).ready(function() {
-				$("#character_encoding").select2({
-					placeholder: "Select the character encoding",
-    				allowClear: true
-				});
-			});
 			
-      		
-			$(document).ready(function() {
-				$("#text_encoding").select2({
-					placeholder: "Select the text encoding",
-    				allowClear: true
-				});
-			});
-			$(document).ready(function() {
-				$("#audio_encoding").select2({
-					placeholder: "Select the audio encoding",
-    				allowClear: true
-				});
-			});
-			$(document).ready(function() {
-				$("#video_encoding").select2({
-					placeholder: "Select the video encoding",
-    				allowClear: true
-				});
-			});
-			$(document).ready(function() {
-				$("#image_encoding").select2({
-					placeholder: "Select the image encoding",
-    				allowClear: true
-				});
-			});
 			$(function() {
 				$("#tabs").tabs();
 			});
+			//TO-DO : Minify this
 			$('.character_submittable').live('change', function() {
 				if(document.getElementById('character').checked == true) {
 					$('#character_appender').addClass('disp_div');
@@ -66,7 +55,8 @@
 					$('#character_appender').addClass('disp_none');
 					$('#character_appender').removeClass('disp_div');
 				}
-			});
+				});
+			
 			$('.text_submittable').live('change', function() {
 				if(document.getElementById('text').checked == true) {
 					$('#text_appender').addClass('disp_div');

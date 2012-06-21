@@ -45,7 +45,7 @@
 div.ud_diagram_div {
   position: relative;
   float: left;
-  background: #ffffff;
+  background: transparent;
   border: 1px solid black;
 }
 

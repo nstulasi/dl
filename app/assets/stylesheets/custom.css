@@ -731,17 +731,17 @@ ul#ud_tools_ul1 li {
 list-style: none;
 font-size: 14px;
 }
-ul#ud_tools_ul1 li a {
+ul#ud_tools_ul1 li a, ul#ud_tools_ul2 li a {
 padding: 6px;
 cursor:pointer;
 }
 
 #tabs-4 {
-background-color:lightgoldenrodyellow;
+background-color:white;
 }
 
-#trash, #items, .item {
-
+.item:hover{
+	background-color:white;
 }
  
 #trash {
@@ -752,10 +752,23 @@ background-color:lightgoldenrodyellow;
        margin-top: 10px;
        width: 100%;
 }
- 
- 
-.over {
+.active{
+	background-color:#D9DADB;
 }
  
-.out {
+.ui-draggable { 
+    }
+#ud_tools_ul2 li a,#ud_tools_ul1 li a {
+	margin-left:15px;
+}
+
+#ud_tools_ul2 li img,#ud_tools_ul1 li img {
+	cursor:move;
+}
+.hint{
+	font-size:12px !important;
+	color:grey;
+}
+.field{
+	margin-left:30px;
 }

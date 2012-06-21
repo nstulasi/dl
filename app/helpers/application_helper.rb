@@ -117,3 +117,16 @@ def status_name(index)
  ret=seq
  end
 end
+
+def strucs
+   if !current_project.metum.stream_xml.nil?
+   @doc = Nokogiri::XML(current_project.metum.structure_xml)
+   @strucs=[]
+    @doc.xpath("//collection").each_with_index do |type,index|
+         @strucs<<type.xpath("name").text
+    end
+    ret=@strucs 
+    else
+      ret=nil
+    end
+end 

@@ -37,14 +37,17 @@ $(function() {
 	});
 
 
-//$('.submittable').live('change', function() {
-  //$(this).parents('form:first').submit();
-  //if(document.getElementById('check_box').checked == true){
-  //$('#appender').show();}
-  //else{
-  	//$('#appender').hide();
-  //}
-//});
+$('.submittable').live('click', function() {
+  $(this).parents("form[data-remote]").submit();
+  $("#alert_div").fadeIn("slow", function () {
+  $('#alert_div').text("Diagram saved");});
+  setTimeout(function(){
+  $("#alert_div").fadeOut("slow", function () {
+  $("#alert_div").text(" ");
+      });
+ 
+}, 4000);
+});
 
 $('.submittable').live('change', function() {
   if(document.getElementById('Text').checked == true){

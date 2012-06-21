@@ -1,5 +1,6 @@
 <%type=["character","text","audio","video","image","program"]%>
-<%type.each_with_index do |type,i|%> 
+<%type.each_with_index do |type,i|%>
+<%= field_set_tag nil, :class => 'field' do %> 
 <p>
 	
       <%= check_box_tag type,type,checked[i].nil? ? false : checked[i].to_bool,:class => type+'_submittable' %> <%=type.slice(0,1).capitalize+type.slice(1..-1)%>
@@ -29,4 +30,5 @@
             </div>
 		<%end%>
 </p>
+<%end%>
 <%end%>

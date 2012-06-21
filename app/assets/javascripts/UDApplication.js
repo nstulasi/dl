@@ -1,4 +1,5 @@
 var ApplicationValues = {element_color: "#ffffbb",dialog: new Dialog()};
+var active_el = null;
 var Application = function(a) {
     a = a || {};
     if (!(a.id && a.width && a.height)) {
@@ -12,7 +13,9 @@ var Application = function(a) {
     this._selected = null;
     this._diagrams = [];
     this._tabs = []
+    if(import_xml!=""){
     this.setXMLString(import_xml);
+    }
 };
 var _acceptedDiagrams = [];
 var _acceptedElementsUML = [];
@@ -52,8 +55,12 @@ Application.prototype._generateStructure = function(b) {
     this._tools_ul2 = e;
     var l = document.createElement("div");
     l.setAttribute("id", "ud_container_div");
+    var alert = document.createElement("div");
+    alert.setAttribute("id","alert_div");
+    l.appendChild(alert);
     var n = document.createElement("div");
     n.setAttribute("id", "ud_selector_div");
+    n.style.width=this._width + "px";
     var a = document.createElement("ul");
     a.setAttribute("id", "ud_selector_ul");
     n.appendChild(a);
@@ -108,6 +115,9 @@ Application.prototype._generateStructure = function(b) {
     };
     var m = document.createElement("div");
     m.setAttribute("id", "ud_delete_div");
+    b = document.createElement("img");
+    b.setAttribute("src", "/assets/delete_button.png");
+    m.appendChild(b);
     j.appendChild(m);
     var k = this;
     m.onclick = function() {
@@ -269,42 +279,30 @@ Application.prototype._generateGeneralMenu = function() {
         }
     };
       
-    this._addMenuItem(this._tools_ul1, "Export/Import to xml", function(m) {
+    this._addSubmit(this._tools_ul1, "Export xml", function(m) {
         var p = this;
         this._active = true;
         var h = document.createElement("div");
+        document.getElementById("umldiagram").appendChild(h);
         var j = document.createElement("form");
         var k = document.createElement("input");
-        var u = document.createElement("input");
         var q = document.createElement("input");
-        //var t = document.createElement("input");
-        //var s = document.createElement("input");
         j.setAttribute("accept-charset","UTF-8");
         j.setAttribute("action","/generate_scenario");
         j.setAttribute("enctype","multipart/form-data");
+        j.setAttribute("data-remote","true");
         j.setAttribute("method","post");
         j.setAttribute("id","frm1")
         k.setAttribute("id", "xml");
         k.setAttribute("name", "xml");
-        k.setAttribute("type", "text");
-        u.setAttribute("type", "submit");
-        u.setAttribute("value", "Import");
+        k.setAttribute("type", "hidden");
         q.setAttribute("type", "submit");
-        q.setAttribute("value", "Submit");
+        q.setAttribute("value", "Save");
         q.setAttribute("name", "commit");
-        //q.setAttribute("onclick", l);
-        //t.setAttribute("type", "submit");
-        //t.setAttribute("value", "Export Current Diagram");
-        //s.setAttribute("type", "submit");
-        //s.setAttribute("value", "x");
-        var n = function(v) {
-            m.setXMLString(import_xml);
-            document.body.removeChild(h)
-            k.select()
-        };
+        q.setAttribute("class","custom_button round righty submittable");
         var r = function(v) {
             k.value = m.getXMLString();
-            document.getElementById("frm1").submit();
+            
             k.select()
         };
         var l = function(v) {
@@ -318,20 +316,60 @@ Application.prototype._generateGeneralMenu = function() {
             return false
         };
         q.addEventListener("click", r, false);
-        //t.addEventListener("click", l, false);
-        u.addEventListener("click", n, false);
-        //s.addEventListener("click", o, false);
         j.appendChild(k);
-        //j.appendChild(t);
-        j.appendChild(u);
-        //j.appendChild(s);
-        //j.appendChild(document.createElement("br"));
         j.appendChild(q);
+        document.getElementById('ud_container_div').insertBefore(j,document.getElementById('ud_selector_div'));
+        k.focus();
+        h.style.top = (window.innerHeight - j.offsetHeight) / 2+ "px";
+        h.style.left = (window.innerWidth - j.offsetWidth) / 2 + "px"
+    }, 0, "import_export");
+    
+    //Import only
+    this._addMenuItem(this._tools_ul1, "Import from xml", function(m) {
+        var p = this;
+        this._active = true;
+        var h = document.createElement("div");
+        var j = document.createElement("form");
+        var k = document.createElement("input");
+        var u = document.createElement("input");
+        k.setAttribute("id", "xml");
+        k.setAttribute("name", "xml");
+        k.setAttribute("type", "text");
+        u.setAttribute("type", "submit");
+        u.setAttribute("value", "Import");
+        var n = function(v) {
+            m.setXMLString(k.value);
+            document.body.removeChild(h)
+            k.select()
+        };
+        var o = function(v) {
+            document.body.removeChild(h)
+        };
+        j.onsubmit = function() {
+            return false
+        };
+        u.addEventListener("click", n, false);
+        j.appendChild(k);
+        j.appendChild(u);
         h.appendChild(j);
         document.body.appendChild(h);
         k.focus();
-        h.style.top = (window.innerHeight - j.offsetHeight) / 2 + "px";
-        h.style.left = (window.innerWidth - j.offsetWidth) / 2 + "px"
+        h.style.top = (window.innerHeight - parseInt(h.offsetHeight+100)) / 2 + "px";
+        h.style.left = (window.innerWidth) / 2 + "px"
+        h.setAttribute("class","ud_popupColor")
+        var K = document.createElement("input");
+        K.setAttribute("type", "submit");
+        K.setAttribute("value", "ok");
+        var H = document.createElement("input");
+        H.setAttribute("type", "submit");
+        H.setAttribute("value", "cancel");
+        h.appendChild(K);
+        h.appendChild(H);
+        var cancel = function() {
+            document.body.removeChild(h)
+        };
+        H.addEventListener("click", cancel, false);
+        K.addEventListener("click", n, false);
     }, 0, "import_export");
 
     this._addMenuItem(this._tools_ul1, "Generate image (png)", function(k, j) {
@@ -663,10 +701,16 @@ Application.prototype._addMenuItem = function(a, g, f, k, b) {
     var h = document.createElement("li");
     
     var e = document.createElement("a");
-	e.setAttribute("class","item")  
+	  
     var j = document.createTextNode(g);
     if (b) {
+    	var C = document.createElement("img");
+        C.setAttribute("src", "/assets/" + b + ".png");
+        C.setAttribute("style", "position:absolute;");
+        h.appendChild(C)
         var c = document.createElement("img");
+        c.setAttribute("class","item");
+        c.setAttribute("style", "position:absolute;");
         c.setAttribute("src", "/assets/" + b + ".png");
         h.appendChild(c)
     }
@@ -687,6 +731,12 @@ Application.prototype._addMenuItem = function(a, g, f, k, b) {
         case 1:
             h.addEventListener("mousedown", function() {
                 if (d._selected) {
+                	this.setAttribute("class","active");
+                	if(active_el!=null&&active_el!=this){
+                		active_el.setAttribute("class","inactive");
+                	}
+                	active_el=this;
+           
                     d._interactionSingleClick(f)
                 }
             }, false);
@@ -694,6 +744,11 @@ Application.prototype._addMenuItem = function(a, g, f, k, b) {
         case 2:
             h.addEventListener("click", function() {
                 if (d._selected) {
+                	this.setAttribute("class","active");
+                	if(active_el!=null){
+                		active_el.setAttribute("class","inactive");
+                	}
+                	active_el=this;
                     d._interactionDoubleClick(f)
                 }
             }, false);
@@ -701,6 +756,17 @@ Application.prototype._addMenuItem = function(a, g, f, k, b) {
         default:
             break
     }
+};
+
+Application.prototype._addSubmit = function(a, g, f, k, b) {
+
+    var d = this;
+                if (d._selected) {
+                    f(d, d._diagrams[d._selected])
+                } else {
+                    f(d)
+                }
+ 
 };
 
 Application.prototype.getXML = function() {

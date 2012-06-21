@@ -1,19 +1,19 @@
 <div id="spaces">
 <%= form_tag('/generate_space', :method=>'post', :multipart => true) do%>
 	<p>
-		<b>Name</b>
+		<b>Name:</b><span class="hint"> Enter the name of the tool </span>
+		<%= field_set_tag nil, :class => 'field' do %>
 		<%= text_field_tag "name" %>
+		<%end%>
 		<br />
-	<p>
-	<p>
-		
-		
-	<p>	
+	</p>
 	<br/>
 	<p>
 		<b>Sequences</b>
 		<%if !encodings.nil?%>
+		<%= field_set_tag nil, :class => 'field' do %>
 		<%=render 'sequences'%>
+		<%end%>
 		<%else%>
 		<p>Enter some sequences first</p>
 		<%end%>

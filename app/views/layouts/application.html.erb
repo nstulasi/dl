@@ -15,12 +15,15 @@
     	<%= javascript_include_tag "UDCore.js"%>
     	<%= javascript_include_tag "UDModules.js"%>
 		<script>
-		
+		$(document).ready(function() {
+		$( "#accordion" ).accordion({ autoHeight: false });
+	});
+	
 		window.gon={};
 	
 		$(document).ready(function() {
 
-        var app = new Application( { id: 'umldiagram', width: 500, height: 400 } );  
+        var app = new Application( { id: 'umldiagram', width: 707, height: 500 } );  
       });
       
 		

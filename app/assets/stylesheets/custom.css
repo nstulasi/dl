@@ -717,7 +717,9 @@ ul#sitemap ul ul
  #character_encoding,#text_encoding,#video_encoding,#audio_encoding,#image_encoding,#type,#sequences{
  	width:300px;
  }
-
+#ui_lang,#ui_displang,#ir_space,#stemming_algo{
+	width:300px;
+ }
 #canvas_container{  
 width: 500px; 
         height:500px; 
@@ -768,6 +770,11 @@ background-color:white;
 .hint{
 	font-size:12px !important;
 	color:grey;
+}
+
+.checker{
+	font-size:12px;
+	color:maroon;
 }
 .field{
 	margin-left:30px;

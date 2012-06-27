@@ -49,6 +49,28 @@ $('.submittable').live('click', function() {
 }, 4000);
 });
 
+$('.submittable').live('click', function() {
+		$(this).parents("form[data-remote]").submit();
+		$("#feedback_div").fadeIn("slow", function () {
+		$('#feedback_div').text("Collection saved");});
+		setTimeout(function(){
+		$("#feedback_div").fadeOut("slow", function () {
+		$("#feedback_div").text(" ");
+		});
+		}, 4000);
+		});
+$('.submittable').live('click', function() {
+		$(this).parents("form[data-remote]").submit();
+		$("#soc_feedback_div").fadeIn("slow", function () {
+		$('#soc_feedback_div').text("Group saved");});
+		setTimeout(function(){
+		$("#soc_feedback_div").fadeOut("slow", function () {
+		$("#soc_feedback_div").text(" ");
+		});
+		}, 4000);
+		});
+
+
 $('.submittable').live('change', function() {
   if(document.getElementById('Text').checked == true){
   $('#appender').show();}
@@ -56,8 +78,6 @@ $('.submittable').live('change', function() {
   	$('#appender').hide();
   }
 });
-
-
 
 
 // we could highlight the checkbox to show it's been clicked:

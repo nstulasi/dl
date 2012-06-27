@@ -1,6 +1,7 @@
 class MetaController < ApplicationController
   # GET /meta
   # GET /meta.json
+  @formerrors=[]
   def index
     @meta = Metum.all
    
@@ -51,7 +52,11 @@ class MetaController < ApplicationController
  end
  
  def generate_structure
-      builder = Nokogiri::XML::Builder.new do |xml|
+  # validate the inputs:
+  @formerrors << "Name must be longer than 3 characters" if (params[:name].length < 3)
+  if @formerrors.nil?
+    # user got it right, do whatever you really want to do with the data
+    builder = Nokogiri::XML::Builder.new do |xml|
       xml.structures{
        xml.collection{
         xml.name{xml.text params[:name]}
@@ -67,35 +72,84 @@ class MetaController < ApplicationController
       }
     end
    @structure= current_project.metum
-   @structure.structure_xml=builder.to_xml
-   @structure.save!
+   @doc = Nokogiri::XML(current_project.metum.structure_xml)
+   if !@doc.xpath("//collection")[params[:id].to_i].nil? 
+      @doc.xpath("//collection")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//collection"))
+   else
+      @doc.xpath("//collection").after(Nokogiri::XML(builder.to_xml).xpath("//collection"))
    end
+   @structure.structure_xml=@doc.to_xml
+   @structure.save!
+   redirect_to :action=>'new'
+  else
+    puts "****ERROR***"
+    redirect_to :back
+  end      
+end
+
+def generate_space
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.spaces{
+       xml.indexingTool{
+        xml.name{xml.text params[:indexing_name]}
+        xml.ui{
+         xml.ui_language{xml.text params[:ui_lang]}
+         xml.ui_presentation{xml.text params[:ui_displang]}
+         }
+         xml.ir_model{
+           xml.retrieval_space{xml.text params[:ir_space]}
+           xml.stemming_algorithm{xml.text params[:stemming_algo]}
+           xml.stopwords{xml.text params[:stopwords]}
+         }
+       }
+      }
+    end
+   @space= current_project.metum
+   @space.space_xml=builder.to_xml
+   @space.save!
+ end
 
  def generate_scenario
    @scenario = current_project.metum
    @scenario.scenario_xml=params[:xml]
    @scenario.save!
-   end   
+   end
    
-   def generate_space
-      builder = Nokogiri::XML::Builder.new do |xml|
-      xml.spaces{
-       xml.collection{
-        xml.name{xml.text params[:name]}
-         xml.sequences{
-           params[:sequences].each do |s|
-           xml.sequence{xml.text s}
-           end
+def generate_society
+  puts params
+  #sleep(10)
+  # validate the inputs:
+  @errors << "Name must be longer than 3 characters" if (params[:group_name].length < 3)
+  if @errors.nil?
+    builder = Nokogiri::XML::Builder.new do |xml|
+      xml.societies{
+       xml.group{
+        xml.name{xml.text params[:group_name]}
+        xml.services{
+           service_xmler(xml)
          }
+        xml.goals{xml.text params[:goals]}
        }
       }
     end
-   @space= current_project.space
-   @space.xmlcontent=builder.to_xml
-   @space.save!
+   @society= current_project.metum
+   @doc = Nokogiri::XML(current_project.metum.society_xml)
+   if !@doc.xpath("//group")[params[:id].to_i].nil? 
+      @doc.xpath("//group")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//group"))
+   else
+      @doc.xpath("//group").after(Nokogiri::XML(builder.to_xml).xpath("//group"))
    end
-
-
+   @society.society_xml=@doc.to_xml
+   @society.save!
+   else
+     puts params[:group_name]
+    puts "****ERROR***"
+    sleep(10)
+    redirect_to :back
+  end      
+ end
+   
+   
   # GET /meta/1/edit
   def edit
     @metum = Metum.find(params[:id])

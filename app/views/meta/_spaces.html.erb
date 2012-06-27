@@ -1,26 +1,77 @@
 <div id="spaces">
 <%= form_tag('/generate_space', :method=>'post', :multipart => true) do%>
 	<p>
-		<b>Name:</b><span class="hint"> Enter the name of the tool </span>
+		<b>Indexing Tool:</b><span class="hint"> Enter the name of the indexing tool used </span>
 		<%= field_set_tag nil, :class => 'field' do %>
-		<%= text_field_tag "name" %>
+		<%= text_field_tag "indexing_name" %>
 		<%end%>
-		<br />
 	</p>
-	<br/>
 	<p>
-		<b>Sequences</b>
-		<%if !encodings.nil?%>
+		<b>UI Information</b><span class="hint"> Information related to the user interface</span>
 		<%= field_set_tag nil, :class => 'field' do %>
-		<%=render 'sequences'%>
-		<%end%>
-		<%else%>
-		<p>Enter some sequences first</p>
+		<p>
+			<b>UI Language</b><span class="hint"> Select the language to be used for rendering the UI</span>
+				<p>
+				<%= select_tag("ui_lang", options_for_select([
+			      ['Geographical', 'Subject'],
+			      ['Subject', 'Subject'],
+			      ['Language','Language'],
+			      ['General','General']
+			      ]),:class=>"type") %>
+			      </p>
+		</p>
+		<br/>
+		<p>
+			<b>UI Presentation language</b><span class="hint"> Select the display language(s) used</span>
+				<p>
+				<%= select_tag("ui_displang", options_for_select([
+			      ['Geographical', 'Subject'],
+			      ['Subject', 'Subject'],
+			      ['Language','Language'],
+			      ['General','General']
+			      ]),:class=>"type") %>
+			      </p>
+			</p>
 		<%end%>
 	</p>
+	<p>
+		<b>IR Model</b><span class="hint"> Information related to the information retrieval </span>
+		<%= field_set_tag nil, :class => 'field' do %>
+		<p>
+			<b>Retrieval Space</b><span class="hint"> Select the language to be used for rendering the UI</span>
+				<p>
+				<%= select_tag("ir_space", options_for_select([
+			      ['Geographical', 'Subject'],
+			      ['Subject', 'Subject'],
+			      ['Language','Language'],
+			      ['General','General']
+			      ]),:class=>"type") %>
+			    </p>
+		</p>
+		<br/>
+		<p>
+			<b>Stemming Algorithm</b><span class="hint"> Select the stemming algorithm being used</span>
+				<p>
+				<%= select_tag("stemming_algo", options_for_select([
+			      ['Geographical', 'Subject'],
+			      ['Subject', 'Subject'],
+			      ['Language','Language'],
+			      ['General','General']
+			      ]),:class=>"type") %>
+			    </p>
+		</p>
+		<br/>
+		<p>
+			<%= form_tag '/upload', :multipart => true do %>
+			  <label for="file">Select stopwords file</label> <%= file_field_tag "stopwords" %>
+			  <%= submit_tag %>
+			<% end %>
+		</p>
+	</p>
+		<p>
+			  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+		</p>
+	<%end%>
 	</div>
-	<p>
-		  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
-	</p>
 <%end%>
 

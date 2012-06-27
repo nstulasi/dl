@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120605195200) do
+ActiveRecord::Schema.define(:version => 20120627115552) do
 
   create_table "articles", :force => true do |t|
     t.string   "name"
@@ -108,41 +108,6 @@ ActiveRecord::Schema.define(:version => 20120605195200) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-  end
-
-  create_table "scenarios", :force => true do |t|
-    t.string   "xmlcontent"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "societies", :force => true do |t|
-    t.string   "xmlcontent"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "spaces", :force => true do |t|
-    t.string   "xmlcontent"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "streams", :force => true do |t|
-    t.text     "xmlcontent"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "project_id"
-  end
-
-  create_table "structures", :force => true do |t|
-    t.string   "xmlcontent"
-    t.integer  "project_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "tasks", :force => true do |t|

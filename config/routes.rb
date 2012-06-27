@@ -15,7 +15,9 @@ SampleApp::Application.routes.draw do
   resources :events
   match '/generate_stream'=>'meta#generate_stream'
   match '/generate_structure'=>'meta#generate_structure'
- match '/generate_scenario'=>'meta#generate_scenario'
+  match '/generate_scenario'=>'meta#generate_scenario'
+  match '/generate_space'=>'meta#generate_space'
+  match '/generate_society'=>'meta#generate_society'
   match "phases/savesort" => 'phases#savesort'
   match "shippings_logs/recent"=> 'shipping_logs#recent'
   match '/articles(/:year(/:month))' => 'articles#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}

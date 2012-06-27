@@ -16,10 +16,76 @@
     	<%= javascript_include_tag "UDModules.js"%>
 		<script>
 		$(document).ready(function() {
-		$( "#accordion" ).accordion({ autoHeight: false });
-	});
-	
-		window.gon={};
+		$( "#accordion" ).accordion({ autoHeight: false , active:false});
+		$( "#society_accordion" ).accordion({ autoHeight: false , active:false});
+		});
+		
+		function setStyle(x)
+		{
+			var form_num = x.charAt(x.length-1);
+			$('#name_feedback'+form_num).text("");
+		}
+		function setSocStyle(x)
+		{
+			var form_num = x.charAt(x.length-1);
+			$('#soc_name_feedback'+form_num).text("");
+		}
+		function setStyleSelect(x)
+		{//TO-DO :Problem is that onfocus event is not being carried to the new select2 wala input
+			var form_num = x.charAt(x.length-1);
+			$('#sequence_feedback'+form_num).text("");
+		}
+		function getParentByTagName(obj, tag)
+		{
+			var obj_parent = obj.parentNode;
+			if (!obj_parent) return false;
+			if (obj_parent.tagName.toLowerCase() == tag) return obj_parent;
+			else return getParentByTagName(obj_parent, tag);
+		}
+		
+		function soc_delete(id)
+		{
+			var form=getParentByTagName(id,'form').getAttribute('id')
+			var x=document.forms[form]["name"].value;
+			var form_num = form.charAt(form.length-1);
+			var y=document.forms[form]["sequences"].value;
+			if (x==null || x=="")
+			  {
+			  $('#name_feedback'+form_num).text("Name must be filled");
+			  }
+			 if (y==null || y=="")
+			  {
+			  $('#sequence_feedback'+form_num).text("Select atleast one sequence");
+			  }
+		}
+		
+		function validateForm(id)
+		{
+			var form=getParentByTagName(id,'form').getAttribute('id')
+			var x=document.forms[form]["name"].value;
+			var form_num = form.charAt(form.length-1);
+			var y=document.forms[form]["sequences"].value;
+			if (x==null || x=="")
+			  {
+			  $('#name_feedback'+form_num).text("Name must be filled");
+			  }
+			 if (y==null || y=="")
+			  {
+			  $('#sequence_feedback'+form_num).text("Select atleast one sequence");
+			  }
+		}
+		
+		function validateSocForm(soc_form)
+		{
+			var form=getParentByTagName(soc_form,'form').getAttribute('id')
+			var x=document.forms[form]["group_name"].value;
+			var form_num = form.charAt(form.length-1);
+			if (x==null || x=="")
+			  {
+			  $('#soc_name_feedback'+form_num).text("Name must be filled");
+			  }
+		}
+		
 	
 		$(document).ready(function() {
 
@@ -29,14 +95,14 @@
 		
 		// Sets the fill attribute of the circle to red (#f00)
 		     $(document).ready(function() {
-				$("#type").select2({
+				$(".type").select2({
 					placeholder: "Select something",
     				allowClear: true
 				});
 			});
 			
 			$(document).ready(function() {
-			var arr = ["#sequences","#character_encoding","#audio_encoding","#video_encoding","#image_encoding","#text_encoding"];
+			var arr = [".sequences","#character_encoding","#audio_encoding","#video_encoding","#image_encoding","#text_encoding"];
 			for (var i = 0; i < arr.length; i += 1){
 				$(arr[i]).select2({
 					placeholder: "Select the type of sequences",

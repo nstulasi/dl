@@ -1,68 +1,136 @@
 
 <div class="demo">
-
+<div id="feedback_div"></div>
 <div id="accordion">
-	<h3><a href="#">Section 1</a></h3>
+	<% if !strucs["structures"]["collection"].kind_of?(Array)%>
+	<%s=strucs["structures"]["collection"]%>
+	<h3><a href="#"><%=s["name"]%></a></h3>
 	<div>
+	<div id="structures">
+		<%= form_tag('/generate_structure', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"form0") do%>
+		<%= field_set_tag nil, :class => 'field' do %>
+		<%params[:id]=0%>
+		<%= hidden_field_tag :id, params[:id]%>
 		<p>
-		Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-		ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-		amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-		odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+			<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
+			
+	  			<p><%= text_field_tag 'name', s["name"],:onfocus=>"setStyle('form0')"%>
+	  				<span id="name_feedback0"></span> </p>
+			<br />
+		<p>
+		<p>
+			<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
+			
+			<%= select_tag("type", options_for_select([
+	      ['Geographical', 'Subject'],
+	      ['Subject', 'Subject'],
+	      ['Language','Language'],
+	      ['General','General']
+	      ],s["categorization"]["type"]),:class=>"type") %>
+		
+		<p>	
+		<br/>
+		<p>
+			
+			<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
+			<%if !encodings.nil?%>
+				<%@seq=[]%>
+				 <%encodings.each_with_index do |en,i|%>
+				<%if checked[i].to_bool%>
+				   <%en.values.flatten.each do |e|%>
+				    	<%@seq<<en.keys.first.to_s.slice(0,1).capitalize+en.keys.first.slice(1..-1)+":"+e%>
+				   <%end%>
+			<%end%>
+		<%end%>
+		<%= select_tag("sequences", options_for_select(@seq.collect{ |u| [u, u] },:selected=>s["sequences"]["sequence"]),:multiple=>true,:class=>"sequences")%>
+	  			<span id="sequence_feedback0"></span>
+			<%else%>
+			<p>Enter some sequences first</p>
+			<%end%>
+			
 		</p>
+		<p>
+					  <%= submit_tag 'Save',:class=>"custom_button round righty submittable",:onclick=>"validateForm(this)" %>
+				</p>
+		</div>
+			
+			<%end%>
+		<%end%>
 	</div>
-	<h3><a href="#">Section 2</a></h3>
+	
+	<%else%>
+	<%strucs["structures"]["collection"].each_with_index do |s,i|%>
+	<h3><a href="#"><%=s["name"]%></a></h3>
 	<div>
+	<div id="structures">
+		<%= form_tag('/generate_structure', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"form"+i.to_s) do%>
+		<%= field_set_tag nil, :class => 'field' do %>
+		<%params[:id]=i%>
+		<%= hidden_field_tag :id, params[:id]%>
 		<p>
-		Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet
-		purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor
-		velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In
-		suscipit faucibus urna.
-		</p>
-	</div>
-	<h3><a href="#">Section 3</a></h3>
-	<div>
+			<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
+			
+	  			<p><%= text_field_tag 'name', s["name"],:onfocus=>"setStyle(getParentByTagName(this,'form').getAttribute('id'))"%>
+	  				<span id=<%="name_feedback"+i.to_s%>></span></p>
+			
+			<br />
 		<p>
-		Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-		Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-		ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-		lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-		</p>
-		<ul>
-			<li>List item one</li>
-			<li>List item two</li>
-			<li>List item three</li>
-		</ul>
-	</div>
-	<h3><a href="#">Section 4</a></h3>
-	<div>
 		<p>
-		Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-		et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-		faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-		mauris vel est.
+			<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
+			<%= select_tag("type", options_for_select([
+	      ['Geographical', 'Subject'],
+	      ['Subject', 'Subject'],
+	      ['Language','Language'],
+	      ['General','General']
+	      ],s["categorization"]["type"]),:class=>"type") %>
+		
+		<p>	
+		<br/>
+		<p>
+			
+			<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
+			<%if !encodings.nil?%>
+				<%@seq=[]%>
+				 <%encodings.each_with_index do |en,i|%>
+				<%if checked[i].to_bool%>
+				   <%en.values.flatten.each do |e|%>
+				    	<%@seq<<en.keys.first.to_s.slice(0,1).capitalize+en.keys.first.slice(1..-1)+":"+e%>
+				   <%end%>
+			<%end%>
+		<%end%>
+		<%= select_tag("sequences", options_for_select(@seq.collect{ |u| [u, u] },:selected=>s["sequences"]["sequence"]),:multiple=>true,:class=>"sequences")%>
+	  			<span id=<%="sequence_feedback"+i.to_s%>></span>
+			<%else%>
+			<p>Enter some sequences first</p>
+			<%end%>
+			
 		</p>
 		<p>
-		Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-		Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-		inceptos himenaeos.
+					  <%= submit_tag 'Save',:class=>"custom_button round righty submittable",:onclick=>"validateForm(this)" %>
+		</p> 
+		</div>
+			
 		</p>
-	</div>
-</div>
-
-</div><!-- End demo -->
-
-
-
-<div id="structures">
-	<%strucs.each do |s|%>
-	<%=s%>
+			<%end%>
+			<%end%>
+	 </div>
+	 <%end%>
 	<%end%>
-	<%=encodings%>
-<%= form_tag('/generate_structure', :method=>'post', :multipart => true) do%>
-<%= field_set_tag nil, :class => 'field' do %>
+</div>
+<h3>Create new collection</h3>
+	<div id="structures">
+	
+	<%= form_tag('/generate_structure', :method=>'post', :multipart => true) do%>
+	<%= field_set_tag nil, :class => 'field' do %>
+	<!--determining the id of the node--> 
+	<%if strucs["structures"]["collection"].kind_of?(Array)%>
+	 <% params[:id]=strucs["structures"]["collection"].length+1%>
+	 <%else%>
+	 <%params[:id]=2%> 
+	 <%end %> 
+		<%= hidden_field_tag :id, params[:id]%>
 	<p>
-		<p><b>Name:</b><span class="hint"> Enter the name of the collection.The name must be unique</span></p>
+		<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
 		
   			<p><%= text_field_tag 'name' %></p>
 		
@@ -71,11 +139,11 @@
 	<p>
 		<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
 		<%= select_tag("type", options_for_select([
-                ['Geographical', 'Subject'],
-                ['Subject', 'Subject'],
-                ['Language','Language'],
-                ['General','General']
-                ],'General')) %>
+      ['Geographical', 'Subject'],
+      ['Subject', 'Subject'],
+      ['Language','Language'],
+      ['General','General']
+      ],'General'),:class=>"type") %>
 	
 	<p>	
 	<br/>
@@ -83,12 +151,13 @@
 		
 		<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
 		<%if !encodings.nil?%>
-		<%=render 'sequences'%>
+		<%= render 'sequences'%>
 		<%else%>
 		<p>Enter some sequences first</p>
 		<%end%>
 		
 	</p>
+	</div>
 	</div>
 	<p>
 		  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
@@ -96,13 +165,4 @@
 <%end%>
 <%end%>
 
-<div class="demo-description" style="display: none; ">
-<p>
-Click headers to expand/collapse content that is broken into logical sections, much like tabs.
-Optionally, toggle sections open/closed on mouseover.
-</p>
-<p>
-The underlying HTML markup is a series of headers (H3 tags) and content divs so the content is
-usable without JavaScript.
-</p>
-</div><!-- End demo-description -->
+

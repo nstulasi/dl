@@ -6,4 +6,4 @@
 		   <%end%>
 	<%end%>
 <%end%>
- <%= select_tag("sequences", options_for_select(@seq.collect{ |u| [u, u] }),:multiple=>true)%>
+ <%= select_tag("sequences", options_for_select(@seq.collect{ |u| [u, u] },:selected=>"ble"),:multiple=>true,:class=>"sequences")%>

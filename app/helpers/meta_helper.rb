@@ -21,4 +21,12 @@ module MetaHelper
        end
     end
   end 
+  
+  def service_xmler(xml)
+    services.each_with_index do |s,i|
+      if !params[s].nil?
+        xml.service{xml.text s}
+      end
+    end
+  end
 end

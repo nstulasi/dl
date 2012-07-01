@@ -1,5 +1,5 @@
    desc "Fetch tasks"
-   task :fetch_tasks(file)  => :environment do
+   task :fetch_tasks => :environment do
    require 'nokogiri'
     @doc = Nokogiri::XML(file)
     @doc.xpath("//task").each do |task|

@@ -1,5 +1,5 @@
 <div id="spaces">
-<%= form_tag('/generate_space', :method=>'post', :multipart => true) do%>
+<%= form_tag('/generate_space', :method=>'post', :multipart => true,:class=>"clearfix") do%>
 	<p>
 		<b>Indexing Tool:</b><span class="hint"> Enter the name of the indexing tool used </span>
 		<%= field_set_tag nil, :class => 'field' do %>
@@ -69,7 +69,7 @@
 		</p>
 	</p>
 		<p>
-			  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+			  <%= submit_tag 'Submit',:class=>"custom_better_button righty " %>
 		</p>
 	<%end%>
 	</div>

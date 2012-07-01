@@ -2,7 +2,7 @@
 <%content_for :side do%>
 <%= render 'tasks_sidemenu'%>
 <%end%>
-<%content_for :main do%> <h1>New task</h1>
+<%content_for :main do%> 
 <%= form_for(@task) do |f| %>
 <% if @task.errors.any? %>
 <div id="error_explanation">

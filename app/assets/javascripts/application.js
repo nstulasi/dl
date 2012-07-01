@@ -9,8 +9,7 @@
 //= require jquery.purr
 //= require best_in_place
 //= require_tree .
-var import_xml=gon.scenario;
-        
+     
 $('.item').live('mouseover',function(){
     $(this).draggable({
     	revert:true
@@ -107,22 +106,27 @@ $(function() {
 $(function() {
 	$("#treeViewDiv_phases").jstree({
 		"json_data" : {
-			"data" : data_phases
+			"data" : data_phases,
 		},
 		"plugins" : ["themes", "json_data", "ui"]
-	});
-});
+	}).bind("select_node.jstree", function(e, data)
+                    {
+                        window.location= data.rslt.obj.data("href"); 
+                    })
+            });
 
 $(function() {
 	$("#treeViewDiv_policies").jstree({
 		"json_data" : {
-			"data" : data_policies
+			"data" : data_policies,
 		},
 		"plugins" : ["themes", "json_data", "ui"]
-	});
-});
-
-
+	}).bind("select_node.jstree", function(e, data)
+                    {
+                        window.location= data.rslt.obj.data("href"); 
+                    })
+            });
+	
 $(function (){
 	$('#task_start_at').datepicker({dateFormat: 'yy-mm-dd'});
 	$('#task_end_at').datepicker({dateFormat: 'yy-mm-dd'});

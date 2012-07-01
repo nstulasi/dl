@@ -15,8 +15,6 @@
 (function ($, undefined) {
     "use strict";
     /*global document, window, jQuery, console */
-
-
     var KEY, AbstractSelect2, SingleSelect2, MultiSelect2;
 
     KEY = {

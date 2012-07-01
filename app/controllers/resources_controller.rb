@@ -1,8 +1,10 @@
 class ResourcesController < ApplicationController
   # GET /resources
   # GET /resources.json
+  require 'open-uri'
   def index
-    @resources = Resource.all
+    @resourceable = find_resourceable
+    @resources = @resourceable.resources
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,10 +39,29 @@ class ResourcesController < ApplicationController
     @resource = Resource.find(params[:id])
   end
 
+  def validate(document_path, schema_path, root_element)
+    schema = Nokogiri::XML::Schema(File.read(schema_path))
+    document = Nokogiri::XML(File.read(document_path))
+    schema.validate(document.xpath("//#{root_element}").to_s)
+  end
+  
+  def rake_tasks
+    #validate(, 'schema.xdf', 'root').each do |error|
+     #    puts error.message
+      #   sleep(10)
+    #end
+    puts params
+    sleep(10)
+    system "start rake fetch_tasks(#{params[:file_file_name]})"
+    redirect_to tasks_url 
+  end
   # POST /resources
   # POST /resources.json
   def create
-    @resource = Resource.new(params[:resource])
+    puts params
+    sleep(10)
+     @resourceable = find_resourceable
+      @resource = @resourceable.resources.build(params[:resource])
 
     respond_to do |format|
       if @resource.save
@@ -80,4 +101,13 @@ class ResourcesController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def find_resourceable
+  params.each do |name, value|
+    if name =~ /(.+)_id$/
+      return $1.classify.constantize.find(value)
+    end
+  end
+  nil
+end
 end

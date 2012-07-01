@@ -1,5 +1,5 @@
 <br/>
-<h3><%=link_to "People", users_path%> <%=link_to image_tag("group.png", :alt=>"People"),users_path%></h3>
+<h3>People <%=image_tag("group.png", :alt=>"People")%></h3>
 <%@uniq_roles = Delegation.find(:all,:group=>:role,:conditions=>["delegations.role IS NOT NULL AND project_id=?",current_project.id])%>
 <%if !@uniq_roles.nil?%>
 <div id="menu">       

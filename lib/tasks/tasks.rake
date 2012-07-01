@@ -1,8 +1,7 @@
    desc "Fetch tasks"
-   task :fetch_tasks  => :environment do
+   task :fetch_tasks(file)  => :environment do
    require 'nokogiri'
-  
-    @doc = Nokogiri::XML(File.open("project-tasks.xml"))
+    @doc = Nokogiri::XML(file)
     @doc.xpath("//task").each do |task|
       task_name = task.xpath("name").text
       task_status = task.xpath("status").text

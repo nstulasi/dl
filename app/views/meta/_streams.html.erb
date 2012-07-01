@@ -1,10 +1,10 @@
-<%= form_tag('/generate_stream', :method=>'post', :multipart => true) do%>
+<%= form_tag('/generate_stream', :method=>'post', :multipart => true,:class=>"clearfix") do%>
 						<p>
 							<b>Content:</b><span class="hint"> Select the types of content in the digital library and their encodings </span>
 							<br />
 							<%=render 'display'%>
 					    </p>
 					    <p>
-							   <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+							   <%= submit_tag 'Submit',:class=>"custom_better_button righty " %>
 							</p>
 					<%end%>

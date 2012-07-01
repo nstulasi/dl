@@ -1,3 +1,5 @@
+
+<%=logo%>
 <ul class="navlist">
 	<li class="title" id="overview">
 			<%= link_to "Overview", projects_path%>
@@ -8,17 +10,17 @@
 	<li class="title" id="users">
 		<%= link_to "Users", users_path%>
 	</li>
-	<li class="title" id="events">
-			<%= link_to "Events", events_path%>
+	<li class="title" id="meta">
+		<%= link_to "Metamodel", new_metum_path%>
 	</li>
 	<li class="title" id="tasks">
 		<%= link_to "Tasks", tasks_path%>
 	</li>
 	<li class="title" id="policies">
-			<%= link_to "Policies", policies_path%>		
+			<%= link_to "Policies", default_policies_path%>		
 	</li>
-	<li class="title" id="help">
-			<%= link_to "Help", root_path%>		
+	<li class="title" id="events">
+			<%= link_to "Events", events_path%>
 	</li>
 	
 </ul>

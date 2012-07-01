@@ -13,8 +13,8 @@ var Application = function(a) {
     this._selected = null;
     this._diagrams = [];
     this._tabs = []
-    if(import_xml!=""){
-    this.setXMLString(import_xml);
+    if(gon.scenario!=""){
+    this.setXMLString(gon.scenario);
     }
 };
 var _acceptedDiagrams = [];
@@ -299,7 +299,7 @@ Application.prototype._generateGeneralMenu = function() {
         q.setAttribute("type", "submit");
         q.setAttribute("value", "Save");
         q.setAttribute("name", "commit");
-        q.setAttribute("class","custom_button round righty submittable");
+        q.setAttribute("class","custom_better_button righty submittable");
         var r = function(v) {
             k.value = m.getXMLString();
             
@@ -325,7 +325,7 @@ Application.prototype._generateGeneralMenu = function() {
     }, 0, "import_export");
     
     //Import only
-    this._addMenuItem(this._tools_ul1, "Import from xml", function(m) {
+    this._addMenuItem(this._tools_ul1, "Import from XML", function(m) {
         var p = this;
         this._active = true;
         var h = document.createElement("div");

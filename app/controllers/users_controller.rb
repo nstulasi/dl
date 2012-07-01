@@ -41,8 +41,8 @@ class UsersController < ApplicationController
     end 
     #If User.save and user is not a newly created project user 
     if @user.save && @user.project_user.nil?
-      sign_in @user 
-      flash[:success] = "Welcome to the Sample App"
+      signin @user 
+      flash[:success] = "Welcome to the tool"
       redirect_to @user
       # else if user is a project_user
      elsif @user.save && !@user.project_user.nil?

@@ -19,13 +19,11 @@ class Project < ActiveRecord::Base
   
   has_many :phases
   accepts_nested_attributes_for :phases, :allow_destroy=>true
+  
+  has_many :resources, :as => :resourceable 
     
   def should_validate_user
   project_user
-  end
-  
-  def destroy_na
-    puts "**************************************!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!****************************************!!!!!!!"
   end
   
   def self.search(search)

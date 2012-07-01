@@ -2,13 +2,12 @@
 <%= hidden_field_tag :sort, params[:sort] %>
 <br/><h2 class="custom_text">Task List</h2>
 <%@resource=Resource.new%>
-<%= form_for @resource, :html=>{:multipart=>true} do |f|%>
-	<%=f.file_field :file%>
-	<%=f.submit "Submit"%>
+<%= form_tag('/rake_tasks', :method=>'post', :multipart => true,:'data-remote'=>true,:class=>"clearfix") do%>
+	<%=file_field_tag :file%>
+	<%= submit_tag "Submit",:class=>"custom_better_button"%>
 <%end%>
 
-<%= button_to "Rake tasks", :controller => :tasks, 
-                           :action => 'rake_tasks'%>
+
 <table class="display" id="dynamic_table">
 	<thead>
 		<tr class="custom_background">

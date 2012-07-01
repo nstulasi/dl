@@ -1,12 +1,8 @@
-<%content_for :side do%>
-<%= render 'projects_sidemenu'%>
-<%end%>
-
 <%content_for :overview_alerts do%>
 <!--TO-DO Add custom_box class to all the divs -->
-<div class ="grid_12 layout box_1 " id="right_display">
+<div class ="grid_16 layout box_1 " id="right_display">
 	<br/>
-	<h2 class="custom_text">Projects<!-- <%= @open_project%>&nbsp;<%=current_user.name%>--></h2>
+	<h2 class="custom_text" style="margin-bottom:0em;">Digital Library projects<!-- <%= @open_project%>&nbsp;<%=current_user.name%>--></h2>
 
 	<%= form_tag projects_path, :method => 'get', :id => "projects_search" do %>
 	<%= hidden_field_tag :direction, params[:direction]%>
@@ -15,30 +11,56 @@
 
 	<%= render 'projects'%>
 
-	<%= link_to 'New Project', new_project_path %>
+	<%= link_to 'Create a new digital library project', new_project_path,:class=>"custom_better_button",:style=>"float:right;padding:3px 12px;" %>
 </div>
 <%end%>
 
 <%content_for :overview_tasks do%>
-<div class ="grid_12 layout box_1 " id="right_display">
+<div class ="grid_16 layout box_1 " id="right_display">
 	<%if current_project.nil?%>
 		<%=empty_display("projects")%>
 	<%elsif current_project_tasks.empty?%>
 		<%=empty_display("tasks")%>
 	<%else%>
-		<%=render 'tasks/tasks'%>
+	<h4 style="text-align: center;padding-top: 5px;">Currently viewing project: <%=link_to current_project.name, current_project%></h4>
+	<div style="width:30%;float:left;margin:10px 10px;">
+	<div class="dashboard_div" style="width:100%;">
+		<div class="dashboard_title_div">
+			<b>Upcoming events</b>
+		</div>
+		<ul>
+			<li><b>Name</b><div style="float:right;"><b>Start date</b></div></li>
+		<%current_project.events.order("start_at desc ").limit(5).each do |e|%>
+			<li><%=e.name%><div style="float:right;"><b><%=e.start_at.strftime("%B %d, %Y") %></b></div></li
+		<%end%>
+		</ul>
+	</div>
+	<div class="dashboard_div" style="width:100%;">
+		<div class="dashboard_title_div">
+			<b>Users recently added </b>
+		</div>
+		<ul>
+			<li><b>Name</b><div style="float:right;"><b>Role</b></div></li>
+		<%current_project.users.order("updated_at desc ").limit(5).each do |u|%>
+			<li><%=u.name%> <div style="float:right;"><%=u.delegations.first.role%></div></li>
+		<%end%>
+		</ul>
+	</div>
+	</div>
+	
+	<div style="margin:10px 10px;float:right;width:60%">
+	<div class="dashboard_div" style="width:90%;float:right;">
+		<div class="dashboard_title_div">
+			<b>Recent tasks</b>
+		</div>
+		<ul>
+			<li><b>Name</b><div style="float:right;"><b>Priority</b></div></li>
+		<%current_project.tasks.order("updated_at desc ").limit(5).each do |t|%>
+			<li style="padding:5px 5px;"><%=t.name%> <%=priority_name(t.priority.to_i)%></li>
+		<%end%>
+		</ul>
+	</div>
+	</div>
 	<%end%>
 </div>
 <%end%>
-
-<%content_for :overview_timeline do%>
-<div class ="grid_12 layout box_1 " id="right_display">
-		<%if current_project.nil?%>
-		<%=empty_display("projects")%>
-	<%elsif current_project.phases.empty?%>
-		<%=empty_display("phases")%>
-	<%else%>
-		<%=render "phases/timeline"%>
-	<%end%>
-</div>
-<%end%> 

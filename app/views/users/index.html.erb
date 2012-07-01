@@ -2,7 +2,7 @@
 <%= render 'users_sidemenu'%>
 <%end%>
 <%content_for :main do%> 
-<h2>People involved in the <%=link_to "#{current_project.name}",current_project%> project </h2>
+<h4 style="text-align: center;margin-top: 10px">People involved in the <%=link_to "#{current_project.name}",current_project%> project </h4>
 
 <ul class="users">
 	<%= render 'users' %>

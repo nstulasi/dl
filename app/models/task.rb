@@ -5,6 +5,7 @@ class Task < ActiveRecord::Base
   accepts_nested_attributes_for :assignments, :allow_destroy => true
   has_event_calendar
   validates :name, :presence => true
+   has_many :resources, :as => :resourceable
                  
    
   def self.search(search)

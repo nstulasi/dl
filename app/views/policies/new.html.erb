@@ -1,9 +1,44 @@
 <%content_for :side do%>
-<%= render 'policies_sidemenu'%>
+	<%= render 'policies_sidemenu'%>
 <%end%>
 <%content_for :main do%> <h1>New policy</h1>
-<%= render 'form' %>
-
-<%= link_to 'Back', policies_path %>
+	<%@policy=Policy.new%>
+	<%= form_for(@policy) do |f| %>
+	<% if @policy.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@policy.errors.count, "error") %> prohibited this policy from being saved:</h2>
+		<ul>
+			<% @policy.errors.full_messages.each do |msg| %>
+			<li>
+				<%= msg %>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<% end %>
+	<br/>
+	<h3>Create a new policy</h3>
+	<p>
+		<p><%= f.label :name %><span class="hint">: Enter the name of the policy</span></p>
+		<%= field_set_tag nil, :class => 'field' do %>
+		<p><%= f.text_field :name %></p>
+		<%end%>
+	</p>
+	<p>
+		<p><b>Type of policy</b></p>
+			<%= field_set_tag nil, :class => 'field' do %>
+			<%= collection_select(:default,:id, DefaultPolicy.all, :id, :name, {},{:class=>"type"})%>
+		<%end%>
+		</p>   
+	<p>
+		<p><%= f.label :description %><span class="hint">: Enter the details of the policy</span></p>
+		<%= field_set_tag nil, :class => 'field' do %>
+		<p><%= f.text_area :description %></p>
+		<%end%>
+	</p>
+	<div class="actions">
+	<%= f.submit "Submit", :class=>"custom_better_button righty"%>
+	</div>
+	<% end %> 
 </div>
 <%end%> 

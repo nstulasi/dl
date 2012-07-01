@@ -101,9 +101,43 @@ class TasksController < ApplicationController
     end
   end
   
+  def validate(document_path, schema_path, root_element)
+    schema = Nokogiri::XML::Schema(File.read(schema_path))
+    document = Nokogiri::XML(File.read(document_path))
+    schema.validate(document.xpath("//#{root_element}").to_s)
+  end
+  
   def rake_tasks
-    system "start rake fetch_tasks"
-    redirect_to tasks_url
+    #validate(, 'schema.xdf', 'root').each do |error|
+     #    puts error.message
+      #   sleep(10)
+    #end
+    puts params[:file].read
+    sleep(10)
+    contents='<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <task>
+    <name>Architecture design and enhancement </name>
+    <status>1</status>
+    <priority>2</priority>
+    <site> PS </site>
+    <project_id>1</project_id>
+    <start_date> 2012-05-16 </start_date>
+    <end_date> 2012-05-18 </end_date>
+  </task>
+  <task>
+    <name>Architecture design and enhancement </name>
+    <status>1</status>
+    <priority>2</priority>
+    <site> PS </site>
+    <project_id>1</project_id>
+    <start_date> 2012-05-16 </start_date>
+    <end_date> 2012-05-18 </end_date>
+  </task>
+</root>'
+
+    system "start rake fetch_tasks(contents)"
+    redirect_to tasks_url 
   end
   
  private

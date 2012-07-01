@@ -3,7 +3,7 @@
 <% if !soc["societies"]["group"].kind_of?(Array)%>
 	<%s=soc["societies"]["group"]%>
 	<h3><a href="#"><%=s["name"]%></a></h3>
-	<%= form_tag('/generate_society', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"soc_form0") do%>
+	<%= form_tag('/generate_society', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"soc_form0",:class=>"clearfix") do%>
 		<%params[:id]=0%>
 		<%= hidden_field_tag :id, params[:id]%>
 		<p>
@@ -32,7 +32,7 @@
 			<%end%>
 		</p>
 		<p>
-				  <%= submit_tag 'Submit',:class=>"custom_button round righty submittable",:onclick=>"validateSocForm(this)" %>
+				  <%= submit_tag 'Submit',:class=>"custom_better_button submittable",:onclick=>"validateSocForm(this)" %>
 		</p>
 		<!--ELSE Starts-->
 	<%end%>
@@ -69,7 +69,7 @@
 				<%end%>
 			</p>
 			<p>
-					  <%= submit_tag 'Submit',:class=>"custom_button round righty submittable",:onclick=>"validateSocForm(this)" %>
+					  <%= submit_tag 'Submit',:class=>"custom_better_button righty submittable",:onclick=>"validateSocForm(this)" %>
 			</p>
 		<%end%>	
 	<%end%>
@@ -108,7 +108,7 @@
 			<%end%>
 		</p>
 		<p>
-				  <%= submit_tag 'Submit',:class=>"custom_button round righty" %>
+				  <%= submit_tag 'Submit',:class=>"custom_better_button" %>
 		</p>
 <%end%>
 

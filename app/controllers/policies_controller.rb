@@ -5,7 +5,7 @@ class PoliciesController < ApplicationController
 
   
   def index
-    @policies = Policy.all
+    @policies = current_project.policies.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,11 +45,17 @@ class PoliciesController < ApplicationController
   # POST /policies.json
   def create
     @policy = Policy.new(params[:policy])
-
+    d_id=params[:default][:id]
+    #puts "*******"
+    #puts params
+    #sleep(10)
     respond_to do |format|
       if @policy.save
+        if !d_id.nil?
+            @policy.update_attribute(:default_policy_id,d_id)
+        end
         @policy.update_attribute(:project_id,current_project.id)
-        format.html { redirect_to @policy, notice: 'Policy was successfully created.' }
+        format.html { redirect_to :back, notice: 'Policy was successfully created.' }
         format.json { render json: @policy, status: :created, location: @policy }
       else
         format.html { render action: "new" }
@@ -62,9 +68,13 @@ class PoliciesController < ApplicationController
   # PUT /policies/1.json
   def update
     @policy = Policy.find(params[:id])
-
+    d_id=params[:default][:id]
+    
     respond_to do |format|
       if @policy.update_attributes(params[:policy])
+        if !d_id.nil?
+            @policy.update_attribute(:default_policy_id,d_id)
+        end
         format.html { redirect_to @policy, notice: 'Policy was successfully updated.' }
         format.json { head :ok }
       else
@@ -81,7 +91,7 @@ class PoliciesController < ApplicationController
     @policy.destroy
 
     respond_to do |format|
-      format.html { redirect_to policies_url }
+      format.html { redirect_to default_policies_url }
       format.json { head :ok }
     end
   end

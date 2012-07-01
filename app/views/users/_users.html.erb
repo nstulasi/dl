@@ -8,7 +8,6 @@
 			<th>email  <%=image_tag("arrow_right.png",:alt=>"email")%> </th>
 			<th>Webpage  <%=image_tag("exclamation.png",:alt=>"webpage")%></th>
 			<th>Contact info  <%=image_tag("date_next.png",:alt=>"contact number")%></th>
-			<th>  <%=image_tag("date_previous.png",:alt=>"End date")%></th>
 			<th></th>
 		</tr>
 	</thead>
@@ -20,7 +19,6 @@
 			<td><%= user.email%></td>
 			<td><%= user.webpage%></td>
 			<td><%= user.number %></td>
-			<td></td>
 			<td> 
 				<%= link_to image_tag("page_edit.png", :alt=>"Edit"),edit_user_path(user)%>&nbsp;&nbsp;
 				<%= link_to image_tag("cross.png", :alt=>"Delete"),user, confirm: 'Delete this user?', method: :delete%> 

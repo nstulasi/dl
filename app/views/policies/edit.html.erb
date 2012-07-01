@@ -2,9 +2,46 @@
 <%= render 'policies_sidemenu'%>
 <%end%>
 <%content_for :main do%> <h1>Editing policy</h1>
-<%= render 'form' %>
+<%= form_for(@policy) do |f| %>
+<% if @policy.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@policy.errors.count, "error") %> prohibited this policy from being saved:</h2>
+	<ul>
+		<% @policy.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
+<br/>
+<h3>Create a new policy based on the existing policy</h3>
+<p>
+	<p><%= f.label :name %><span class="hint">: Enter the name of the policy</span></p>
+	<%= field_set_tag nil, :class => 'field' do %>
+	<p><%= f.text_field :name %></p>
+	<%end%>
+</p>
+<p>
+		<p><b>Type of policy</b></p>
+			<%= field_set_tag nil, :class => 'field' do %>
+			<%= select_tag 'default[id]',
+options_from_collection_for_select(DefaultPolicy.all,'id','name',@policy.default_policy_id.to_s),:prompt=>"Select from list below"
+%>
+			<%end%>
+		</p>  
+<p>
+	<p><%= f.label :description %><span class="hint">: Enter the details of the policy</span></p>
+	<%= field_set_tag nil, :class => 'field' do %>
+	<p><%= f.text_area :description %></p>
+	<%end%>
+</p>
+<div class="actions">
+	<%= f.submit "Submit", :class=>"custom_better_button righty"%>
+</div>
+<%= link_to 'Destroy', @policy, confirm: 'Are you sure?', method: :delete,:class=>"custom_better_button" %>
+<% end %> 
 
-<%= link_to 'Show', @policy %> |
-<%= link_to 'Back', policies_path %>
 </div>
 <%end%> 

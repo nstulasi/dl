@@ -1,3 +1,4 @@
+<%@policy=Policy.new%>
 <%= form_for(@policy) do |f| %>
 <% if @policy.errors.any? %>
 <div id="error_explanation">
@@ -11,17 +12,25 @@
 	</ul>
 </div>
 <% end %>
-<div class="field">
-	<%= f.label :name %>
-	<br />
-	<%= f.text_field :name %>
-</div>
-<div class="field">
-	<%= f.label :description %>
-	<br />
-	<%= f.text_field :description %>
-</div>
+<br/>
+<h3>Create a new policy based on the existing policy</h3>
+<p>
+	<p><%= f.label :name %><span class="hint">: Enter the name of the policy</span></p>
+	<%= field_set_tag nil, :class => 'field' do %>
+	<p><%= f.text_field :name %></p>
+	<%end%>
+</p>
+<br/>
+<p>
+	<p><%= f.label :description %><span class="hint">: Enter the details of the policy</span></p>
+	<%= field_set_tag nil, :class => 'field' do %>
+	<p><%= f.text_area :description %></p>
+	<%end%>
+</p>
+   <%if !default_id.nil?%>
+	 <%= hidden_field_tag :'default[id]', default_id%>
+	 <%end%>
 <div class="actions">
-	<%= f.submit %>
+	<%= f.submit "Submit", :class=>"custom_better_button righty"%>
 </div>
 <% end %> 

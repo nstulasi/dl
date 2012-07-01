@@ -30,7 +30,7 @@ body {font-size:75%;color:#222;background:#fff;font-family:'Droid Sans', sans-se
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
 h1 {font-family:'Droid Sans',sans-serif;font-size:3em;line-height:1;margin-bottom:0.5em;text-align:center;}
 h2 {font-family:'Droid Sans',sans-serif;font-size:2em;margin-bottom:0.75em;text-align:center;}
-h3 {font-family:'Droid Sans',sans-serif; font-size:1.5em;line-height:1;margin-bottom:1em;text-align:center}
+h3 {font-family:'Droid Sans',sans-serif; font-size:1.5em;line-height:1;margin-bottom:0.5em;margin-top:1em;text-align:center}
 h4 {font-family:'Droid Sans';font-size:1.2em;line-height:1.25;}
 h5 {font-size:1em;font-weight:bold;margin-bottom:1.5em;}
 h6 {font-size:1em;font-weight:bold;}
@@ -95,7 +95,7 @@ form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 .error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
 .error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
-.notice {background:#fff6bf;color:#514721;border-color:#ffd324;}
+.notice {background: #F2FFBE;color: #514721;border-color: #B99790;}
 .success {background:#e6efc2;color:#264409;border-color:#c6d880;}
 .info {background:#d5edf8;color:#205791;border-color:#92cae4;}
 .error a, .alert a {color:#8a1f11;}

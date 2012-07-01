@@ -3,7 +3,7 @@
 <%end%>
 <%content_for :main do%>
 <div class="outer_div">
-	<div class="inner_div">
+	<div class="inner_div clearfix">
 		<p>
 			<b><%= image_tag("user.png",:alt=>"User")%>&nbsp;Name:</b>
 			<%= best_in_place @user, :name %>

@@ -9,7 +9,7 @@ module ApplicationHelper
     end
   end
   def logo
-    link_to image_tag("green_2.jpg", :alt=>"Digital library Management Tool", :class =>'round'),projects_path
+    link_to image_tag("logo.png", :alt=>"Digital library Management Tool", :class =>'round'),projects_path
   end
   
  def sortable(column, title = nil)
@@ -40,15 +40,15 @@ module ApplicationHelper
       case index
       
       when 0
-         ret = "<font color='green'>Lowest</font>"
+         ret = "<a href='#' class='priority' style='background-color: #79B382;'>Lowest</a>"
       when 1
-         ret = "<font color='green'>Low</font>"
+         ret = "<a href='#' class='priority' style='background-color: #79B382;'>Low</a>"
       when 2
-         ret ="<font color='yellow'>Medium</font>"
+         ret = "<a href='#' class='priority' style='background-color: #A89D79;'>Medium</a>"
       when 3
-         ret = "<font color='red'>High</font>"
+         ret = "<a href='#' class='priority' style='background-color: #9E5454;'>High</a>"
       when 4
-         ret = "<font color='red'>Urgent!</font>"
+         ret = "<a href='#' class='priority' style='background-color: #9E5454;'>Urgent</a>"
       else
          ret = "<font color='red'>Undefined</font>"
       end

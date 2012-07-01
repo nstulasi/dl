@@ -2,13 +2,23 @@ SampleApp::Application.routes.draw do
 
 
 
-  resources :meta
+  ActiveAdmin.routes(self)
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+
+  resources :default_policies
+
+  resources :meta do 
+    resources :resources
+  end
 
   resources :resources
 
   resources :phases
 
-  resources :projects
+  resources :projects do 
+    resources :resources
+  end
 
   resources :policies
 
@@ -18,6 +28,7 @@ SampleApp::Application.routes.draw do
   match '/generate_scenario'=>'meta#generate_scenario'
   match '/generate_space'=>'meta#generate_space'
   match '/generate_society'=>'meta#generate_society'
+  match '/rake_tasks'=>'tasks#rake_tasks'
   match "phases/savesort" => 'phases#savesort'
   match "shippings_logs/recent"=> 'shipping_logs#recent'
   match '/articles(/:year(/:month))' => 'articles#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -28,7 +39,9 @@ SampleApp::Application.routes.draw do
   
   match '/tasks/rake_tasks', :to => 'tasks#rake_tasks'
   
-  resources :tasks
+  resources :tasks do 
+    resources :resources
+  end
   get "sessions/new"
 
   resources :users 

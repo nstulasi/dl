@@ -140,8 +140,12 @@ body {
 *********************/
 
 div#ud_tools_div {
-  width: 200px;
+  width: 250px;
   float: left;
+  border: 1px solid lightgray;
+	padding: 10px 10px;
+	margin: 0px 10px;
+  
 }
 
 

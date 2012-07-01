@@ -291,13 +291,14 @@
 	</head>
 	<body class = "container_16" onload="onLoad();" onresize="onResize();">
 		<div class="custom_div" style="height:25px;background-color: #CCCFA4;padding:4px 4px;">
-			<%if !current_project.nil?%> 
-			<div style="float: left;">Currently viewing project: <%=link_to current_project.name, current_project.name%></div>
-			<%else%>
-			<div style="float: left;">Create/Click on a project to view its contents</div>
+			<%if !current_user.nil?%>
+				<%if !current_project.nil?%> 
+				<div style="float: left;">Currently viewing project: <%=link_to current_project.name, current_project.name%></div>
+				<%else%>
+				<div style="float: left;">Create/Click on a project to view its contents</div>
+				<%end%>
+				<div style="float: right;">You are logged in as <%=current_user.name%>. <%= link_to "Sign out", signout_path, :method => :delete%></div>
 			<%end%>
-			<div style="float: right;">You are logged in as <%=current_user.name%>. <%= link_to "Sign out", signout_path, :method => :delete%></div>
-			
 		</div>
 		<div class="google-header-bar">
 			<div class="header content clearfix">

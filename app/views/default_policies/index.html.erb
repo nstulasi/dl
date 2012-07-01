@@ -1,0 +1,48 @@
+<%content_for :side do%>
+	<%= render 'policies/policies_sidemenu'%>
+<%end%>
+<%content_for :main do%> 
+<div class="outer_div">
+	<div class="bigger_inner_div">
+	<h1>Listing policies</h1>
+	<% @default_policies.each do |dp| %>
+				<div class="policy_container">
+					<div>
+						<div class="title_container">
+							 <span class="policy_title">>> <%= dp.name %></span></a>
+						</div>
+					</div>
+					<div class="hint_container">
+						<span class="policy-hint"><%= dp.hint %> <%=link_to "...more",dp%></span>
+					</div>
+				</div>
+	<%end%>
+<%= will_paginate @default_policies %>
+	<!--<table>
+	  <tr>
+	    <th>Name</th>
+	    <th>Sample</th>
+	    <th>Hint</th>
+	    <th></th>
+	    <th></th>
+	    <th></th>
+	  </tr>
+	
+	<% @default_policies.each do |default_policy| %>
+	  <tr>
+	    <td><%= default_policy.name %></td>
+	    <td><%= default_policy.sample %></td>
+	    <td><%= default_policy.hint %></td>
+	    <td><%= link_to 'Show', default_policy %></td>
+	    <td><%= link_to 'Edit', edit_default_policy_path(default_policy) %></td>
+	    <td><%= link_to 'Destroy', default_policy, confirm: 'Are you sure?', method: :delete %></td>
+	  </tr>
+	<% end %>
+	</table>-->
+	
+	<br />
+	
+	<%= link_to 'New Default policy', new_policy_path(:default=>false) %>
+	</div>
+</div>
+<%end%>

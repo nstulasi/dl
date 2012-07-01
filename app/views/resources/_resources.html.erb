@@ -1,0 +1,9 @@
+
+<h2>New Resource</h2>
+<%= form_for [@resourceable, Resource.new] do |f| %>
+  <ol class="formList">
+	<%=f.file_field :file%>
+	<%= f.submit "Rake tasks", :controller => :tasks, 
+                           :action => 'rake_tasks',:class=>"custom_better_button"%>
+  </ol>
+<% end %>

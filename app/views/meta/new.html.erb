@@ -1,6 +1,6 @@
 
 <div class="outer_div">
-		<div class="demo">
+			<%if !current_project.nil?%>
 			<div id="tabs">
 				<ul>
 					<li>
@@ -22,9 +22,6 @@
 				<div id="tabs-1">
 				    <%=render 'streams'%>
 				</div>
-				<div id="tabs-2">
-					<%=render 'structures'%>
-				</div>
 				<div id="tabs-3">
 					<%=render 'spaces'%>
 				</div>
@@ -35,8 +32,20 @@
 				<div id="tabs-5">
 					<%=render 'societies'%>
 				</div>
+				<div id="tabs-2">
+					<%=render 'structures'%>
+				</div>
+			
+		</div>
+		<%else%>
+		<div class="outer_div">
+			<div class="inner_div"
+			<h3 style="text-align: center;">Create and open a project to view this page</h3>
+				</div>
+		</div>
+		<%end%>
+	</div>
 
-</div>
 
 <!--<div id="canvas_container"></div>--> 
 

@@ -13,7 +13,7 @@ var Application = function(a) {
     this._selected = null;
     this._diagrams = [];
     this._tabs = []
-    if(gon.scenario!=""){
+    if(gon.scenario!=null){
     this.setXMLString(gon.scenario);
     }
 };

@@ -6,10 +6,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.purr
 //= require best_in_place
+//= require rails.validations
 //= require_tree .
-     
+ 
+ 
 $('.item').live('mouseover',function(){
     $(this).draggable({
     	revert:true

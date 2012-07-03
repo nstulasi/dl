@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120701174412) do
+ActiveRecord::Schema.define(:version => 20120702140159) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20120701174412) do
     t.text     "content"
     t.integer  "resourceable_id"
     t.string   "resourceable_type"
+    t.string   "resourcer"
   end
 
   create_table "tasks", :force => true do |t|

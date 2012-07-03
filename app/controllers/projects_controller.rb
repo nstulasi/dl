@@ -46,6 +46,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     respond_to do |format|
       if @project.save
+        @metum = Metum.new
+        @metum.project_id=@project.id
+        @metum.save!
         @project.users<<current_user
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
         format.json { render json: @project, status: :created, location: @project }

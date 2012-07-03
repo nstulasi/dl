@@ -26,7 +26,11 @@ class MetaController < ApplicationController
   # GET /meta/new.json
   def new
     @metum = Metum.new
-    gon.scenario=current_project.metum.scenario_xml
+     if !current_project.nil?
+       gon.scenario=current_project.metum.scenario_xml
+     else
+       gon.scenario=""
+     end
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @metum }
@@ -54,6 +58,8 @@ class MetaController < ApplicationController
  def generate_structure
   # validate the inputs:
   @formerrors << "Name must be longer than 3 characters" if (params[:name].length < 3)
+  puts params 
+  sleep(10)
   if @formerrors.nil?
     # user got it right, do whatever you really want to do with the data
     builder = Nokogiri::XML::Builder.new do |xml|
@@ -73,11 +79,16 @@ class MetaController < ApplicationController
     end
    @structure= current_project.metum
    @doc = Nokogiri::XML(current_project.metum.structure_xml)
-   if !@doc.xpath("//collection")[params[:id].to_i].nil? 
-      @doc.xpath("//collection")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//collection"))
+   if params[:id].to_i==1
+     @structure.structure_xml=builder.to_xml
+     @structure.save!
    else
-      @doc.xpath("//collection").after(Nokogiri::XML(builder.to_xml).xpath("//collection"))
-   end
+     if !@doc.xpath("//collection")[params[:id].to_i].nil? 
+        @doc.xpath("//collection")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//collection"))
+     else
+        @doc.xpath("//collection").after(Nokogiri::XML(builder.to_xml).xpath("//collection"))
+     end
+    end
    @structure.structure_xml=@doc.to_xml
    @structure.save!
    redirect_to :action=>'new'

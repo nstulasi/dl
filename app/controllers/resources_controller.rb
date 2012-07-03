@@ -5,10 +5,10 @@ class ResourcesController < ApplicationController
   def index
     @resourceable = find_resourceable
     @resources = @resourceable.resources
-
-    respond_to do |format|
+        respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @resources }
+      format.json { render :json => @resources.collect { |p| p.to_jq_upload }.to_json
+}
     end
   end
 
@@ -50,26 +50,27 @@ class ResourcesController < ApplicationController
      #    puts error.message
       #   sleep(10)
     #end
-    puts params
-    sleep(10)
     system "start rake fetch_tasks(#{params[:file_file_name]})"
     redirect_to tasks_url 
   end
   # POST /resources
   # POST /resources.json
   def create
-    puts params
-    sleep(10)
-     @resourceable = find_resourceable
+     
+      @resourceable = find_resourceable
       @resource = @resourceable.resources.build(params[:resource])
-
     respond_to do |format|
       if @resource.save
-        format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
-        format.json { render json: @resource, status: :created, location: @resource }
+          format.html {  
+          render :json => [@resource.to_jq_upload].to_json, 
+          :content_type => 'text/html',
+          :layout => false
+            }
+        format.json {  
+          render :json => [@resource.to_jq_upload].to_json     
+        } 
       else
-        format.html { render action: "new" }
-        format.json { render json: @resource.errors, status: :unprocessable_entity }
+        render :json => [{:error => "custom_failure"}], :status => 304
       end
     end
   end

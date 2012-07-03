@@ -1,6 +1,8 @@
+<div id="societies">
 <div id="soc_feedback_div"></div>
-<div id="society_accordion">
-<% if !soc["societies"]["group"].kind_of?(Array)%>
+<%if !soc.nil?%>
+	<div id="society_accordion">
+  <% if !soc["societies"]["group"].kind_of?(Array)%>
 	<%s=soc["societies"]["group"]%>
 	<h3><a href="#"><%=s["name"]%></a></h3>
 	<%= form_tag('/generate_society', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"soc_form0",:class=>"clearfix") do%>
@@ -36,8 +38,8 @@
 		</p>
 		<!--ELSE Starts-->
 	<%end%>
-<%else%>
-	<%soc["societies"]["group"].each_with_index do |s,i|%>
+	<%else%>
+		<%soc["societies"]["group"].each_with_index do |s,i|%>
 		<h3><a href="#"><%=s["name"]%></a>
 			<%=button_tag "Delete",:id=>"del"%></h3>
 		<%= form_tag('/generate_society', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"soc_form"+i.to_s) do%>
@@ -75,41 +77,52 @@
 	<%end%>
 <%end%>
 </div>
+<%end%>
+<!--If there haven't been created any societies yet-->
 <h3><a href="#">Create a new group</a></h3>
 <%= form_tag('/generate_society', :method=>'post', :multipart => true) do%>
-	<%if soc["societies"]["group"].kind_of?(Array)%>
-		 <% params[:id]=soc["societies"]["group"].length+1%>
-		 <%else%>
-		 <%params[:id]=2%> 
-	<%end %> 
-		<%= hidden_field_tag :id, params[:id]%>
-		<p>
-			<b>Name:</b><span class="hint"> Enter the name of the group </span>
-			<%= field_set_tag nil, :class => 'field' do %>
-			<%= text_field_tag "group_name" %>
-			<%end%>
-		</p>
-		<br/>
-		<p>
-			<b>Services</b><span class="hint"> Select services the user group participates in</span>
-			<%= field_set_tag nil, :class => 'field' do %>
-				<%services.each_with_index do |s,i|%>
-				<p>
-				      <%= check_box_tag s,s,false,:class => s %> <%=s%>
-				</p>       
+	<%if soc.nil?%>
+		<%params[:id]=1%> <!--For first society-->
+	<%else%>
+		<%if soc["societies"]["group"].kind_of?(Array)%>
+			 <% params[:id]=soc["societies"]["group"].length+1%> <!--For other societies-->
+		<%else%>
+			 <%params[:id]=2%> <!--For first society-->
+		<%end %>
+	<%end%> 
+			<%= hidden_field_tag :id, params[:id]%>
+			<p>
+				<b>Name:</b><span class="hint"> Enter the name of the group </span>
+				<%= field_set_tag nil, :class => 'field' do %>
+				<%= text_field_tag "group_name" %>
 				<%end%>
-			<%end%>
-		</p>
-		<br/>
-		<p>
-			<b>Goals</b><span class="hint"> Write the goals for the group</span>
-			<%= field_set_tag nil, :class => 'field' do %>
-			<%=text_area_tag 'goals', "Goals go here",:rows => 2, :cols => 100%>       
-			<%end%>
-		</p>
-		<p>
-				  <%= submit_tag 'Submit',:class=>"custom_better_button" %>
-		</p>
-<%end%>
-
-
+			</p>
+			<br/>
+			
+			<p>
+				<b>Services</b><span class="hint"> Select services the user group participates in</span>
+				<%= field_set_tag nil, :class => 'field' do %>
+					<%if !services.nil?%>
+						<%services.each_with_index do |s,i|%>
+						<p>
+						      <%= check_box_tag s,s,false,:class => s %> <%=s%>
+						</p>       
+						<%end%>
+					<%else%>
+						<span>Craete some serivices in the scenario page</span>
+					<%end%>
+						
+				<%end%>
+			</p>
+			<br/>
+			<p>
+				<b>Goals</b><span class="hint"> Write the goals for the group</span>
+				<%= field_set_tag nil, :class => 'field' do %>
+				<%=text_area_tag 'goals', "Goals go here",:rows => 2, :cols => 100%>       
+				<%end%>
+			</p>
+			<p>
+				<%= submit_tag 'Submit',:class=>"custom_better_button" %>
+			</p>
+<%end%><!--form end-->
+</div>

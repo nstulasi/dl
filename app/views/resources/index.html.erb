@@ -3,16 +3,7 @@
 <ul id="resources">
   <% @resources.each do |resource| %>
     <li><%= resource.content %></li>
-
-<%if !resource.file_file_name.nil?%>
-	<% puts "#{root_url+resource.file.url[1..-1]}" %>
-	<%url = URI.parse(root_url+resource.file.url[1..-1])%>
-	<%open(url) do |http|%>
-	  <%response = http.read%>
-	  <%="#{response.inspect}"%>
-	<%end %>
-	<%end%>
-  <%end%>
+<%end%>
 </ul>
 <%=render 'resources'%>
 

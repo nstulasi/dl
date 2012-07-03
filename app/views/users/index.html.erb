@@ -2,11 +2,18 @@
 <%= render 'users_sidemenu'%>
 <%end%>
 <%content_for :main do%> 
-<h4 style="text-align: center;margin-top: 10px">People involved in the <%=link_to "#{current_project.name}",current_project%> project </h4>
+	<%if !current_project.nil?%>
+		<h4 style="text-align: center;margin-top: 10px">People involved in the <%=link_to "#{current_project.name}",current_project%> project </h4>
+		<ul class="users">
+			<%= render 'users' %>
+		</ul>
+	<%else%>
+		 <p id="empty_entity">Currently not viewing any project </p>
+	 	 <p class="add_link"><%= link_to "Add new project",new_project_path%>&nbsp;&nbsp;<%=link_to image_tag("add.png", :alt=>"Add project"),new_project_path%></p>
 
-<ul class="users">
-	<%= render 'users' %>
-</ul>
+	<%end%>
+
+
 <!--
 <h2>Project users in this project</h2>
 <%if !@proj_users.nil?%>

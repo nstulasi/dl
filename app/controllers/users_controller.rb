@@ -32,20 +32,20 @@ class UsersController < ApplicationController
   
   def create
     #Put a conditional ? : statement 
-    if User.find_by_id(params[:user][:id]).nil? 
+    if User.find_by_id(params[:user][:id]).nil?
        @user = User.new(params[:user])
-       @user.project_user=true 
+       @user.project_user=false 
     else
         @user=User.find_by_id(params[:user][:id])
-        @user.project_user=false
+        @user.project_user=true
     end 
     #If User.save and user is not a newly created project user 
-    if @user.save && @user.project_user.nil?
+    if @user.save && (!@user.project_user || @user.project_user.nil?)
       signin @user 
       flash[:success] = "Welcome to the tool"
       redirect_to @user
       # else if user is a project_user
-     elsif @user.save && !@user.project_user.nil?
+     elsif @user.save && @user.project_user
           @user.update_attributes(params[:user]) if !User.find_by_id(params[:user][:id]).nil?
           #Updating delegations table with the current_proejct id
           @user.delegations.each do |d|

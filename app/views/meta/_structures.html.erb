@@ -1,37 +1,32 @@
-
-<div class="demo">
+<div id="structures">
 <div id="feedback_div"></div>
-<div id="accordion">
-	<% if !strucs["structures"]["collection"].kind_of?(Array)%>
+ <%if !strucs.nil?%>
+ <div id="accordion">
+   <%if !strucs["structures"]["collection"].kind_of?(Array)%>
 	<%s=strucs["structures"]["collection"]%>
 	<h3><a href="#"><%=s["name"]%></a></h3>
-	<div>
-	<div id="structures">
 		<%= form_tag('/generate_structure', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"form0",:class=>"clearfix") do%>
 		<%= field_set_tag nil, :class => 'field' do %>
-		<%params[:id]=0%>
-		<%= hidden_field_tag :id, params[:id]%>
-		<p>
-			<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
-			
+			<%params[:id]=0%>
+			<%= hidden_field_tag :id, params[:id]%>
+			<p>
+				<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
 	  			<p><%= text_field_tag 'name', s["name"],:onfocus=>"setStyle('form0')"%>
 	  				<span id="name_feedback0"></span> </p>
 			<br />
-		<p>
-		<p>
-			<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
+			<p>
+				<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
 			
-			<%= select_tag("type", options_for_select([
-	      ['Geographical', 'Subject'],
-	      ['Subject', 'Subject'],
-	      ['Language','Language'],
-	      ['General','General']
-	      ],s["categorization"]["type"]),:class=>"type") %>
+						<%= select_tag("type", options_for_select([
+				      ['Geographical', 'Subject'],
+				      ['Subject', 'Subject'],
+				      ['Language','Language'],
+				      ['General','General']
+				      ],s["categorization"]["type"]),:class=>"type") %>
 		
-		<p>	
-		<br/>
-		<p>
-			
+			<p>	
+			<br/>
+			<p>
 			<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
 			<%if !encodings.nil?%>
 				<%@seq=[]%>
@@ -52,17 +47,13 @@
 		<p>
 					  <%= submit_tag 'Save',:class=>"custom_better_button righty  submittable",:onclick=>"validateForm(this)" %>
 				</p>
-		</div>
+		
 			
 			<%end%>
 		<%end%>
-	</div>
-	
 	<%else%>
 	<%strucs["structures"]["collection"].each_with_index do |s,i|%>
 	<h3><a href="#"><%=s["name"]%></a></h3>
-	<div>
-	<div id="structures">
 		<%= form_tag('/generate_structure', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"form"+i.to_s) do%>
 		<%= field_set_tag nil, :class => 'field' do %>
 		<%params[:id]=i%>
@@ -108,35 +99,33 @@
 		<p>
 					  <%= submit_tag 'Save',:class=>"custom_better_button righty submittable",:onclick=>"validateForm(this)" %>
 		</p> 
-		</div>
-			
-		</p>
+		
 			<%end%>
 			<%end%>
-	 </div>
 	 <%end%>
 	<%end%>
 </div>
+
+<%else%>
 <h3>Create new collection</h3>
-	<div id="structures">
-	
 	<%= form_tag('/generate_structure', :method=>'post', :multipart => true) do%>
-	<%= field_set_tag nil, :class => 'field' do %>
-	<!--determining the id of the node--> 
-	<%if strucs["structures"]["collection"].kind_of?(Array)%>
-	 <% params[:id]=strucs["structures"]["collection"].length+1%>
-	 <%else%>
-	 <%params[:id]=2%> 
-	 <%end %> 
+		<%= field_set_tag nil, :class => 'field' do %>
+		<%if strucs.nil?%>
+			<%params[:id]=1%> <!--For first society-->
+		<%else%>
+		<!--determining the id of the node--> 
+			<%if strucs["structures"]["collection"].kind_of?(Array)%>
+		 		<% params[:id]=strucs["structures"]["collection"].length+1%>
+		 	<%else%>
+		 		<%params[:id]=2%> 
+		 	<%end %> 
+		 <%end%>
 		<%= hidden_field_tag :id, params[:id]%>
-	<p>
 		<p><b>Name:</b><span class="hint"> Enter the name of the collection</span></p>
 		
   			<p><%= text_field_tag 'name' %></p>
 		
 		<br />
-	<p>
-	<p>
 		<p><b>Type:</b><span class="hint"> Select a category describing the nature of the collection </span></p>
 		<%= select_tag("type", options_for_select([
       ['Geographical', 'Subject'],
@@ -145,24 +134,17 @@
       ['General','General']
       ],'General'),:class=>"type") %>
 	
-	<p>	
-	<br/>
-	<p>
-		
 		<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
 		<%if !encodings.nil?%>
-		<%= render 'sequences'%>
+			<%= render 'sequences'%>
 		<%else%>
-		<p>Enter some sequences first</p>
+			<p>Enter some sequences first</p>
 		<%end%>
-		
-	</p>
-	</div>
-	</div>
-	<p>
-		  <%= submit_tag 'Submit',:class=>"custom_better_button righty " %>
-	</p>
-<%end%>
-<%end%>
+			<p>
+				<%= submit_tag 'Submit',:class=>"custom_better_button righty " %>
+			</p>
+	<%end%>
+   <%end%>
+<%end%><!--End if-else block for struc.nil?-->
 
-
+</div>

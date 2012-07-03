@@ -91,19 +91,16 @@ def status_name(index)
    end 
     
   def checked
-    @doc = Nokogiri::XML(current_project.metum.stream_xml)
-    @encodings=[]
     @checked=[]
-    
-    @doc.xpath("//type").each_with_index do |type,index|
-      @checked[index]=type.xpath("name").attr('checked').value
-      @enc=[]
-      type.xpath("encoding").each do |e|
-         @enc<<e.text
-     end
-      @encodings[index]={type.xpath("name").text=>@enc}
+    if current_project.nil? || current_project.metum.stream_xml.nil?
+      ret=@checked
+    else
+      @doc = Nokogiri::XML(current_project.metum.stream_xml)
+      @doc.xpath("//type").each_with_index do |type,index|
+        @checked[index]=type.xpath("name").attr('checked').value
+      end
+      ret=@checked
     end
-    ret=@checked
   end
   
 def sequences
@@ -118,15 +115,20 @@ def sequences
  end
 
 def strucs
+  if !current_project.nil?
    if !current_project.metum.structure_xml.nil?
    @doc = Nokogiri::XML(current_project.metum.structure_xml)
     ret= Hash.from_xml(@doc.to_s)
     else
       ret=nil
     end
+   else
+     ret=nil
+  end 
 end
  
  def services
+  if !current_project.nil?
     if !current_project.metum.scenario_xml.nil?
      @doc = Nokogiri::XML(current_project.metum.scenario_xml)
      @services=[]
@@ -134,16 +136,25 @@ end
         @services<<d.attr('name')
       end
     ret= @services
+   else
+     ret=nil
    end
+  else
+    ret=nil
+  end
  end
 
 def soc
+  if !current_project.nil?
    if !current_project.metum.society_xml.nil?
    @doc = Nokogiri::XML(current_project.metum.society_xml)
     ret= Hash.from_xml(@doc.to_s)
     else
       ret=nil
     end
+   else
+     ret=nil
+   end
   end
   
   def soc_checked(i)

@@ -198,3 +198,206 @@
 2012-07-03T18:49:00+00:00 app[web.1]: cache: [GET /users] miss
 2012-07-03T18:49:00+00:00 app[web.1]: 
 2012-07-03T18:49:00+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/users dyno=web.1 queue=0 wait=0ms service=36ms status=500 bytes=728
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/jquery.iframe-transport-64a1cc5685ecf9c468291ae5c595d5e3.js] miss
+2012-07-26T08:51:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/popup-6f57e8eca216630edc2baa6235f138eb.js dyno=web.1 queue=0 wait=0ms service=14ms status=200 bytes=1
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: Started GET "/assets/popup-6f57e8eca216630edc2baa6235f138eb.js" for 24.225.71.37 at 2012-07-26 08:51:55 +0000
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/popup-6f57e8eca216630edc2baa6235f138eb.js] miss, store
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js" for 24.225.71.37 at 2012-07-26 08:51:55 +0000
+2012-07-26T08:51:55+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js"):
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js] miss
+2012-07-26T08:51:55+00:00 app[web.1]:   
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js dyno=web.1 queue=0 wait=0ms service=10ms status=404 bytes=728
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js" for 24.225.71.37 at 2012-07-26 08:51:55 +0000
+2012-07-26T08:51:55+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js"):
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]:   
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js] miss
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js" for 24.225.71.37 at 2012-07-26 08:51:55 +0000
+2012-07-26T08:51:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js dyno=web.1 queue=0 wait=0ms service=17ms status=404 bytes=728
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js"):
+2012-07-26T08:51:55+00:00 app[web.1]:   
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js] miss
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: 
+2012-07-26T08:51:55+00:00 app[web.1]: Started GET "/assets/locale-23fab709d279260c3a1cb21f2f744e18.js" for 24.225.71.37 at 2012-07-26 08:51:55 +0000
+2012-07-26T08:51:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js dyno=web.1 queue=0 wait=0ms service=23ms status=404 bytes=728
+2012-07-26T08:51:55+00:00 app[web.1]: cache: [GET /assets/locale-23fab709d279260c3a1cb21f2f744e18.js] miss, store
+2012-07-26T08:51:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/locale-23fab709d279260c3a1cb21f2f744e18.js dyno=web.1 queue=0 wait=0ms service=8ms status=200 bytes=608
+2012-07-26T08:51:57+00:00 app[web.1]: 
+2012-07-26T08:51:57+00:00 app[web.1]: 
+2012-07-26T08:51:57+00:00 app[web.1]: Started GET "/assets/blueprint/print-d2906861201301d0dab5194f4f57d51e.css" for 24.225.71.37 at 2012-07-26 08:51:57 +0000
+2012-07-26T08:51:57+00:00 app[web.1]: cache: [GET /assets/blueprint/print-d2906861201301d0dab5194f4f57d51e.css] miss, store
+2012-07-26T08:51:57+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/blueprint/print-d2906861201301d0dab5194f4f57d51e.css dyno=web.1 queue=0 wait=0ms service=6ms status=200 bytes=776
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/logo-3d64b2c8715c64bd3f6a704b8ab14f2e.png] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/logo-3d64b2c8715c64bd3f6a704b8ab14f2e.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=3353
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/group-7abc96bdd1cd64e44494ac3038b21d71.png] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/group-7abc96bdd1cd64e44494ac3038b21d71.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=753
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/world-831cadb56144a3690f8370c9e1ee3700.png] miss
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/timeline_marker-7ba99cb533b57ee61291c76a721b34ae.png] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/world-831cadb56144a3690f8370c9e1ee3700.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=923
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/table-34c3304155537d4b9ff57b45ccb8b038.png] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/timeline_marker-7ba99cb533b57ee61291c76a721b34ae.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=327
+2012-07-26T08:51:58+00:00 heroku[rout
+er]: GET electric-cloud-9166.herokuapp.com/assets/table-34c3304155537d4b9ff57b45ccb8b038.png dyno=web.1 queue=0 wait=0ms service=4ms status=200 bytes=566
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/page_white_zip-2c421c0fb8a6c30a38620b8ad8c6614e.png] miss
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /assets/lock-ec99724746dc8db767a77106b86edd72.png] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/lock-ec99724746dc8db767a77106b86edd72.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=749
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/page_white_zip-2c421c0fb8a6c30a38620b8ad8c6614e.png dyno=web.1 queue=0 wait=0ms service=2ms status=200 bytes=386
+2012-07-26T08:51:58+00:00 app[web.1]: 
+2012-07-26T08:51:58+00:00 app[web.1]: 
+2012-07-26T08:51:58+00:00 app[web.1]: Started GET "/__history__.html?0" for 24.225.71.37 at 2012-07-26 08:51:58 +0000
+2012-07-26T08:51:58+00:00 app[web.1]: 
+2012-07-26T08:51:58+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/__history__.html"):
+2012-07-26T08:51:58+00:00 app[web.1]:   
+2012-07-26T08:51:58+00:00 app[web.1]: 
+2012-07-26T08:51:58+00:00 app[web.1]: 
+2012-07-26T08:51:58+00:00 app[web.1]: cache: [GET /__history__.html?0] miss
+2012-07-26T08:51:58+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/__history__.html?0 dyno=web.1 queue=0 wait=0ms service=4ms status=404 bytes=728
+2012-07-26T08:51:59+00:00 app[web.1]: 
+2012-07-26T08:51:59+00:00 app[web.1]: Started GET "/assets/add.png" for 24.225.71.37 at 2012-07-26 08:51:59 +0000
+2012-07-26T08:51:59+00:00 app[web.1]: 
+2012-07-26T08:51:59+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/add.png dyno=web.1 queue=0 wait=0ms service=10ms status=200 bytes=733
+2012-07-26T08:51:59+00:00 app[web.1]: cache: [GET /assets/add.png] miss, store
+2012-07-26T08:52:07+00:00 app[web.1]: 
+2012-07-26T08:52:07+00:00 app[web.1]: 
+2012-07-26T08:52:07+00:00 app[web.1]: Started GET "/users" for 24.225.71.37 at 2012-07-26 08:52:07 +0000
+2012-07-26T08:52:07+00:00 app[web.1]: 
+2012-07-26T08:52:07+00:00 app[web.1]:     2: <div>People grouped by role <%=image_tag("group.png", :alt=>"People")%></div>
+2012-07-26T08:52:07+00:00 app[web.1]:     1: <br/>
+2012-07-26T08:52:07+00:00 app[web.1]: ActionView::Template::Error (PG::Error: ERROR:  column "delegations.id" must appear in the GROUP BY clause or be used in an aggregate function
+2012-07-26T08:52:07+00:00 app[web.1]: : SELECT "delegations".* FROM "delegations"  WHERE (delegations.role IS NOT NULL AND project_id=1) GROUP BY role):
+2012-07-26T08:52:07+00:00 app[web.1]:     4: <%@uniq_roles = Delegation.find(:all,:group=>:role,:conditions=>["delegations.role IS NOT NULL AND project_id=?",current_project.id])%>
+2012-07-26T08:52:07+00:00 app[web.1]:     5: <%end%>
+2012-07-26T08:52:07+00:00 app[web.1]:     3: <%if !current_project.nil?%>
+2012-07-26T08:52:07+00:00 app[web.1]:     6: <%if !current_project.nil?%>
+2012-07-26T08:52:07+00:00 app[web.1]:   app/views/users/_users_sidemenu.html.erb:4:in `_app_views_users__users_sidemenu_html_erb__172623393635703865_54920680'
+2012-07-26T08:52:07+00:00 app[web.1]:     7: 	<%if !@uniq_roles.nil?%>
+2012-07-26T08:52:07+00:00 app[web.1]:   app/views/users/index.html.erb:2:in `block in _app_views_users_index_html_erb___1330429251304747686_54975160'
+2012-07-26T08:52:07+00:00 app[web.1]:   app/controllers/users_controller.rb:66:in `index'
+2012-07-26T08:52:07+00:00 app[web.1]:   app/views/users/index.html.erb:1:in `_app_views_users_index_html_erb___1330429251304747686_54975160'
+2012-07-26T08:52:07+00:00 app[web.1]: 
+2012-07-26T08:52:07+00:00 app[web.1]: 
+2012-07-26T08:52:07+00:00 app[web.1]: cache: [GET /users] miss
+2012-07-26T08:52:07+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/users dyno=web.1 queue=0 wait=0ms service=121ms status=500 bytes=728
+2012-07-26T08:52:08+00:00 app[web.1]: cache: [GET /favicon.ico] miss
+2012-07-26T08:52:08+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=0
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.ui.widget-baf2c1cfea2ee57ee2ce4b6decd71764.js] miss
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/jquery.iframe-transport-64a1cc5685ecf9c468291ae5c595d5e3.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.iframe-transport-64a1cc5685ecf9c468291ae5c595d5e3.js"):
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.iframe-transport-64a1cc5685ecf9c468291ae5c595d5e3.js] miss
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/jquery.purr-c949f8a42176e5e654462b1572fc16ff.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.purr-c949f8a42176e5e654462b1572fc16ff.js"):
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.purr-c949f8a42176e5e654462b1572fc16ff.js] miss
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/joint.all.min-147cc09daca67f66eaee673910eb1595.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/joint.all.min-147cc09daca67f66eaee673910eb1595.js"):
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/joint.all.min-147cc09daca67f66eaee673910eb1595.js] miss
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.ui.widget-baf2c1cfea2ee57ee2ce4b6decd71764.js dyno=web.1 queue=0 wait=0ms service=19ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.iframe-transport-64a1cc5685ecf9c468291ae5c595d5e3.js dyno=web.1 queue=0 wait=0ms service=18ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.purr-c949f8a42176e5e654462b1572fc16ff.js dyno=web.1 queue=0 wait=0ms service=18ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/joint.all.min-147cc09daca67f66eaee673910eb1595.js dyno=web.1 queue=0 wait=0ms service=17ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js"):
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js] miss
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-825a31ae57c29e1c8b8a3ac392ba9ccc.js dyno=web.1 queue=0 wait=0ms service=10ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js"):
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js] miss
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-fp-9f07cff3ae49c6d17ec0329d714b9c3d.js dyno=web.1 queue=0 wait=0ms service=7ms status=404 bytes=728
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: Started GET "/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js" for 24.225.71.37 at 2012-07-26 08:53:49 +0000
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js"):
+2012-07-26T08:53:49+00:00 app[web.1]:   
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: 
+2012-07-26T08:53:49+00:00 app[web.1]: cache: [GET /assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js] miss
+2012-07-26T08:53:49+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/jquery.fileupload-ui-c10350d777fc205c42f3d55df1704f56.js dyno=web.1 queue=0 wait=0ms service=7ms status=404 bytes=728
+2012-07-26T08:53:50+00:00 app[web.1]: cache: [GET /assets/logo-3d64b2c8715c64bd3f6a704b8ab14f2e.png] miss
+2012-07-26T08:53:50+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/logo-3d64b2c8715c64bd3f6a704b8ab14f2e.png dyno=web.1 queue=0 wait=0ms service=2ms status=304 bytes=0
+2012-07-26T08:53:50+00:00 app[web.1]: cache: [GET /assets/add-66cfe617e4de3a53f03c2f04832cdd3f.png] miss
+2012-07-26T08:53:50+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/assets/add-66cfe617e4de3a53f03c2f04832cdd3f.png dyno=web.1 queue=0 wait=0ms service=3ms status=200 bytes=733
+2012-07-26T08:53:50+00:00 app[web.1]: 
+2012-07-26T08:53:50+00:00 app[web.1]: 
+2012-07-26T08:53:50+00:00 app[web.1]: Started GET "/__history__.html?0" for 24.225.71.37 at 2012-07-26 08:53:50 +0000
+2012-07-26T08:53:50+00:00 app[web.1]: 
+2012-07-26T08:53:50+00:00 app[web.1]: ActionController::RoutingError (No route matches [GET] "/__history__.html"):
+2012-07-26T08:53:50+00:00 app[web.1]:   
+2012-07-26T08:53:50+00:00 app[web.1]: 
+2012-07-26T08:53:50+00:00 app[web.1]: 
+2012-07-26T08:53:50+00:00 app[web.1]: cache: [GET /__history__.html?0] miss
+2012-07-26T08:53:50+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/__history__.html?0 dyno=web.1 queue=0 wait=0ms service=4ms status=404 bytes=728
+2012-07-26T08:53:54+00:00 app[web.1]: 
+2012-07-26T08:53:54+00:00 app[web.1]: 
+2012-07-26T08:53:54+00:00 app[web.1]: Started GET "/tasks/new" for 24.225.71.37 at 2012-07-26 08:53:54 +0000
+2012-07-26T08:53:54+00:00 app[web.1]: ActionView::Template::Error (undefined method `content' for #<Task:0x000000066df9d8>):
+2012-07-26T08:53:54+00:00 app[web.1]:     29: 	<div class="field">
+2012-07-26T08:53:54+00:00 app[web.1]:     31: 		<%= field_set_tag nil, :class => 'field' do %>
+2012-07-26T08:53:54+00:00 app[web.1]:     32: 			<%= f.text_field :name %> 
+2012-07-26T08:53:54+00:00 app[web.1]:     33: 		<%end%>
+2012-07-26T08:53:54+00:00 app[web.1]: 
+2012-07-26T08:53:54+00:00 app[web.1]:     30: 		<%= f.label :name %><span class="hint"> Eg:"Prepare metadata for museum collection"</span>
+2012-07-26T08:53:54+00:00 app[web.1]:     34: 	</div>
+2012-07-26T08:53:54+00:00 app[web.1]:     35: 	<div class="field">
+2012-07-26T08:53:54+00:00 app[web.1]:   app/views/tasks/_form.html.erb:32:in `block (2 levels) in _app_views_tasks__form_html_erb__1841275162305338881_53881680'
+2012-07-26T08:53:54+00:00 app[web.1]:   app/views/tasks/_form.html.erb:31:in `block in _app_views_tasks__form_html_erb__1841275162305338881_53881680'
+2012-07-26T08:53:54+00:00 app[web.1]:   app/views/tasks/_form.html.erb:16:in `_app_views_tasks__form_html_erb__1841275162305338881_53881680'
+2012-07-26T08:53:54+00:00 app[web.1]:   app/views/tasks/new.html.erb:7:in `block in _app_views_tasks_new_html_erb___4589593972643975601_53920480'
+2012-07-26T08:53:54+00:00 app[web.1]:   app/views/tasks/new.html.erb:5:in `_app_views_tasks_new_html_erb___4589593972643975601_53920480'
+2012-07-26T08:53:54+00:00 app[web.1]:   app/controllers/tasks_controller.rb:49:in `new'
+2012-07-26T08:53:54+00:00 app[web.1]: 
+2012-07-26T08:53:54+00:00 app[web.1]: 
+2012-07-26T08:53:54+00:00 app[web.1]: cache: [GET /tasks/new] miss
+2012-07-26T08:53:54+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/tasks/new dyno=web.1 queue=0 wait=0ms service=63ms status=500 bytes=728
+2012-07-26T08:53:55+00:00 app[web.1]: cache: [GET /favicon.ico] miss
+2012-07-26T08:53:55+00:00 heroku[router]: GET electric-cloud-9166.herokuapp.com/favicon.ico dyno=web.1 queue=0 wait=0ms service=2ms status=304 bytes=0

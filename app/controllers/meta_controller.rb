@@ -26,6 +26,8 @@ class MetaController < ApplicationController
   # GET /meta/new.json
   def new
     @metum = Metum.new
+      @struc_errors=params[:struc_errors]
+      @soc_errors=params[:soc_errors]
      if !current_project.nil?
        gon.scenario=current_project.metum.scenario_xml
      else
@@ -53,14 +55,19 @@ class MetaController < ApplicationController
  @stream= current_project.metum
  @stream.stream_xml=builder.to_xml
  @stream.save!
+ redirect_to :action=>'new'
  end
  
  def generate_structure
+   @formerrors=[]
   # validate the inputs:
-  @formerrors << "Name must be longer than 3 characters" if (params[:name].length < 3)
-  puts params 
-  sleep(10)
-  if @formerrors.nil?
+  if params[:name].nil?||params[:name].empty?
+      @formerrors << "Name must be longer than 3 characters"
+  end 
+  if params[:sequences].nil?
+      @formerrors << "Enter atleast one type of sequence for the collection"
+  end 
+  if @formerrors.nil?||@formerrors.empty?
     # user got it right, do whatever you really want to do with the data
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.structures{
@@ -86,15 +93,19 @@ class MetaController < ApplicationController
      if !@doc.xpath("//collection")[params[:id].to_i].nil? 
         @doc.xpath("//collection")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//collection"))
      else
+       if !@doc.xpath("//collection").empty?
         @doc.xpath("//collection").after(Nokogiri::XML(builder.to_xml).xpath("//collection"))
-     end
+       else #First record
+        @doc=Nokogiri::XML(builder.to_xml)
+        end
+      end
+       @structure.structure_xml=@doc.to_xml
+      @structure.save!
     end
-   @structure.structure_xml=@doc.to_xml
-   @structure.save!
    redirect_to :action=>'new'
   else
-    puts "****ERROR***"
-    redirect_to :back
+    params[:struc_errors]=@formerrors
+    redirect_to new_metum_path(Metum.new,:struc_errors=>params[:struc_errors])
   end      
 end
 
@@ -118,6 +129,7 @@ def generate_space
    @space= current_project.metum
    @space.space_xml=builder.to_xml
    @space.save!
+   redirect_to :action=>'new'
  end
 
  def generate_scenario
@@ -127,11 +139,21 @@ def generate_space
    end
    
 def generate_society
-  puts params
-  #sleep(10)
+   @formerrors=[]
   # validate the inputs:
-  @errors << "Name must be longer than 3 characters" if (params[:group_name].length < 3)
-  if @errors.nil?
+  if params[:group_name].nil?||params[:group_name].empty?
+      @formerrors << "Name must be longer than 3 characters" if (params[:group_name].length < 3)
+  end 
+  @noservice=true
+  services.each_with_index do |s,i|
+      if !params[s].nil?
+        @noservice=false
+      end
+    end
+  if @noservice
+      @formerrors << "Enter atleast one type of service the user participates in"
+  end 
+  if @formerrors.nil?||@formerrors.empty?
     builder = Nokogiri::XML::Builder.new do |xml|
       xml.societies{
        xml.group{
@@ -148,15 +170,18 @@ def generate_society
    if !@doc.xpath("//group")[params[:id].to_i].nil? 
       @doc.xpath("//group")[params[:id].to_i].replace(Nokogiri::XML(builder.to_xml).xpath("//group"))
    else
+     if !@doc.xpath("//group").empty?
       @doc.xpath("//group").after(Nokogiri::XML(builder.to_xml).xpath("//group"))
+     else #First record
+      @doc=Nokogiri::XML(builder.to_xml)
+     end
    end
    @society.society_xml=@doc.to_xml
    @society.save!
+   redirect_to new_metum_path
    else
-     puts params[:group_name]
-    puts "****ERROR***"
-    sleep(10)
-    redirect_to :back
+     params[:soc_errors]=@formerrors
+    redirect_to new_metum_path(Metum.new,:soc_errors=>params[:soc_errors])
   end      
  end
    
@@ -208,5 +233,33 @@ def generate_society
       format.html { redirect_to meta_url }
       format.json { head :ok }
     end
+  end
+  
+  def soc_del
+    puts "********in del"
+    puts params[:id]
+    @society= current_project.metum
+    @doc = Nokogiri::XML(current_project.metum.society_xml)
+    @doc.xpath("//group")[params[:id].to_i].remove
+    if @doc.xpath("//group").empty?
+      @doc.xpath("//societies")[0].remove
+    end
+    @society.society_xml=@doc.to_xml
+    @society.save!
+    redirect_to new_metum_path
+  end
+  
+    def struc_del
+    puts "********in del"
+    puts params[:id]
+    @structure= current_project.metum
+    @doc = Nokogiri::XML(current_project.metum.structure_xml)
+    @doc.xpath("//collection")[params[:id].to_i].remove
+    if @doc.xpath("//collection").empty?
+      @doc.xpath("//structures")[0].remove
+    end
+    @structure.structure_xml=@doc.to_xml
+    @structure.save!
+    redirect_to new_metum_path
   end
 end

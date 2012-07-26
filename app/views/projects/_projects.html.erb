@@ -4,8 +4,9 @@
 	<thead>
 	<tr class="custom_background">
 		<th>Name  <!--<%=image_tag("folder.png",:alt=>"")%>--></th>
-		<th>Time  <!--<%=image_tag("time.png",:alt=>"")%>--></th>
-		<th>Money  <!--<%=image_tag("money.png",:alt=>"")%>--></th>
+		<th>Start date  <!--<%=image_tag("time.png",:alt=>"")%>--></th>
+		<th>End date  <!--<%=image_tag("time.png",:alt=>"")%>--></th>
+		<th>Money(in dollars)  <!--<%=image_tag("money.png",:alt=>"")%>--></th>
 		<th>Funding agency  <!--<%=image_tag("house.png",:alt=>"")%>--></th>
 		<th></th>
 	</tr>
@@ -13,7 +14,8 @@
 	<% @projects.each do |project| %>
 	<tr>
 		<td><%= link_to project.name , project%></td>
-		<td><%= project.time %></td>
+		<td><%= project.start_at %></td>
+		<td><%= project.end_at %></td>
 		<td><%= project.money %></td>
 		<td><%= project.funding_agency %></td>
 		<td>

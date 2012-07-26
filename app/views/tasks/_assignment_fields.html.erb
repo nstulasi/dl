@@ -1,5 +1,5 @@
 <p class="fields">
 	Send To User: 
-	<%= collection_select(:user,:id, current_project.users, :id, :name, {:prompt=>"Choose a user to assign the task to"} ) if !current_project.nil? && !current_project.users.nil?%>
+	<%= collection_select(:user,:id, current_project.users, :id, :name, {},{:multiple=>true} ) if !current_project.nil? && !current_project.users.nil?%>
 	<%= link_to_remove_fields "remove", f %>
 </p>

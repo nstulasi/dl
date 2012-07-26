@@ -15,6 +15,7 @@
     	<%= javascript_include_tag "UDModules.js"%>
     	<%= javascript_include_tag "nicEdit.js"%>
     	<%= javascript_include_tag 'jquery.ui.widget.js' %>
+    	<%= javascript_include_tag 'popup.js' %>
 		<!-- The Templates and Load Image plugins are included for the FileUpload user interface -->
 		<script src="http://blueimp.github.com/JavaScript-Templates/tmpl.min.js"></script>
 		<script src="http://blueimp.github.com/JavaScript-Load-Image/load-image.min.js"></script>
@@ -33,6 +34,24 @@
 		<!-- Bootstrap Image Gallery styles -->
 		
 		<script>
+		    $(function () {
+        // Initialize the jQuery File Upload widget:
+        $('#fileupload').fileupload();
+        // 
+        // Load existing files:
+        $.getJSON($('#fileupload').prop('action'), function (files) {
+          var fu = $('#fileupload').data('fileupload'), 
+            template;
+          template = fu._renderDownload(files)
+            .appendTo($('#fileupload .files'));
+          // Force reflow:
+          fu._reflow = fu._transition && template.length &&
+            template[0].offsetWidth;
+          template.addClass('in');
+          $('#loading').remove();
+        });
+
+    });
 		$("#creator").live('click',function(){
 		$("#new_policy_div").removeClass('disp_none');
 		$("#new_policy_div").addClass('disp');
@@ -47,6 +66,7 @@
 		$(document).ready(function() {
 		$( "#accordion" ).accordion({ autoHeight: false , active:false});
 		$( "#society_accordion" ).accordion({ autoHeight: false , active:false});
+		$( "#project_user_accordion" ).accordion({ autoHeight: false , active:false});		
 		});
 		
 		function setStyle(x)
@@ -74,7 +94,8 @@
 		}
 		
 		function removeNode(n){
-			if(getParentByTagName(n,'li')!=false){
+			var a=getParentByTagName(n,'li')
+			if(a!=false){
 			   n.parentElement.className+=" active_link"
 			}
 		    
@@ -125,6 +146,20 @@
 			  $('#sequence_feedback'+form_num).text("Select atleast one sequence");
 			  }
 		}
+		function validateForm(id)
+		{
+			var form=getParentByTagName(id,'form').getAttribute('id')
+			var x=document.forms["create_form"]["name"].value;
+			var form_num = form.charAt(form.length-1);
+			var y=document.forms["create_form"]["sequences"].value;
+			if (x==null || x=="")
+			  {
+			  $('#name_feedback').text("Name must be filled");
+			  }
+			 if (y==null || y=="")
+			  {
+			  }
+		}
 		
 		function validateSocForm(soc_form)
 		{
@@ -155,7 +190,7 @@
 				$("#task_priority").select2();
 			});
 			$(document).ready(function() {
-			var arr = [".sequences","#character_encoding","#audio_encoding","#video_encoding","#image_encoding","#text_encoding"];
+			var arr = [".sequences","#character_encoding","#audio_encoding","#video_encoding","#image_encoding","#text_encoding,#program_encoding"];
 			for (var i = 0; i < arr.length; i += 1){
 				$(arr[i]).select2({
 					placeholder: "Select the type of sequences",
@@ -228,6 +263,19 @@
       				document.getElementById("image_appender").className += "disp_none";
 				}
 			});
+			$('.program_submittable').live('change', function() {
+				if(document.getElementById('program').checked == true) {
+					document.getElementById("program_appender").className = 
+   					document.getElementById("program_appender").className.replace
+      					( /(?:^|\s)disp_none(?!\S)/ , ' ' )
+      				document.getElementById("program_appender").className += "disp_div";
+				} else {
+					document.getElementById("program_appender").className = 
+   					document.getElementById("program_appender").className.replace
+      					( /(?:^|\s)disp_div(?!\S)/ , ' ' )
+      				document.getElementById("program_appender").className += "disp_none";
+				}
+			});
 
 <%if !current_project.nil?%>
 	<%if !current_project.phases.nil?%>
@@ -251,7 +299,7 @@
 		<%@phases=current_project.phases.all%>
     	   var phases = {
        	    'wiki-url':  	"http://simile.mit.edu/shelf/", 
-  			'wiki-section': "Simile JFK Timeline", 
+  			'wiki-section': "Simile Timeline", 
   			'dateTimeFormat': 'iso8601',
         	'events': 		[
         	<% @phases.each do |p| %>
@@ -261,7 +309,7 @@
 		       'end':"<%=p.end.iso8601%>",
 		       'title':"<%=p.name%>",
 		       'durationEvent':true,
-		       'description':<%=p.name%>
+		       'description':"<%=p.name%>"
 			 },
 			 <%end%>
 			<%end%>]     
@@ -295,20 +343,24 @@
 //Collect phases information for jsTree
 <%if !current_project.nil?%>
 	<%if !current_project.phases.nil?%>
-	<%@phases=current_project.phases.all%>
+	<%@phases=current_project.phases.all(:conditions=>{:parent_id=>nil},:order=>"start")%>
 		var data_phases = [
 			<%@phases.each do |p|%>
 		    {
 		    "data": "<%=p.name%>",
 		    "metadata": {"href" : "http://localhost:3000/phases/"+<%=p.id%>},
-		    "state": "closed",
 		    
 		    "children": [
 		    <%p.children.each do |c|%>
 		    {
 		        "data": "<%=c.name%>",
-		        "state": "open",
 		        "metadata": {"href" : "http://localhost:3000/phases/"+<%=c.id%>},
+		        "children": [
+		    	<%c.children.each do |cc|%>
+		    	{
+		        "data": "<%=cc.name%>",
+		        "metadata": {"href" : "http://localhost:3000/phases/"+<%=cc.id%>},
+		    	},<%end%>]
 		    },<%end%>]
 		    },
 		    <%end%>
@@ -406,6 +458,7 @@
 </head>
 <!--Body BEGINS-->
 <body class = "container_16" onload="onLoad();" onresize="onResize();">
+	<div class="clearfix">
 	<%if !current_user.nil?%>
 		<%if !current_project.nil?%> 
 			<div class="custom_div" style="height:25px;background-color: #CCCFA4;padding:4px 4px;float:left;">
@@ -413,13 +466,16 @@
 			</div>
 		<%else%>
 			<div class="custom_div" style="height:25px;background-color: #CCCFA4;padding:4px 4px;float:left;">
+				<%= link_to "Overview", projects_path,:style=>"float:right;margin: 0px 10px 0px 12px;padding: 2px;background-color: #9CB3A0;",:class=>"custom_button round"%>
 			<div style="float: left;">Create/Click on a project to view its contents</div>
 			</div>
 		<%end%>
 			<div class="custom_div" style="height:25px;background-color: #CCCFA4;padding:4px 4px;">
+				<%= link_to "Overview", projects_path,:style=>"float:right;margin: 0px 10px 0px 12px;padding: 2px;background-color: #9CB3A0;",:class=>"custom_button round"%>
 			<div style="float: right;">You are logged in as <%=current_user.name%>. <%= link_to "Sign out", signout_path, :method => :delete%></div>
 			</div>
 	<%end%>
+	</div>
 		
 	<%if current_user%>
 	<div class="google-header-bar">
@@ -430,9 +486,9 @@
 	<%end%>
 	
 		<% flash.each do |key,value|%>
-		<div class="flash <%= key%>">
-			<%= value %>
-		</div>
+			<div class="flash <%= key%>">
+					<%=value%>
+			</div>
 		<%end%>
 		
 		<%if content_for?(:side)%>

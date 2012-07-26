@@ -1,14 +1,15 @@
 
-<h2>New Resource</h2>
-<%= form_for [@resourceable, Resource.new] do |f| %>
+<!--<%= form_for [@resourceable, Resource.new] do |f| %>
   <ol class="formList">
 	<%=f.file_field :file%>
 	<%= f.submit "Rake tasks", :controller => :tasks, 
                            :action => 'rake_tasks',:class=>"custom_better_button"%>
   </ol>
-<% end %>
-
-<h2>New upload</h2>
+<% end %>-->
+<div class="outer_div">
+	<div class="bigger_inner_div">
+<h4 style="text-align: center;margin-top: 10px;">New upload</h4><br/>
+<p> Select files to add to the project. Uploaded files are listed below. Click on a file to download it. </p>
 <%=form_for [@resourceable, Resource.new], :html => { :multipart => true, :id => "fileupload"  } do |f| %>
         <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
         <div class="row fileupload-buttonbar">
@@ -47,3 +48,5 @@
         <table class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody>
         </table>
     <% end %>
+   </div>
+  </div>

@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])
+    @projects = current_user.projects.search(params[:search]).order(sort_column + " " + sort_direction).paginate(:per_page => 5, :page=>params[:page])
     #Variable open_proejct just stores the name of the currently open project
     @open_project = current_project.name if current_project 
      respond_to do |format|
@@ -87,6 +87,14 @@ class ProjectsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  def withdraw
+    user_delegations=current_project.delegations.find(:all,:conditions=>["id IN (?)",current_user.delegations.collect(&:id)])
+    Delegation.destroy_all(['id IN (?)',user_delegations.collect(&:id)])
+    cookies.delete(:open_project)
+    redirect_to projects_path
+  end
+
   private
    def sort_column
     Phase.column_names.include?(params[:sort])? params[:sort] : "name"

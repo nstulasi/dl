@@ -24,7 +24,7 @@ module ApplicationHelper
   end
   
   def current_project
-    Project.find_by_id(cookies.signed[:open_project])||Project.first
+    Project.find_by_id(cookies.signed[:open_project])||current_user.projects.first
   end
   
    def phases
@@ -54,6 +54,25 @@ module ApplicationHelper
       end
   ret.html_safe
    end
+   
+   def priority_task(index)
+      case index
+      when 0
+         ret = "Lowest"
+      when 1
+         ret = "Low"
+      when 2
+         ret = "Medium"
+      when 3
+         ret = "High"
+      when 4
+         ret = "Urgent"
+      else
+         ret = "Undefined"
+      end
+  ret.html_safe
+   end
+   
 def status_name(index)
       case index     
       when 0
@@ -66,7 +85,7 @@ def status_name(index)
           ret = "Completed"
      
       else
-         ret = "Not Started"
+         ret = "Undefined"
       end
   ret.html_safe
    end
@@ -118,7 +137,11 @@ def strucs
   if !current_project.nil?
    if !current_project.metum.structure_xml.nil?
    @doc = Nokogiri::XML(current_project.metum.structure_xml)
-    ret= Hash.from_xml(@doc.to_s)
+      if(!@doc.xpath("//collection").empty?)
+      ret= Hash.from_xml(@doc.to_s)
+      else
+        ret=nil
+      end
     else
       ret=nil
     end
@@ -148,7 +171,11 @@ def soc
   if !current_project.nil?
    if !current_project.metum.society_xml.nil?
    @doc = Nokogiri::XML(current_project.metum.society_xml)
+   if(!@doc.xpath("//group").empty?)
     ret= Hash.from_xml(@doc.to_s)
+   else 
+     ret=nil
+   end
     else
       ret=nil
     end

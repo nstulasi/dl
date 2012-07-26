@@ -3,17 +3,32 @@
 <%end%>
 <%content_for :main do%>
 <div class="outer_div">
-	<div class="inner_div clearfix">
+	<div class="bigger_inner_div clearfix">
 		<p id="notice">
 			<%= notice %>
 		</p>
+		<div>
+			<%= button_to "Withdraw from project", { :action => "withdraw", :id => current_user.id },
+          :confirm => "Are you sure?", :class=>"custom_better_button righty",:method => :delete %>
+		</div>
 		<p>
 			<b><%= image_tag("folder.png",:alt=>"Project")%>&nbsp;Name:</b>
 			<%= best_in_place @project,:name %>
 		</p>
+		<%= form_for @project,:method=>"post",:validate=>true,:'data-remote'=>true,:multipart=>true do |f| %>
 		<p>
-			<b><%= image_tag("time.png",:alt=>"Project")%>&nbsp;Time:</b>
-			<%= best_in_place @project,:time %>
+			<b><%= image_tag("folder.png",:alt=>"Project")%>&nbsp;Description:</b>
+			<%= f.text_area :description%>
+		</p>
+		<%= submit_tag 'Save',:class=>"custom_button round righty submittable "%>
+		<%end%>
+		<p>
+			<b><%= image_tag("time.png",:alt=>"Project")%>&nbsp;Start date:</b>
+			<%= best_in_place @project,:start_at%>
+		</p>
+		<p>
+			<b><%= image_tag("time.png",:alt=>"Project")%>&nbsp;End date:</b>
+			<%= best_in_place @project,:end_at%>
 		</p>
 		<p>
 			<b><%= image_tag("money.png",:alt=>"Project")%>&nbsp;Money:</b>
@@ -27,4 +42,5 @@
 		<%= link_to 'Back', projects_path,:class=>"custom_button round righty" %>
 	</div>
 </div>
+
 <%end%> 

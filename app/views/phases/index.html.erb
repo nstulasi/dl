@@ -2,14 +2,16 @@
 	<%= render 'phases_sidemenu'%>
 <%end%>
 <%content_for :main do%> 
-<h2 class="headings">Timeline of phases</h2>
+<h4 class="headings" style="text-align: center;margin-top: 10px;">Timeline of phases</h4>
 	<%if current_project.nil?%>
 		<%=empty_display("projects")%>
 	<%elsif @phases.empty?%>
 		<%=empty_display("phases")%>
 	<%else%>
+		<div class="clearfix">
+			<p class="add_link" style="float:left;"> <%=link_to "Choose phases to add to project",new_phase_path,:class=>"custom_better_button",:style=>"float:left;"%></p>
+			<p class="add_link" style="float:right;"> <%=link_to "Add customized phases to the project",new_phase_path(:custom_form=>true),:class=>"custom_better_button"%></p>
+		</div>
 		<%=render "timeline_exhibit"%>
 	<%end%>
-	<%=link_to "Click me to add new phase",new_phase_path%>
-	<div> 
 <%end%> 

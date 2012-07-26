@@ -1,8 +1,5 @@
 SampleApp::Application.routes.draw do
 
-
-
-
   resources :default_policies
 
   resources :meta do 
@@ -13,9 +10,7 @@ SampleApp::Application.routes.draw do
 
   resources :phases
 
-  resources :projects do 
-    resources :resources
-  end
+
 
   resources :policies
 
@@ -26,6 +21,8 @@ SampleApp::Application.routes.draw do
   match '/generate_space'=>'meta#generate_space'
   match '/generate_society'=>'meta#generate_society'
   match '/rake_tasks'=>'tasks#rake_tasks'
+  match '/rake_phases'=>'phases#rake_phases'
+  match '/rake_users'=>'users#rake_users'
   match "phases/savesort" => 'phases#savesort'
   match "shippings_logs/recent"=> 'shipping_logs#recent'
   match '/articles(/:year(/:month))' => 'articles#index', :as => :articles, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
@@ -45,6 +42,11 @@ SampleApp::Application.routes.draw do
     match '/users/:id/' => 'users#update', :format =>:json, :via => :put
   resources :sessions, :only => [:new,:create,:destroy]
   
+  match "/projects/withdraw", :controller => 'projects', :action => 'withdraw'
+   match "/defaultphases/:id", :to=>'defaultphases#show'
+   match "/soc_del", :to=>'meta#soc_del'
+   match "/struc_del", :to=>'meta#struc_del'
+  
   match "/tasks/index.js", :controller => 'tasks', :action => 'index', :format => :js
   get "users/new"
   match "/phases/make", :to=>'phases#make', :via => :post
@@ -61,6 +63,12 @@ SampleApp::Application.routes.draw do
   match '/signout', :to => 'sessions#destroy'
   
   root :to => 'pages#home'
+  
+  resources :projects do 
+    resources :resources
+  end
+  
+  match '/projects/:id', :to=>"projects#update", :via=>:post
   
   match '/projects/new_user', :to=>'projects#new_user'
 

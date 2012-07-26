@@ -1,5 +1,6 @@
+
 <p class="fields">
 	<%= f.label :name%>
-	<%= f.text_field :name%>
-	<%= link_to_remove_fields "Remove user", f %>
+	<%= f.text_field :name,:readonly=>true,:style=>"border:0px;"%>
+	<%= link_to_remove_fields "Remove user from project", f %>
 </p>

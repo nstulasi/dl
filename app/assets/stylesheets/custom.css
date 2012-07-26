@@ -418,13 +418,11 @@ ul#sitemap li
 
 ul#sitemap li a
 {
-	background: url(bullet_red.png) no-repeat ;
 	padding-left: 15px;
 }
 
 ul#sitemap li a.open, ul#sitemap li li a.open, ul#sitemap li li li a.open, ul#sitemap li li li li a.open
 {
-	background-image: url(bullet_red.png);
 }
 
 /* second level */
@@ -443,7 +441,6 @@ ul#sitemap li li
 ul#sitemap li li a
 {
 	padding: 0 0 0 30px;
-	background: url(bullet_green.png) no-repeat 20px ;
 }
 
 /* third level */
@@ -965,6 +962,7 @@ p{
 }
 
 .active_link{
-	background-color:#A3B88D;
-
+background-color: #A7B47D;
 }
+
+

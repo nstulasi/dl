@@ -1,8 +1,8 @@
 <p class="fields">
 	<%= f.label :role%>
-	<%= f.text_field :role%>
+	<%= f.text_field :role,:value=>"Unassigned"%>
 	<%= f.label :responsibility%>
-	<%= f.text_field :responsibility%> <!--Have to change this to include it in the controleer create action itself.-->
+	<%= f.text_area :responsibility%> <!--Have to change this to include it in the controleer create action itself.-->
 	<br/>
 	<%= link_to_remove_fields "Remove delegation", f %>
 </p>

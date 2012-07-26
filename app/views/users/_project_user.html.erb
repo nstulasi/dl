@@ -1,5 +1,37 @@
-<h1>Sign up!</h1>
-<%= form_for @user, :url => {:controller => "users", :action => "create"}  do |f| %>
+<h4 style="text-align: center;margin-top: 10px;">Add user to <%=current_project.name%> </h4>
+<div class="hint" style="text-align: center;">Include users in the project or create a new unregsitered user. Assign roles and responsibilities arising from those roles.
+	A user can have many roles</div>
+<div class="outer_div">
+<div class="bigger_inner_div">
+	<%= field_set_tag nil, :class => 'field' do %>
+	<p> Select XML file to import users</p>
+	<%= form_tag('/rake_users', :method=>'post', :multipart => true,:class=>"clearfix") do%>
+	<%=file_field_tag :file%>
+	<%= submit_tag "Submit",:class=>"custom_better_button"%>
+	<%end%>
+	<%end%>
+	<div id="project_user_accordion">
+		<h3>Add existing user</h3>
+	<div>
+	<%= form_for @user, :url => {:controller => "users", :action => "create"},:validate=>true do |f| %>
+		<p class="fields">
+		Add existing user
+		<%= collection_select(:user,:id, User.find(:all,:conditions=>['id not in (?)', current_project.users.map(&:id)]), :id, :name, {:prompt=>"Choose a user to assign the project to"} ) if !current_project.nil? && !current_project.users.nil?%>
+		<%=hidden_field_tag :project_user, true%>
+		</p>
+		<div class="field">
+			<%=f.fields_for :delegations do |builder|%>
+			<%= render 'delegation_fields', :f=>builder%>
+			<%= link_to_add_fields "Add delegation",f,:delegations%>
+			<%end%>
+		</div>
+		<div class="actions">
+			<%= f.submit "Create",:class=>"custom_better_button"%>
+		</div>
+	<%end%>		
+	</div>
+	<h3>Add new user</h3>
+<%= form_for @user, :url => {:controller => "users", :action => "create"},:validate=>true  do |f| %>
 <% if @user.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@user.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -12,9 +44,22 @@
 	</ul>
 </div>
 <% end %>
+<%=hidden_field_tag :project_user, true%>
 <div class="field">
-	<%= f.label :name%> <!--Change it depending on whether adding a new user of assigning an existing user-->
+	<%= f.label "User name"%> <!--Change it depending on whether adding a new user of assigning an existing user-->
 	<%= f.text_field :name%> <!--<%=collection_select(:user,:id, User.all, :id, :name, {} )%>-->
+</div>
+<div class="field">
+	<%= f.label "User email"%> <!--Change it depending on whether adding a new user of assigning an existing user-->
+	<%= f.text_field :email%> <!--<%=collection_select(:user,:id, User.all, :id, :name, {} )%>-->
+</div>
+<div class="field">
+	<%= f.label "Webpage"%> <!--Change it depending on whether adding a new user of assigning an existing user-->
+	<%= f.text_field :webpage%> <!--<%=collection_select(:user,:id, User.all, :id, :name, {} )%>-->
+</div>
+<div class="field">
+	<%= f.label "Contact number"%> <!--Change it depending on whether adding a new user of assigning an existing user-->
+	<%= f.text_field :number%> <!--<%=collection_select(:user,:id, User.all, :id, :name, {} )%>-->
 </div>
 <div class="field">
 	<%=f.fields_for :delegations do |builder|%>
@@ -23,6 +68,7 @@
 	<%end%>
 </div>
 <div class="actions">
-	<%= f.submit "Create"%>
+	<%= f.submit "Create",:class=>"custom_better_button"%>
 </div>
 <% end %>
+</div></div>

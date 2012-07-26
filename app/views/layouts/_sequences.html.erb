@@ -1,0 +1,9 @@
+<%@seq=[]%>
+<%encodings.each_with_index do |en,i|%>
+	<%if checked[i].to_bool%>
+		   <%en.values.flatten.each do |e|%>
+		    	<%@seq<<en.keys.first.to_s.slice(0,1).capitalize+en.keys.first.slice(1..-1)+":"+e%>
+		   <%end%>
+	<%end%>
+<%end%>
+ <%= select_tag("sequences", options_for_select(@seq.collect{ |u| [u, u] },:selected=>"ble"),:multiple=>true,:class=>"sequences")%>

@@ -12,7 +12,7 @@
 	<%=empty_display("tasks")%>
 <%else%>
 	<%= render 'tasks'%>
-	<%= link_to 'New Task', new_task_path %>
+	<%= link_to 'Create a new task', new_task_path, :class=>"custom_better_button righty"%>
 <%end%>
 </div>
 <%end%> 

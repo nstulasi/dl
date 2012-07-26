@@ -1,13 +1,17 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
 <br/><h2 class="custom_text">Task List</h2>
-<%@resource=Resource.new%>
+<!--<%@resource=Resource.new%>
 <%= form_tag('/rake_tasks', :method=>'post', :multipart => true,:'data-remote'=>true,:class=>"clearfix") do%>
 	<%=file_field_tag :file%>
 	<%= submit_tag "Submit",:class=>"custom_better_button"%>
-<%end%>
-
-
+<%end%>-->
+<p>
+  Download:
+  <%= link_to "CSV", tasks_path(format: "csv") %> |
+  <%= link_to "Excel", tasks_path(format: "xls") %>
+  <%= link_to "Printable Receipt (PDF)", tasks_path(format: "pdf"), :class=>"righty"%>
+</p>
 <table class="display" id="dynamic_table">
 	<thead>
 		<tr class="custom_background">

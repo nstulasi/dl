@@ -1,7 +1,7 @@
 <%content_for :side do%>
 	<%= render 'policies_sidemenu'%>
 <%end%>
-<%content_for :main do%> <h1>New policy</h1>
+<%content_for :main do%>
 	<%@policy=Policy.new%>
 	<%= form_for(@policy) do |f| %>
 	<% if @policy.errors.any? %>
@@ -19,7 +19,7 @@
 	<br/>
 	<h3>Create a new policy</h3>
 	<p>
-		<p><%= f.label :name %><span class="hint">: Enter the name of the policy</span></p>
+		<p><%= f.label :name %><span class="hint"> Enter the name of the policy</span></p>
 		<%= field_set_tag nil, :class => 'field' do %>
 		<p><%= f.text_field :name %></p>
 		<%end%>
@@ -31,7 +31,7 @@
 		<%end%>
 		</p>   
 	<p>
-		<p><%= f.label :description %><span class="hint">: Enter the details of the policy</span></p>
+		<p><%= f.label :description %><span class="hint"> Enter the details of the policy</span></p>
 		<%= field_set_tag nil, :class => 'field' do %>
 		<p><%= f.text_area :description %></p>
 		<%end%>

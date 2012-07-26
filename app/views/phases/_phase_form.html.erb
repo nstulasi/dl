@@ -1,3 +1,4 @@
+
 <style type="text/css" media="screen">
 	#sortable {
 		width: 300px;
@@ -9,6 +10,8 @@
 		background-color: #d6d88e;
 	}
 </style>
+<div class="outer_div">
+	<div class="bigger_inner_div clearfix">
 
 <%= form_tag phases_make_path do %>
 <ul id="sitemap">
@@ -16,13 +19,15 @@
 	<li>
 			<a href="#">
 			<%=  check_box_tag "phases[]",p.id %>
-		<%= p.name %></a>
+		<%= p.name %>:</a>
+		<span class="hint"><%=p.content%></span>
 		<ul>
 			<%for sp in p.children%>
 			<li>
 				<a href ="#">
-				<%= check_box_tag "phases[]",sp.id %>
+				<%= check_box_tag "phases[]",sp.name %>
 				<%= sp.name%>
+				<span class="hint"><%=sp.content%></span>
 				<a>
 			<li>
 			<%end%>
@@ -30,8 +35,10 @@
 	</li>
 	<%end%>
 </ul>
-<%= submit_tag "Save changes" %>
+<%= submit_tag "Save changes",:class=>"custom_better_button righty" %>
 <% end %> 
+</div>
+</div>
 <!--
 <h1>Category Sorting Example</h1>
 <p>

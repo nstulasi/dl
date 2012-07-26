@@ -46,6 +46,8 @@
 		</p>
 		<p>
 					  <%= submit_tag 'Save',:class=>"custom_better_button righty  submittable",:onclick=>"validateForm(this)" %>
+					  				  <%= link_to "delete", :controller =>"meta",:action => 'struc_del',:id=>0%>
+
 				</p>
 		
 			
@@ -98,6 +100,7 @@
 		</p>
 		<p>
 					  <%= submit_tag 'Save',:class=>"custom_better_button righty submittable",:onclick=>"validateForm(this)" %>
+					  <%= link_to "delete", :controller =>"meta",:action => 'struc_del',:id=>i%>
 		</p> 
 		
 			<%end%>
@@ -106,8 +109,17 @@
 	<%end%>
 </div>
 
-<%else%>
+<%end%>
 <h3>Create new collection</h3>
+<%if !@struc_errors.nil?%>
+<ul>
+<%@struc_errors.each do |err|%>
+	<li>
+	<%=err%>
+	</li>
+<%end%>
+</ul>
+<%end%>
 	<%= form_tag('/generate_structure', :method=>'post', :multipart => true) do%>
 		<%= field_set_tag nil, :class => 'field' do %>
 		<%if strucs.nil?%>
@@ -133,7 +145,14 @@
       ['Language','Language'],
       ['General','General']
       ],'General'),:class=>"type") %>
+      </p>
 	
+		<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
+		<%if !encodings.nil?%>
+			<%= render 'sequences'%>
+		<%else%>
+			<p>Enter some sequences first</p>
+		<%end%>
 		<p><b>Sequences:</b><span class="hint"> Select the types of sequences the collection may contain </span></p>
 		<%if !encodings.nil?%>
 			<%= render 'sequences'%>
@@ -145,6 +164,4 @@
 			</p>
 	<%end%>
    <%end%>
-<%end%><!--End if-else block for struc.nil?-->
-
 </div>

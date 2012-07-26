@@ -1,4 +1,5 @@
-<h1>New project</h1>
+<div class="outer_div">
+	<div class="bigger_inner_div clearfix">
 <%= form_for(@project) do |f| %>
 <% if @project.errors.any? %>
 <div id="error_explanation">
@@ -12,21 +13,31 @@
 	</ul>
 </div>
 <% end %> 
+
 <!--Unable to add a new user through ajax and Railscasts way. Edit code below for that.-->
 <div class="field">
-	<%=f.fields_for :users do |u|%>
+<%= field_set_tag nil, :class => 'field' do %>
+	<%@project.users.uniq.each do |pu|%>
+	<%=f.fields_for :users,pu do |u|%>
 	<%= render 'user_fields', :f=>u%>
+		<div class="field">
+		<%@upd=pu.delegations.find(:all,:conditions=>["project_id=?",current_project.id])%>
+		<%=u.fields_for :delegations,@upd do |builder|%>
+		<%= render 'delegation_fields', :f=>builder%>
+		<%= link_to_add_fields "Add delegation",u,:delegations%>
+		<%end%>
+	</div>
 	<%end%>
-</div>
-<!-- Adding delegations for new/current user.-->
-<div class="field">
-	<%=f.fields_for :delegations do |builder|%>
-	<%= render 'delegation_fields', :f=>builder%>
-	<%= link_to_add_fields "Add delegation",f,:delegations%>
-	<%end%>
-</div>
+
+ <%end%>
+<%end%>
+	
 </div>
 <div class="actions">
-	<%= f.submit "Update"%>
+	<%= f.submit "Update",:class=>"custom_better_button righty"%>
 </div>
+</div>
+
 <% end %>
+</div>
+</div>

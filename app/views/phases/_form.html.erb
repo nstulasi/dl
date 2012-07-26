@@ -1,4 +1,7 @@
-<%= form_for(@phase) do |f| %>
+<div class="outer_div">
+	<div class="bigger_inner_div">
+
+<%= form_for @phase,:validate=>true do |f| %>
 <% if @phase.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@phase.errors.count, "error") %> prohibited this phase from being saved:</h2>
@@ -12,26 +15,39 @@
 </div>
 <% end %>
 <div class="field">
-	<%= f.label :name %>
-	<br />
-	<%= f.text_field :name %>
+	<%= f.label :name %><span class="hint"> Enter the name of the phase</span>
+	<%= field_set_tag nil, :class => 'field' do %>
+		<%= f.text_field :name %>
+	<%end%>
 </div>
 
 <div class="field">
-	<%= f.label :content %>
-	<br />
-	<%= f.text_field :content %>
+	<%= f.label :content %><span class="hint"> Enter any phase-related information here </span>
+	<%= field_set_tag nil, :class => 'field' do %>
+		<%= f.text_area :content %>
+	<%end%>
 </div>
 
   <div class="field">
-    <%= f.label :start %><br />
-    <%= f.text_field :start %>
+    <%= f.label :start %><span class="hint"> Select tentative date the phase begins </span>
+    <%= field_set_tag nil, :class => 'field' do %>
+    	<%= f.text_field :start %>
+    <%end%>
   </div>
   <div class="field">
-    <%= f.label :end %><br />
-    <%= f.text_field :end %>
+    <%= f.label :end %><span class="hint"> 	Select tentative date the phase end </span>
+    <%= field_set_tag nil, :class => 'field' do %>
+   		 <%= f.text_field :end %>
+    <%end%>
   </div>
-<%= collection_select(:phase,:parent_id, Phase.all, :id, :name, {} ) if !current_project.nil? && !current_project.users.nil?%>
+  <div class="field">
+    <%= f.label "Parent phase" %><span class="hint"> Select the phase, if any, the current entry is a sub-phase of</span>
+    <%= field_set_tag nil, :class => 'field' do %>
+		<%= collection_select(:phase,:parent_id, Phase.find(:all, :conditions => ["id != ?", @phase.id]), :id, :name, {:prompt=>true,:include_blank=>true} ) if !current_project.nil? && !current_project.users.nil?%>
+	<%end%>
+  </div>
+  </div>
+  </div>
 <!--Attempt almost worked but only the last taks was actually being saved. hint : look at params hash"--> 
 <!--<div id="new_phases" class="fields">
 	<%=render 'phase', :f=>f%>
@@ -42,6 +58,6 @@
 <%=link_to "Add phase", "#", :object => Phase.new,:class=>"add_phase"%>-->
 
 <div class="actions">
-	<%= f.submit "Save and add another phase" %>
+	<%= f.submit "Save",:class=>"custom_better_button righty" %>
 </div>
 <% end %>

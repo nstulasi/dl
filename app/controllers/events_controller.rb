@@ -11,7 +11,18 @@ class EventsController < ApplicationController
       @event_strips = Event.event_strips_for_month(@shown_month)
     else
       @event_strips = current_project.events.event_strips_for_month(@shown_month) if !current_project.nil?
-    end  
+    end 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @events }
+      format.csv { send_data @events.get_csv }
+      format.xls
+      format.pdf {
+        send_data  filename: "events.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+                              } 
+    end 
   end
 
   # GET /events/1

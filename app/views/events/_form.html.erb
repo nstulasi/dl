@@ -10,20 +10,35 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :start_at %><br />
-    <%= f.text_field :start_at %>
-  </div>
-  <div class="field">
-    <%= f.label :end_at %><br />
-    <%= f.text_field :end_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="outer_div">
+	<div class="bigger_inner_div clearfix">
+	  <div class="field">
+	    <%= f.label :name %><span class="hint"> Enter the name of the phase</span>
+	    <%= field_set_tag nil, :class => 'field' do %>
+	    <%= f.text_field :name %>
+	    <%end%>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Description" %><span class="hint"> Enter a brief description of the event</span>
+	    <%= field_set_tag nil, :class => 'field' do %>
+	    <%= f.text_area :content %>
+	    <%end%>
+	  </div>
+	  <div class="field">
+	    <%= f.label :start_at %><span class="hint"> Enter the tentative start date of the event</span>
+	    <%= field_set_tag nil, :class => 'field' do %>
+	    <%= f.text_field :start_at %>
+	    <%end%>
+	  </div>
+	  <div class="field">
+	    <%= f.label :end_at %><span class="hint"> Enter the tentative end date of the event</span>
+	    <%= field_set_tag nil, :class => 'field' do %>
+	    <%= f.text_field :end_at %>
+	    <%end%>
+	  </div>
+	  <div class="actions">
+	    <%= f.submit "Save",:class=>"custom_better_button righty" %>
+	    <%= link_to 'Back', events_path,:class=>"custom_better_button righty" %>
+	  </div>
 <% end %>
+</div></div>

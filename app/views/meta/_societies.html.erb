@@ -34,17 +34,19 @@
 			<%end%>
 		</p>
 		<p>
-				  <%= submit_tag 'Submit',:class=>"custom_better_button submittable",:onclick=>"validateSocForm(this)" %>
+				  <%= submit_tag 'Submit',:class=>"custom_better_button submittable righty",:onclick=>"validateSocForm(this)" %>
+				  <%= link_to "delete", :controller =>"meta",:action => 'soc_del',:id=>0%>
 		</p>
 		<!--ELSE Starts-->
 	<%end%>
 	<%else%>
 		<%soc["societies"]["group"].each_with_index do |s,i|%>
 		<h3><a href="#"><%=s["name"]%></a>
-			<%=button_tag "Delete",:id=>"del"%></h3>
+			</h3>
 		<%= form_tag('/generate_society', :method=>'post', :multipart => true,:'data-remote'=>true,:id=>"soc_form"+i.to_s) do%>
 			<%params[:id]=i%>
 			<%= hidden_field_tag :id, params[:id]%>
+                          
 			<p>
 				<b>Name:</b><span class="hint"> Enter the name of the group </span>
 				<%= field_set_tag nil, :class => 'field' do %>
@@ -72,6 +74,7 @@
 			</p>
 			<p>
 					  <%= submit_tag 'Submit',:class=>"custom_better_button righty submittable",:onclick=>"validateSocForm(this)" %>
+					  <%= link_to "delete", :controller =>"meta",:action => 'soc_del',:id=>i%>
 			</p>
 		<%end%>	
 	<%end%>
@@ -80,7 +83,16 @@
 <%end%>
 <!--If there haven't been created any societies yet-->
 <h3><a href="#">Create a new group</a></h3>
-<%= form_tag('/generate_society', :method=>'post', :multipart => true) do%>
+<%if !@soc_errors.nil?%>
+<ul>
+<%@soc_errors.each do |err|%>
+	<li>
+	<%=err%>
+	</li>
+<%end%>
+</ul>
+<%end%>
+<%= form_tag('/generate_society', :method=>'post', :multipart => true,:class=>"clearfix") do%>
 	<%if soc.nil?%>
 		<%params[:id]=1%> <!--For first society-->
 	<%else%>
@@ -122,7 +134,7 @@
 				<%end%>
 			</p>
 			<p>
-				<%= submit_tag 'Submit',:class=>"custom_better_button" %>
+				<%= submit_tag 'Submit',:class=>"custom_better_button righty" %>
 			</p>
 <%end%><!--form end-->
 </div>

@@ -13,10 +13,10 @@
 			<b>UI Language</b><span class="hint"> Select the language to be used for rendering the UI</span>
 				<p>
 				<%= select_tag("ui_lang", options_for_select([
-			      ['Geographical', 'Subject'],
-			      ['Subject', 'Subject'],
-			      ['Language','Language'],
-			      ['General','General']
+			      ['PHP', 'PHP'],
+			      ['Java', 'Java'],
+			      ['Ruby on Rails','Ruby on Rails'],
+			      ['Python','Python']
 			      ]),:class=>"type") %>
 			      </p>
 		</p>
@@ -25,10 +25,11 @@
 			<b>UI Presentation language</b><span class="hint"> Select the display language(s) used</span>
 				<p>
 				<%= select_tag("ui_displang", options_for_select([
-			      ['Geographical', 'Subject'],
-			      ['Subject', 'Subject'],
-			      ['Language','Language'],
-			      ['General','General']
+			      ['English', 'English'],
+			      ['German', 'German'],
+			      ['Arabic','Arabic'],
+			      ['Hindi','Hindi'],
+			      ['Chinese','Chinese']
 			      ]),:class=>"type") %>
 			      </p>
 			</p>
@@ -37,7 +38,7 @@
 	<p>
 		<b>IR Model</b><span class="hint"> Information related to the information retrieval </span>
 		<%= field_set_tag nil, :class => 'field' do %>
-		<p>
+		<!--<p>
 			<b>Retrieval Space</b><span class="hint"> Select the language to be used for rendering the UI</span>
 				<p>
 				<%= select_tag("ir_space", options_for_select([
@@ -48,15 +49,19 @@
 			      ]),:class=>"type") %>
 			    </p>
 		</p>
-		<br/>
+		<br/>--></br/>
 		<p>
 			<b>Stemming Algorithm</b><span class="hint"> Select the stemming algorithm being used</span>
 				<p>
 				<%= select_tag("stemming_algo", options_for_select([
-			      ['Geographical', 'Subject'],
-			      ['Subject', 'Subject'],
-			      ['Language','Language'],
-			      ['General','General']
+			      ['Porter Stemming Algorithm', 'Porter Stemming Algorithm'],
+			      ['Lookup algorithms', 'Lookup algorithms'],
+			      ['Suffix-stripping algorithms','Suffix-stripping algorithms'],
+			      ['Lemmatisation algorithms','Lemmatisation algorithms'],
+			      ['Stochastic algorithms','Stochastic algorithms'],
+			      ['n-gram analysis','n-gram analysis'],
+			      ['Affix stemmers','Affix stemmers'],
+			      ['Matching algorithms','Matching algorithms']
 			      ]),:class=>"type") %>
 			    </p>
 		</p>

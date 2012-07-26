@@ -1,4 +1,4 @@
-<%= form_for(@project) do |f| %>
+<%= form_for @project,:validate=>true do |f| %>
 <% if @project.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -11,27 +11,50 @@
 	</ul>
 </div>
 <% end %>
+<div class="outer_div">
+	<div class="bigger_inner_div clearfix">
 <div class="field">
 	<%= f.label :name %>
-	<br />
+	<%= field_set_tag nil, :class => 'field' do %>
 	<%= f.text_field :name %>
+	<%end%>
 </div>
-<div class="field">
-	<%= f.label :time %>
-	<br />
-	<%= f.text_field :time %>
+<div class="field" id="project">
+	<%= f.label "Description" %><span class="hint"> Enter a brief description of the project</span>
+	<%= field_set_tag nil, :class => 'field' do %>
+		<%= f.text_area :description %>
+	<%end%>
+</div>
+
+<div class="field" id="project">
+	<%= f.label "Start date" %><span class="hint"> Select tentative start date for the project</span>
+	<%= field_set_tag nil, :class => 'field' do %>
+		<%= f.text_field :start_at %>
+	<%end%>
+</div>
+
+<div class="field" id="project">
+	<%= f.label "End date" %><span class="hint"> Select tentative end date for the project</span>
+	<%= field_set_tag nil, :class => 'field' do %>
+		<%= f.text_field :end_at %>
+	<%end%>
 </div>
 <div class="field">
 	<%= f.label :money %>
-	<br />
+	<%= field_set_tag nil, :class => 'field' do %>
 	<%= f.text_field :money %>
+	<%end%>
 </div>
+
 <div class="field">
 	<%= f.label :funding_agency %>
-	<br />
+	<%= field_set_tag nil, :class => 'field' do %>
 	<%= f.text_field :funding_agency %>
+	<%end%>
 </div>
 <div class="actions">
-	<%= f.submit %>
+	<%= f.submit "Submit",:class=>"custom_better_button righty" %>
 </div>
 <% end %> 
+</div>
+</div>

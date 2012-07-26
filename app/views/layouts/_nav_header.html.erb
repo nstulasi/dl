@@ -1,14 +1,11 @@
 
 <%=logo%>
 <ul class="navlist">
-	<li class="title" id="overview">
-			<%= link_to "Overview", projects_path%>
-	</li>
-	<li class="title" id="phases">
-		<span><%= link_to "Phases", phases_path,:id=>"redtext"%></span>
-	</li>
 	<li class="title" id="users">
 		<%= link_to "Users", users_path%>
+	</li>
+	<li class="title" id="phases">
+		<%= link_to "Phases", phases_path%>
 	</li>
 	<li class="title" id="meta">
 		<%= link_to "Metamodel", new_metum_path%>
@@ -22,6 +19,11 @@
 	<li class="title" id="events">
 			<%= link_to "Events", events_path%>
 	</li>
+	<%if !current_project.nil?%>
+	<li class="title" id="resources">
+			<%= link_to "Resources", project_resources_path(current_project.id)%>
+	</li>
+	<%end%>
 	
 </ul>
 <!--<div id="main_nav">

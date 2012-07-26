@@ -1,14 +1,19 @@
 <%= hidden_field_tag :direction, params[:direction] %>
 <%= hidden_field_tag :sort, params[:sort] %>
-<%=link_to "Edit user information","/editor"+request.path%>
+<p>
+  Download:
+  <%= link_to "CSV", users_path(format: "csv") %> |
+  <%= link_to "Excel", users_path(format: "xls") %>
+  <%= link_to "Printable Receipt (PDF)", users_path(format: "pdf"), :class=>"righty"%>
+</p>
 <table class="display" id="dynamic_table">
 	<thead>
 		<tr>
 			<th>Name <%=image_tag("flag_green.png",:alt=>"User")%></th>
 			<th>email  <%=image_tag("arrow_right.png",:alt=>"email")%> </th>
 			<th>Webpage  <%=image_tag("exclamation.png",:alt=>"webpage")%></th>
-			<th>Contact info  <%=image_tag("date_next.png",:alt=>"contact number")%></th>
-			<th></th>
+			<th>Contact number <%=image_tag("date_next.png",:alt=>"contact number")%></th>
+			<!--<th></th>=-->
 		</tr>
 	</thead>
 	<tbody>
@@ -19,10 +24,11 @@
 			<td><%= user.email%></td>
 			<td><%= user.webpage%></td>
 			<td><%= user.number %></td>
-			<td> 
-				<%= link_to image_tag("page_edit.png", :alt=>"Edit"),edit_user_path(user)%>&nbsp;&nbsp;
-				<%= link_to image_tag("cross.png", :alt=>"Delete"),user, confirm: 'Delete this user?', method: :delete%> 
-			</td>
+			<!--<td>
+				<%if user.encrypted_password.nil?%>
+					    <%= link_to 'Destroy', user, confirm: 'Are you sure?', method: :delete %> 
+				<%end%> 
+			</td>-->
 		</tr>
 		<% end %>
 	</tbody>

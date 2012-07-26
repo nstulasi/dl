@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702140159) do
+ActiveRecord::Schema.define(:version => 20120724182002) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(:version => 20120702140159) do
     t.datetime "updated_at"
     t.date     "end_at"
     t.integer  "project_id"
+    t.string   "content"
   end
 
   create_table "mercury_images", :force => true do |t|
@@ -142,11 +143,13 @@ ActiveRecord::Schema.define(:version => 20120702140159) do
 
   create_table "projects", :force => true do |t|
     t.string   "name"
-    t.string   "time"
     t.string   "money"
     t.string   "funding_agency"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "start_at"
+    t.date     "end_at"
+    t.string   "description"
   end
 
   create_table "resources", :force => true do |t|
@@ -164,7 +167,6 @@ ActiveRecord::Schema.define(:version => 20120702140159) do
   end
 
   create_table "tasks", :force => true do |t|
-    t.integer  "owner_id"
     t.string   "name"
     t.string   "status"
     t.string   "priority"
@@ -173,7 +175,7 @@ ActiveRecord::Schema.define(:version => 20120702140159) do
     t.datetime "updated_at"
     t.datetime "start_at"
     t.integer  "project_id"
-    t.string   "site"
+    t.string   "content"
   end
 
   create_table "users", :force => true do |t|
@@ -183,9 +185,6 @@ ActiveRecord::Schema.define(:version => 20120702140159) do
     t.datetime "updated_at"
     t.string   "encrypted_password"
     t.string   "salt"
-    t.boolean  "admin",              :default => false
-    t.string   "role"
-    t.string   "responsibilities"
     t.string   "webpage"
     t.string   "number"
   end

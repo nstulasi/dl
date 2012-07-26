@@ -10,7 +10,11 @@
 //= require rails.validations
 //= require_tree .
  
- 
+$(document).ready(function() { $("#user_id").select2({
+					placeholder: "Choose user to assign task to",
+    				allowClear: true
+				}); });
+
 $('.item').live('mouseover',function(){
     $(this).draggable({
     	revert:true
@@ -88,7 +92,9 @@ $('#things').prepend('<%=escape_javascript render(@thing) %>');
 
 $(document).ready(function() {
   window.database = Exhibit.Database.create();
+  if(data!=null){
   window.database.loadData(data);
+  }
   window.exhibit = Exhibit.create();
   window.exhibit.configureFromDOM();
 });
@@ -129,6 +135,8 @@ $(function() {
             });
 	
 $(function (){
+	$('#project_start_at').datepicker({dateFormat: 'yy-mm-dd'});
+	$('#project_end_at').datepicker({dateFormat: 'yy-mm-dd'});
 	$('#task_start_at').datepicker({dateFormat: 'yy-mm-dd'});
 	$('#task_end_at').datepicker({dateFormat: 'yy-mm-dd'});
 	$('#event_start_at').datepicker({dateFormat: 'yy-mm-dd'});
@@ -249,15 +257,6 @@ var eventSource = new Timeline.DefaultEventSource();
   
 }
 
-var resizeTimerID = null;
-function onResize() {
-    if (resizeTimerID == null) {
-        resizeTimerID = window.setTimeout(function() {
-            resizeTimerID = null;
-            tl.layout();
-        }, 500);
-    }
-}
 
 $(document).ready(function() {
     // if text input field value is not empty show the "X" button

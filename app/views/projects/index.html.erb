@@ -3,7 +3,7 @@
 <div class ="grid_16 layout box_1 " id="right_display">
 	<br/>
 	<h2 class="custom_text" style="margin-bottom:0em;">Digital Library projects<!-- <%= @open_project%>&nbsp;<%=current_user.name%>--></h2>
-
+	<div class="hint" style="text-align: center;">Listing projects you are participating in</div>
 	<%= form_tag projects_path, :method => 'get', :id => "projects_search" do %>
 	<%= hidden_field_tag :direction, params[:direction]%>
 	<%= hidden_field_tag :sort, params[:sort]%>
@@ -23,6 +23,7 @@
 		<%=empty_display("tasks")%>
 	<%else%>
 	<h4 style="text-align: center;padding-top: 5px;">Currently viewing project: <%=link_to current_project.name, current_project%></h4>
+		<%= link_to 'View and edit user delegations', edit_project_path(current_project),:class=>"custom_better_button",:style=>"float:right;padding:3px 12px;" %>
 	<div style="width:30%;float:left;margin:10px 10px;">
 	<div class="dashboard_div" style="width:100%;">
 		<div class="dashboard_title_div">
@@ -31,7 +32,7 @@
 		<ul>
 			<li><b>Name</b><div style="float:right;"><b>Start date</b></div></li>
 		<%current_project.events.order("start_at desc ").limit(5).each do |e|%>
-			<li><%=e.name%><div style="float:right;"><b><%=e.start_at.strftime("%B %d, %Y") %></b></div></li
+			<li><%=link_to e.name, e%><div style="float:right;"><b><%=e.start_at.strftime("%B %d, %Y") %></b></div></li
 		<%end%>
 		</ul>
 	</div>
@@ -41,8 +42,8 @@
 		</div>
 		<ul>
 			<li><b>Name</b><div style="float:right;"><b>Role</b></div></li>
-		<%current_project.users.order("updated_at desc ").limit(5).each do |u|%>
-			<li><%=u.name%> <div style="float:right;"><%=u.delegations.first.role%></div></li>
+		<%current_project.users.order("updated_at desc ").limit(5).uniq.each do |u|%>
+			<li><%=link_to u.name,u%> <div style="float:right;"><%=u.email%></div></li>
 		<%end%>
 		</ul>
 	</div>
@@ -56,7 +57,7 @@
 		<ul>
 			<li><b>Name</b><div style="float:right;"><b>Priority</b></div></li>
 		<%current_project.tasks.order("updated_at desc ").limit(5).each do |t|%>
-			<li style="padding:5px 5px;"><%=t.name%> <%=priority_name(t.priority.to_i)%></li>
+			<li style="padding:5px 5px;"><%=link_to t.name, t%> <%=priority_name(t.priority.to_i)%></li>
 		<%end%>
 		</ul>
 	</div>

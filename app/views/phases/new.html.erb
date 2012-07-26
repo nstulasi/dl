@@ -2,13 +2,31 @@
 	<%= render 'phases_sidemenu'%>
 <%end%>
 <%content_for :main do%> 
-<h2 class="headings">Creating/Editing phase list</h2>
+	
 	<%if current_project.nil?%>
 		<%=empty_display("projects")%>
 	<%elsif current_project.phases.nil?||current_project.phases.empty?%>
 		<%=empty_display("phases")%>
 	<%else%>
-		<%=render 'phase_form'%>
-		<%#=render 'phase_form'%>
+		<%if params[:custom_form].nil?%>
+		<h4 class="headings" style="text-align: center;margin-top:10px">Creating/Editing phase list</h4>
+		<div class="hint" style="text-align: center;">Select phases to include in your digital library project by checking the box and saving</div>
+		<p> Select XML file to import phases</p>
+		<%= form_tag('/rake_phases', :method=>'post', :multipart => true,:class=>"clearfix") do%>
+
+			<%=file_field_tag :file%>
+			<%= submit_tag "Submit",:class=>"custom_better_button"%>
+		<%end%>
+
+			<%=render 'phase_form'%>
+		<%else%>
+		<h4 class="headings" style="text-align: center;margin-top:10px">Creating a new phase</h4>
+		<p> Select XML file to import phases</p>
+		<%= form_tag('/rake_phases', :method=>'post', :multipart => true,:class=>"clearfix") do%>
+			<%=file_field_tag :file%>
+			<%= submit_tag "Submit",:class=>"custom_better_button"%>
+		<%end%>
+			<%=render 'form'%>
+		<%end%>
 	<%end%>
 <%end%>  

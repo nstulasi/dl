@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :delegations
   has_many :projects, :through => :delegations
   
-  accepts_nested_attributes_for :delegations
+  accepts_nested_attributes_for :delegations, :allow_destroy=>true
   
   attr_accessor :password
   attr_accessor :project_user
@@ -13,6 +13,9 @@ class User < ActiveRecord::Base
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, :presence => true,
                   :length => {:maximum => 50}
+  #validates :role, :presence => true,
+   #               :length => {:maximum => 50},
+    #              :if=>:should_not_validate_user
   validates :email, :presence =>true,
                   :format => {:with => email_regex},
                  :uniqueness => {:case_sensitive => false},
@@ -24,10 +27,24 @@ class User < ActiveRecord::Base
                       :if => :should_validate_user,
                       :on=>:create
                        
-  before_save :encrypt_password, :on=>:create
+  before_save :encrypt_password, :on=>:create,:if => :should_validate_user
+  
+ def self.get_csv(options = {})
+    columns=["name","email","webpage","number"]
+  CSV.generate(options) do |csv|
+    csv << columns
+    all.each do |user|
+      csv << user.attributes.values_at(*columns)
+    end
+  end
+end
 
 def should_validate_user
   !project_user
+end
+
+def should_not_validate_user
+  project_user
 end
 
 def has_password?(submitted_password)

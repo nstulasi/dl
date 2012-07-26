@@ -3,32 +3,38 @@
 <%end%>
 <%content_for :main do%>
 <div class="outer_div">
-	<div class="inner_div clearfix">
+	<div class="bigger_inner_div clearfix">
 <p id="notice">
 	<%= notice %>
 </p>
 <p>
 	<b> <%=image_tag("star.png",:alt=>"Task")%>&nbsp; Name:</b>
-	<%= best_in_place @task,:name %>
+	<%=  @task.name %>
 </p>
+<div style="display: block;" class="clearfix">
+	<b><%=image_tag("star.png",:alt=>"Task")%>&nbsp; Description:</b> 
+	<div style="width: 85%;float:right">
+	<%=  raw @task.content %>
+	</div>
+</div>
 <p>
 	<b><%=image_tag("note.png",:alt=>"Status")%>&nbsp;Status:</b>
-	<%= best_in_place @task,:status %>
+	<%= @task.status %>
 </p>
 <p>
 	<b><%=image_tag("exclamation.png",:alt=>"Priority")%>&nbsp;Priority:</b>
-	<%= best_in_place @task,:priority %>
+	<%= @task.priority %>
 </p>
 <p>
 	<b><%=image_tag("date_next.png",:alt=>"Start date")%>&nbsp;Start Date:</b>
-	<%= best_in_place @task,:start_at %>
+	<%= @task.start_at %>
 </p>
 <p>
 	<b><%=image_tag("date_previous.png",:alt=>"End date")%>&nbsp;End Date:</b>
-	<%= best_in_place @task,:end_at %>
+	<%= @task.end_at %>
 </p>
 
-<!--<%= link_to 'Edit', edit_task_path(@task),:class=>"custom_button round" %>-->
+<%= link_to 'Edit', edit_task_path(@task),:class=>"custom_button round" %>
 <%= link_to 'Back', tasks_path,:class=>"custom_button round righty" %>
 </div>
 </div>

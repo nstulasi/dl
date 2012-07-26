@@ -1,0 +1,20 @@
+
+<%content_for :main do%>
+<div class="outer_div">
+	<div class="inner_div clearfix">
+		<p id="notice">
+			<%= notice %>
+		</p>
+		<p>
+			<b><%= image_tag("star.png",:alt=>"Phase")%>&nbsp;Name:</b>
+			<%= best_in_place @defaultphase,:name %>
+		</p>
+		<p>
+			<b><%= image_tag("note_edit.png",:alt=>"Content")%>&nbsp;Content:</b>
+			<%= @defaultphase.content %>
+		</p>
+		<!--<%= link_to 'Edit', edit_phase_path(@phase),:class=>"custom_button round righty" %> |-->
+		<%= link_to 'Back', phases_path,:class=>"custom_button round righty" %>
+	</div>
+</div>
+<%end%> 

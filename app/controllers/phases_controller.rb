@@ -7,6 +7,13 @@ class PhasesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @phases }
+      format.csv { send_data @phases.get_csv }
+      format.xls
+      format.pdf {
+        send_data  filename: "phases.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+                              } 
     end
   end
 
@@ -29,9 +36,37 @@ class PhasesController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @phase }
     end
-
   end
 
+def rake_phases
+     @errors=[]
+    if params[:file].nil?
+      @errors<<"Specify an XML file to import"
+      flash[:notice]=@errors
+    else
+      xsd = Nokogiri::XML::Schema(File.read("project-phases.xsd"))
+      doc = Nokogiri::XML(params[:file].read)
+      xsd.validate(doc).each do |error|
+          @errors<<error
+      end
+  
+      if !@errors.empty?
+        flash[:notice] = @errors
+      end
+
+      if !params[:file].nil? && @errors.empty?
+        doc.xpath("//phase").each do |phase|
+          name = phase.xpath("name").text
+          content = phase.xpath("content").text
+          start_date = phase.xpath("start_date").text
+          end_date =  phase.xpath("end_date").text
+          Phase.create(:name=>name,:content=>content,:start=>start_date,:end=>end_date,:project_id=>current_project.id)
+          end
+      end
+    end
+    
+    redirect_to :back
+  end
   # GET /phases/1/edit
   def edit
     @phase = Phase.find(params[:id])
@@ -44,7 +79,7 @@ class PhasesController < ApplicationController
     current_project.phases<<@phase
     respond_to do |format|
       if @phase.save
-        format.html { redirect_to new_phase_path, notice: 'Phase was successfully created.' }
+        format.html { redirect_to phases_path, notice: 'Phase was successfully created.' }
         format.json { render json: @phase, status: :created, location: @phase }
       else
         format.html { render action: "new" }
@@ -83,7 +118,16 @@ class PhasesController < ApplicationController
   
   def make
     params[:phases].each do |p|
-     @phase=Phase.find_or_create_by_name(:project_id=>current_project.id, :name=>Defaultphase.find_by_id(p).name, :parent_id=>Defaultphase.find_by_id(p).parent_id)
+      #finding the name of the parent phase in Default Phases
+      @parent_phase_id=Defaultphase.find(:first,:conditions=>['name=?',p]).parent_id
+      if !@parent_phase_id.nil?
+        @parent_phase_name=Defaultphase.find_by_id(@parent_phase_id).name 
+        if !@parent_phase_name.nil?
+        @phase=Phase.find_or_create_by_name(:project_id=>current_project.id, :name=>p, :parent_id=>Phase.find(:first,:conditions=>["name=?",@parent_phase_name]).id)
+        end 
+     else
+        @phase=Phase.find_or_create_by_name(:project_id=>current_project.id, :name=>p)
+     end 
    end
    redirect_to phases_path
    end

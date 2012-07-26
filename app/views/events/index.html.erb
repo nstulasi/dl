@@ -9,6 +9,12 @@
 	<%elsif current_project_events.nil?%>
 		<%=empty_display("events")%>
 	<%end%>
+	<p>
+  Download:
+  <%= link_to "CSV", events_path(format: "csv") %> |
+  <%= link_to "Excel", events_path(format: "xls") %>
+  <%= link_to "Printable Receipt (PDF)", events_path(format: "pdf"), :class=>"righty"%>
+</p>
 <%= raw(event_calendar) %>
 </div>
 <%end%>
